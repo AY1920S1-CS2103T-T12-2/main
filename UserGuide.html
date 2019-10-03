@@ -1,366 +1,605 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><meta name="author" content="By: `CS2103-T12-2` Since: `Aug 2019` Licence: 'NUS'"><title>DeliveryMANS – User Guide</title><link rel="stylesheet" href="./gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">DeliveryMANs</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - User Guide</h1></div><div id="content"><div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
-</div>
-</div>
-<div id="toc" class="toc">
-<div id="toctitle"></div>
-<ul class="sectlevel1">
-<li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#Features">3. Features</a>
-<ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.9. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></li>
-</ul>
-</li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
-</ul>
-</div>
-</div>
-<div class="sect1">
-<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>AddressBook Level 3 (AB3) is for those who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, AB3 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
+<link rel="stylesheet" href="./coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">DeliveryMANs</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>DeliveryMANS – User Guide</h1><div class="details"><span class="author" id="author">By: `CS2103-T12-2` Since: `Aug 2019` Licence: 'NUS'</span><br></div></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
+<p>Introduction</p>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/se-edu/addressbook-level3/releases">here</a>.</p>
+<p>Quick Start</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
-</li>
-<li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
-</div>
-</div>
-</li>
-<li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
-</li>
-<li>
-<p>Some example commands you can try:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
-</li>
-<li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
-</li>
-<li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
-</li>
-<li>
-<p><strong><code>exit</code></strong> : exits the app</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+<p>Features</p>
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>3.1. Universal commands</p>
+</div>
+<div class="paragraph">
+<p>3.1.1. Viewing help:</p>
+</div>
+<div class="paragraph">
+<p>3.1.2. Switching context:</p>
+</div>
+<div class="paragraph">
+<p>3.1.3. Viewing order summary:</p>
+</div>
+<div class="paragraph">
+<p>3.1.4. Exiting program:</p>
+</div>
+<div class="paragraph">
+<p>3.2. Customer commands</p>
+</div>
+<div class="paragraph">
+<p>3.2.1. Listing all customers:</p>
+</div>
+<div class="paragraph">
+<p>3.2.2. Listing specific customer:</p>
+</div>
+<div class="paragraph">
+<p>3.2.3. Editing customer info:</p>
+</div>
+<div class="paragraph">
+<p>3.2.4. Editing specified customer info:</p>
+</div>
+<div class="paragraph">
+<p>3.2.5. Sorting customer:</p>
+</div>
+<div class="paragraph">
+<p>3.2.6. Viewing history:</p>
+</div>
+<div class="paragraph">
+<p>3.2.7. Adding order:</p>
+</div>
+<div class="paragraph">
+<p>3.2.8. Removing customer:</p>
+</div>
+<div class="paragraph">
+<p>3.3. Restaurant commands</p>
+</div>
+<div class="paragraph">
+<p>3.3.1. Listing all restaurants:</p>
+</div>
+<div class="paragraph">
+<p>3.3.2. Entering specific restaurant:</p>
+</div>
+<div class="paragraph">
+<p>3.3.3. Adding food item:</p>
+</div>
+<div class="paragraph">
+<p>3.3.4. Removing food item:</p>
+</div>
+<div class="paragraph">
+<p>3.3.5. Adding rating:</p>
+</div>
+<div class="paragraph">
+<p>3.3.6. Viewing orders:</p>
+</div>
+<div class="paragraph">
+<p>3.3.7. ChefHat food item:</p>
+</div>
+<div class="paragraph">
+<p>3.4. Deliverymen commands</p>
+</div>
+<div class="paragraph">
+<p>3.4.1. Listing all deliverymen:</p>
+</div>
+<div class="paragraph">
+<p>3.4.2. Listing available deliverymen:</p>
+</div>
+<div class="paragraph">
+<p>3.4.3. Entering a specific deliveryman:</p>
+</div>
+<div class="paragraph">
+<p>3.4.4. Assigning order to a deliveryman:</p>
+</div>
+<div class="paragraph">
+<p>3.4.5. Viewing delivery status of a deliveryman:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Command Summary</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>4.1. Universal Commands</p>
+</div>
+<div class="paragraph">
+<p>4.2. Customer Commands</p>
+</div>
+<div class="paragraph">
+<p>4.3. Restaurant Commands</p>
+</div>
+<div class="paragraph">
+<p>4.4. Deliverymen Commands</p>
 </div>
 </div>
-<div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
-<div class="sectionbody">
-<div class="exampleblock">
-<div class="content">
+</div>
+<h1 id="strong-1-strong-strong-introduction-strong" class="sect0"><a class="link" href="#strong-1-strong-strong-introduction-strong"><strong>1.</strong><strong> Introduction</strong></a></h1>
+<div class="paragraph">
+<p>DeliveryMANs is a command-line application designed specifically for restaurant administrators who are in charge of food delivery service. It facilitates food delivery service by coaliasing the delivery men, customers and restaurant menu.</p>
+</div>
+<div class="paragraph">
+<p>It encompasses a well-structured system for users to keep track and manage the entire delivery process.</p>
+</div>
+<div class="paragraph">
+<p>Coalescing</p>
+</div>
+<div class="paragraph">
+<p>Noun: coalition</p>
+</div>
+<div class="paragraph">
+<p>Verb: coalesce</p>
+</div>
+<div class="paragraph">
+<p>#
+# 2. Quick Start</p>
+</div>
+<div class="paragraph">
+<p>Ensure you have Java 11 or above installed on your computer.</p>
+</div>
+<div class="paragraph">
+<p>Install the JAR file found on this website:</p>
+</div>
+<div class="paragraph">
+<p>[<a href="https://ay1920s1-cs2103t-t12-2.github.io/main" class="bare">https://ay1920s1-cs2103t-t12-2.github.io/main</a>](<a href="https://ay1920s1-cs2103t-t12-2.github.io/main" class="bare">https://ay1920s1-cs2103t-t12-2.github.io/main</a>)</p>
+</div>
+<div class="paragraph">
+<p>Open the application to begin.</p>
+</div>
+<div class="paragraph">
+<p>#
+# 3
+<strong>.</strong>
+# Features</p>
+</div>
 <div class="paragraph">
 <p><strong>Command Format</strong></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
-</li>
-<li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
-</li>
-<li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
-</li>
-<li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
-<div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A person can have any number of tags (including 0)
-</td>
-</tr>
-</table>
+<p>Words in curly brackets are parameters to be supplied by the user</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>3.1.</strong><strong> Universal commands</strong></p>
+</div>
+<div class="paragraph">
+<p>These are general commands for controlling the app which are notdirectly related to the customer, restaurant and delivery men.</p>
+</div>
+<div class="paragraph">
+<p><strong>3.1.1.</strong><strong> Viewing help:</strong></p>
+</div>
+<div class="paragraph">
+<p>Generates a list of commands and tips for the user</p>
+</div>
+<div class="paragraph">
+<p>Format: -help</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p>Context specific: -help {context}</p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p>Example: -help customer</p>
+</li>
+<li>
+<p>Context specific commands: -help -cxt {context} -cmd {command}</p>
+</li>
+<li>
+<p>Example: -help -cxt customer -cmd sort</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+<p><strong>3.1.2.</strong><strong> Switching context:</strong></p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+<p>Switches to a specific context for targeted commands</p>
 </div>
-<div class="sidebarblock">
+<div class="paragraph">
+<p>Format: -switch {context}</p>
+</div>
+<div class="paragraph">
+<p>Example: -switch restaurant</p>
+</div>
+<div class="paragraph">
+<p><strong>3.1.3.</strong><strong> Viewing order summary:</strong></p>
+</div>
+<div class="paragraph">
+<p>Views the current order summary</p>
+</div>
+<div class="paragraph">
+<p>Format: -summary</p>
+</div>
+<div class="paragraph">
+<p><strong>3.1.4.</strong><strong> Exiting program:</strong></p>
+</div>
+<div class="paragraph">
+<p>Exits the program</p>
+</div>
+<div class="paragraph">
+<p>Format: -exit</p>
+</div>
+<div class="paragraph">
+<p>3.2. Customer commands</p>
+</div>
+<div class="paragraph">
+<p><strong>3.2.1.</strong><strong> Listing all customers:</strong></p>
+</div>
+<div class="paragraph">
+<p>Lists all current customers</p>
+</div>
+<div class="paragraph">
+<p>Format: -list</p>
+</div>
+<div class="paragraph">
+<p><strong>3.2.2.</strong><strong> Listing specific customer:</strong></p>
+</div>
+<div class="paragraph">
+<p>Lists the information of a specific customer</p>
+</div>
+<div class="paragraph">
+<p>Format: -list {customer name}</p>
+</div>
+<div class="paragraph">
+<p>Example: -list John Doe</p>
+</div>
+<div class="paragraph">
+<p><strong>3.2.3.</strong><strong> Editing customer info:</strong></p>
+</div>
+<div class="paragraph">
+<p>Edits all of customer&#39;s info</p>
+</div>
+<div class="paragraph">
+<p>Format: -edit {customer name} -n {name} -a {address} -rt {reward} -o {number of orders}</p>
+</div>
+<div class="paragraph">
+<p>Example: -edit John Doe -n Bob Doe -a Kent ridge -rt Gold -o 1</p>
+</div>
+<div class="literalblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
-</li>
-</ul>
+<pre>List of info types: Syntax:</pre>
 </div>
 </div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
-</li>
-<li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
-<div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
-</div>
-<div class="sidebarblock">
+<div class="literalblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-</ul>
+<pre>Name   -n</pre>
 </div>
 </div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
-</li>
-<li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
-<div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
-</div>
-<div class="sidebarblock">
+<div class="literalblock">
 <div class="content">
+<pre>Address   -a</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Reward Tier  -rt</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Number of orders -o</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>3.2.4. Editing specified customer info:</p>
+</div>
+<div class="paragraph">
+<p>Edits a specified info type of a customer. See 3.2.3. Editing customer info for the list of info types</p>
+</div>
+<div class="paragraph">
+<p>Format: -edit -c {customer name} {info type} -d    {description}</p>
+</div>
+<div class="paragraph">
+<p>Example: -edit -c John Doe -a -d Kent Ridge</p>
+</div>
+<div class="paragraph">
+<p>3.2.5. Sorting customer:</p>
+</div>
+<div class="paragraph">
+<p>Sorts customers based on info type. If none is present, sort based on their names.  See 3.2.3. Editing customer info for the list of info types</p>
+</div>
+<div class="paragraph">
+<p>Format: -sort {info type}</p>
+</div>
+<div class="paragraph">
+<p>Example: -sort -rt</p>
+</div>
+<div class="paragraph">
+<p>3.2.6. Viewing history:</p>
+</div>
+<div class="paragraph">
+<p>Views order history of a customer</p>
+</div>
+<div class="paragraph">
+<p>Format: -history {customer name}</p>
+</div>
+<div class="paragraph">
+<p>Example: -history Mary</p>
+</div>
+<div class="paragraph">
+<p>3.2.7. Adding order:</p>
+</div>
+<div class="paragraph">
+<p>Adds an order for a customer</p>
+</div>
+<div class="paragraph">
+<p>Format: -order {customer name} -r {restaurant   name} -m {menu}</p>
+</div>
+<div class="paragraph">
+<p>Example: -order -c John Doe -r McDonald -m McSpicy</p>
+</div>
+<div class="paragraph">
+<p>3.2.8. Removing customer:</p>
+</div>
+<div class="paragraph">
+<p>Removes a customer from the database</p>
+</div>
+<div class="paragraph">
+<p>Format: -delete {customer name}</p>
+</div>
+<div class="paragraph">
+<p>Example: -delete Donald Trump</p>
+</div>
+<div class="paragraph">
+<p>3.3. Restaurant commands</p>
+</div>
+<div class="paragraph">
+<p>Commands in the restaurant context</p>
+</div>
+<div class="paragraph">
+<p>3.3.1. Listing all restaurants:</p>
+</div>
+<div class="paragraph">
+<p>Lists all available restaurants</p>
+</div>
+<div class="paragraph">
+<p>Format: -list</p>
+</div>
+<div class="paragraph">
+<p>3.3.2. Entering specific restaurant:</p>
+</div>
+<div class="paragraph">
+<p>Enters a specific restaurant</p>
+</div>
+<div class="paragraph">
+<p>Format: -enter {restaurant}</p>
+</div>
+<div class="paragraph">
+<p>Example: -enter muthu&#39;s curry</p>
+</div>
+<div class="paragraph">
+<p>3.3.3. Adding food item:</p>
+</div>
+<div class="paragraph">
+<p>Adds a food item for a specific restaurant</p>
+</div>
+<div class="paragraph">
+<p>Format: -add {item}</p>
+</div>
+<div class="paragraph">
+<p>Example: -add chicken rice</p>
+</div>
+<div class="paragraph">
+<p>3.3.4. Removing food item:</p>
+</div>
+<div class="paragraph">
+<p>Removes a food item for a specific restaurant</p>
+</div>
+<div class="paragraph">
+<p>Format: -remove {item}</p>
+</div>
+<div class="paragraph">
+<p>Example: -remove laksa</p>
+</div>
+<div class="paragraph">
+<p>3.3.5. Adding rating:</p>
+</div>
+<div class="paragraph">
+<p>Adds a rating (out of 5) for the restaurant</p>
+</div>
+<div class="paragraph">
+<p>Format: -rate {rating}</p>
+</div>
+<div class="paragraph">
+<p>Example: -rate 5</p>
+</div>
+<div class="paragraph">
+<p>3.3.6. Viewing orders:</p>
+</div>
+<div class="paragraph">
+<p>Views all the existing orders for the restaurant</p>
+</div>
+<div class="paragraph">
+<p>Format: -orders</p>
+</div>
+<div class="paragraph">
+<p>3.3.7. ChefHat food item:</p>
+</div>
+<div class="paragraph">
+<p>Marks a food item as Chef&#39;s recommendation</p>
+</div>
+<div class="paragraph">
+<p>Format: -chefhat {item}</p>
+</div>
+<div class="paragraph">
+<p>Example: -chefhat nasi lemak</p>
+</div>
+<div class="paragraph">
+<p>3.4. Deliverymen commands</p>
+</div>
+<div class="paragraph">
+<p>Commands in the delivery men context</p>
+</div>
+<div class="paragraph">
+<p>3.4.1. Listing all deliverymen:</p>
+</div>
+<div class="paragraph">
+<p>Lists all deliverymen</p>
+</div>
+<div class="paragraph">
+<p>Format: -list</p>
+</div>
+<div class="paragraph">
+<p>3.4.2. Listing available deliverymen:</p>
+</div>
+<div class="paragraph">
+<p>Lists all available deliverymen</p>
+</div>
+<div class="paragraph">
+<p>Format: -lista</p>
+</div>
+<div class="paragraph">
+<p>3.4.3. Entering a specific deliveryman:</p>
+</div>
+<div class="paragraph">
+<p>Shows a deliveryman&#39;s basic info</p>
+</div>
+<div class="paragraph">
+<p>Format: -list {name}</p>
+</div>
+<div class="paragraph">
+<p>Example: -list Stanley Tay</p>
+</div>
+<div class="paragraph">
+<p>3.4.4. Assigning order to a deliveryman:</p>
+</div>
+<div class="paragraph">
+<p>Assigns an order to an available deliveryman</p>
+</div>
+<div class="paragraph">
+<p>Format: -assn {name}{#orderIndex}</p>
+</div>
+<div class="paragraph">
+<p>Example: -assn Stanley Tay #12</p>
+</div>
+<div class="paragraph">
+<p>3.4.5. Viewing delivery status of a deliveryman:</p>
+</div>
+<div class="paragraph">
+<p>Shows delivery status of an assigned deliveryman</p>
+</div>
+<div class="paragraph">
+<p>Format: status {name}</p>
+</div>
+<div class="paragraph">
+<p>Example: -status Stanley Tay</p>
+</div>
+<div class="paragraph">
+<p>#</p>
+</div>
+<h1 id="4-command-summary" class="sect0"><a class="link" href="#4-command-summary">4. Command Summary</a></h1>
+<div class="paragraph">
+<p><strong>Command:</strong> format</p>
+</div>
+<div class="paragraph">
+<p>4.1. Universal Commands</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
+<p>View help: -help</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed person list.</p>
+<p>View order summary: -summary</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>Switch to restaurant context: -restaurant</p>
+</li>
+<li>
+<p>Switch to customer context: -customer</p>
+</li>
+<li>
+<p>Switch to deliverymen context: -deliverymen</p>
+</li>
+<li>
+<p>Exit application: -exit</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>4.2. Customer Commands</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
+<p>List customers: -list</p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
+<p>List specified customer info: -list {name}</p>
+</li>
+<li>
+<p>Edit customer info: -edit {customer name} -n      {customer name} -a {address} -r {reward tier} -o {number of order}</p>
+</li>
+<li>
+<p>Edit specific customer info: -edit -n {customer name} {info type} -d {description}</p>
+</li>
+<li>
+<p>Sort customer to info type: -sort {info type}</p>
+</li>
+<li>
+<p>Show order history of customer: -history {customer name}</p>
+</li>
+<li>
+<p>Add order: -order {customer name} -r {restaurant name} -m {menu item}</p>
+</li>
+<li>
+<p>Delete customer: -delete {customer name}</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+<p>4.3. Restaurant Commands</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></h3>
-<div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.9. Saving the data</a></h3>
-<div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p>List restaurants: -list</p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p>Enter specific restaurant: -enter {restaurant}</p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
+<p>Add food item: -add {item}</p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+<p>Remove food item: -remove {item}</p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
+<p>View order: -orders</p>
 </li>
 <li>
-<p><strong>List</strong> : <code>list</code></p>
+<p>Add Rating from Customer: -rate {rating}</p>
 </li>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p>ChefHat Food Item: -chefhat {item}</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>4.4. Deliverymen Commands</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-24 17:23:03 UTC</div></div></div></body></html>
+<div class="ulist">
+<ul>
+<li>
+<p>List deliverymen: -list</p>
+</li>
+<li>
+<p>List available deliverymen: -lista</p>
+</li>
+<li>
+<p>List specific deliveryman info: -list {name}</p>
+</li>
+<li>
+<p>Assign order to deliveryman: -assn {name} {order}</p>
+</li>
+<li>
+<p>Show delivery status of deliveryman: -status {name}</p>
+</li>
+</ul>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-03 06:50:52 UTC</div></div></div></body></html>
