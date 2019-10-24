@@ -1,145 +1,42 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><meta name="author" content="By: `CS2103-T12-2` Since: `Aug 2019` Licence: 'NUS'"><title>DeliveryMANS – User Guide</title><link rel="stylesheet" href="./gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>DeliveryMANS – User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="./coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">DeliveryMANs</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>DeliveryMANS – User Guide</h1><div class="details"><span class="author" id="author">By: `CS2103-T12-2` Since: `Aug 2019` Licence: 'NUS'</span><br></div></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">DeliveryMANs</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>DeliveryMANS – User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Introduction</p>
+<div class="paragraph">
+<p>By: <code>CS2103-T12-2</code>   Since: <code>Sept 2019</code>  Licence: <code>NUS</code></p>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#quick-start">2. Quick start</a></li>
+<li><a href="#Features">3. Features</a>
+<ul class="sectlevel2">
+<li><a href="#universal-commands">3.1. Universal commands</a></li>
+<li><a href="#customer-commands">3.2. Customer commands</a></li>
+<li><a href="#restaurant-commands">3.3. Restaurant commands</a></li>
+<li><a href="#deliverymen-commands">3.4. Deliverymen commands</a></li>
+</ul>
 </li>
-<li>
-<p>Quick Start</p>
-</li>
-<li>
-<p>Features</p>
-</li>
-</ol>
+<li><a href="#command-summary">4. Command Summary</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>DeliveryMANs is a command-line application designed specifically for delivery centre administrators who are in charge of food delivery service. It encompasses a well-structured system for users to keep track and manage the entire delivery process. It facilitates food delivery service by coaliasing the delivery men, customers and restaurant menu. From auto-assigning deliverymen for deliveries when orders are made, to viewing statistics of the most popular dish of restaurants as well as customer ordering trends for further promotions, financial and business management decisions, DeliveryMANs is everything you need to help improve managing deliveries. With just a few simple commands, this delivery manager can help to kickstart your delivery service.</p>
 </div>
 <div class="paragraph">
-<p>3.1. Universal commands</p>
-</div>
-<div class="paragraph">
-<p>3.1.1. Viewing help:</p>
-</div>
-<div class="paragraph">
-<p>3.1.2. Switching context:</p>
-</div>
-<div class="paragraph">
-<p>3.1.3. Viewing order summary:</p>
-</div>
-<div class="paragraph">
-<p>3.1.4. Exiting program:</p>
-</div>
-<div class="paragraph">
-<p>3.2. Customer commands</p>
-</div>
-<div class="paragraph">
-<p>3.2.1. Listing all customers:</p>
-</div>
-<div class="paragraph">
-<p>3.2.2. Listing specific customer:</p>
-</div>
-<div class="paragraph">
-<p>3.2.3. Editing customer info:</p>
-</div>
-<div class="paragraph">
-<p>3.2.4. Editing specified customer info:</p>
-</div>
-<div class="paragraph">
-<p>3.2.5. Sorting customer:</p>
-</div>
-<div class="paragraph">
-<p>3.2.6. Viewing history:</p>
-</div>
-<div class="paragraph">
-<p>3.2.7. Adding order:</p>
-</div>
-<div class="paragraph">
-<p>3.2.8. Removing customer:</p>
-</div>
-<div class="paragraph">
-<p>3.3. Restaurant commands</p>
-</div>
-<div class="paragraph">
-<p>3.3.1. Listing all restaurants:</p>
-</div>
-<div class="paragraph">
-<p>3.3.2. Entering specific restaurant:</p>
-</div>
-<div class="paragraph">
-<p>3.3.3. Adding food item:</p>
-</div>
-<div class="paragraph">
-<p>3.3.4. Removing food item:</p>
-</div>
-<div class="paragraph">
-<p>3.3.5. Adding rating:</p>
-</div>
-<div class="paragraph">
-<p>3.3.6. Viewing orders:</p>
-</div>
-<div class="paragraph">
-<p>3.3.7. ChefHat food item:</p>
-</div>
-<div class="paragraph">
-<p>3.4. Deliverymen commands</p>
-</div>
-<div class="paragraph">
-<p>3.4.1. Listing all deliverymen:</p>
-</div>
-<div class="paragraph">
-<p>3.4.2. Listing available deliverymen:</p>
-</div>
-<div class="paragraph">
-<p>3.4.3. Entering a specific deliveryman:</p>
-</div>
-<div class="paragraph">
-<p>3.4.4. Assigning order to a deliveryman:</p>
-</div>
-<div class="paragraph">
-<p>3.4.5. Viewing delivery status of a deliveryman:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Command Summary</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>4.1. Universal Commands</p>
-</div>
-<div class="paragraph">
-<p>4.2. Customer Commands</p>
-</div>
-<div class="paragraph">
-<p>4.3. Restaurant Commands</p>
-</div>
-<div class="paragraph">
-<p>4.4. Deliverymen Commands</p>
+<p>Get started with <a href="#Quick Start">[Quick Start]</a> and begin managing your deliveries today!</p>
 </div>
 </div>
 </div>
-<h1 id="strong-1-strong-strong-introduction-strong" class="sect0"><a class="link" href="#strong-1-strong-strong-introduction-strong"><strong>1.</strong><strong> Introduction</strong></a></h1>
-<div class="paragraph">
-<p>DeliveryMANs is a command-line application designed specifically for restaurant administrators who are in charge of food delivery service. It facilitates food delivery service by coaliasing the delivery men, customers and restaurant menu.</p>
-</div>
-<div class="paragraph">
-<p>It encompasses a well-structured system for users to keep track and manage the entire delivery process.</p>
-</div>
-<div class="paragraph">
-<p>Coalescing</p>
-</div>
-<div class="paragraph">
-<p>Noun: coalition</p>
-</div>
-<div class="paragraph">
-<p>Verb: coalesce</p>
-</div>
-<div class="paragraph">
-<p>#
-# 2. Quick Start</p>
-</div>
+<div class="sect1">
+<h2 id="quick-start"><a class="link" href="#quick-start">2. Quick start</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Ensure you have Java 11 or above installed on your computer.</p>
 </div>
@@ -150,34 +47,47 @@
 <p>[<a href="https://ay1920s1-cs2103t-t12-2.github.io/main" class="bare">https://ay1920s1-cs2103t-t12-2.github.io/main</a>](<a href="https://ay1920s1-cs2103t-t12-2.github.io/main" class="bare">https://ay1920s1-cs2103t-t12-2.github.io/main</a>)</p>
 </div>
 <div class="paragraph">
-<p>Open the application to begin.</p>
+<p>Open the application to begin. Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In DeliveryMANs, there are 2 types of commands: universal commands and context-specific commands.</p>
 </div>
 <div class="paragraph">
-<p>#
-# 3
-<strong>.</strong>
-# Features</p>
+<p>Universal commands can be used anywhere throughout the application. You can identify universal commands by its "-" convention followed by a keyword e.g. <code>-help</code>.</p>
+</div>
+<div class="paragraph">
+<p>Context-specific commands are commands which are only applicable for a specific context e.g. viewing customer ordering trends can only be accessed in the customer context.</p>
 </div>
 <div class="paragraph">
 <p><strong>Command Format</strong></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Words in curly brackets are parameters to be supplied by the user e.g. in <code>add_order c/CUSTOMER r/RESTAURANT f/FOOD q/QUANTITY</code>, <code>CUSTOMER</code>, <code>RESTAURANT</code>, <code>FOOD</code> and <code>QUANTITY</code> are parameters to be replaced. <code>add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
+</li>
+<li>
+<p>Items with <code>…</code> after them can be used multiple times e.g. <code>[f/FOOD]&#8230;&#8203;</code> can be used 1 or more: <code>f/3 Piece Chicken Meal</code>, <code>f/Pepperoni Pizza f/Char Kway Teow</code> etc.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="universal-commands"><a class="link" href="#universal-commands">3.1. Universal commands</a></h3>
 <div class="paragraph">
-<p>Words in curly brackets are parameters to be supplied by the user</p>
+<p>These are general commands to assist you in controlling the app, which are not directly related to the customer, restaurant and delivery men.</p>
+</div>
+<div class="sect3">
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help <code>-help</code></a></h4>
+<div class="paragraph">
+<p>Generates a list of commands and tips for you.</p>
 </div>
 <div class="paragraph">
-<p><strong>3.1.</strong><strong> Universal commands</strong></p>
-</div>
-<div class="paragraph">
-<p>These are general commands for controlling the app which are notdirectly related to the customer, restaurant and delivery men.</p>
-</div>
-<div class="paragraph">
-<p><strong>3.1.1.</strong><strong> Viewing help:</strong></p>
-</div>
-<div class="paragraph">
-<p>Generates a list of commands and tips for the user</p>
-</div>
-<div class="paragraph">
-<p>Format: -help</p>
+<p>Format: <code>-help</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -195,51 +105,51 @@
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><strong>3.1.2.</strong><strong> Switching context:</strong></p>
 </div>
+<div class="sect3">
+<h4 id="switching-context"><a class="link" href="#switching-context">3.1.2. Switching context</a></h4>
 <div class="paragraph">
 <p>Switches to a specific context for targeted commands</p>
 </div>
 <div class="paragraph">
-<p>Format: -switch {context}</p>
+<p>Format: -{context}</p>
 </div>
 <div class="paragraph">
 <p>Example: -switch restaurant</p>
 </div>
-<div class="paragraph">
-<p><strong>3.1.3.</strong><strong> Viewing order summary:</strong></p>
 </div>
+<div class="sect3">
+<h4 id="viewing-order-summary"><a class="link" href="#viewing-order-summary">3.1.3. Viewing order summary</a></h4>
 <div class="paragraph">
 <p>Views the current order summary</p>
 </div>
 <div class="paragraph">
 <p>Format: -summary</p>
 </div>
-<div class="paragraph">
-<p><strong>3.1.4.</strong><strong> Exiting program:</strong></p>
 </div>
+<div class="sect3">
+<h4 id="exiting-program"><a class="link" href="#exiting-program">3.1.4. Exiting program</a></h4>
 <div class="paragraph">
 <p>Exits the program</p>
 </div>
 <div class="paragraph">
 <p>Format: -exit</p>
 </div>
-<div class="paragraph">
-<p>3.2. Customer commands</p>
 </div>
-<div class="paragraph">
-<p><strong>3.2.1.</strong><strong> Listing all customers:</strong></p>
 </div>
+<div class="sect2">
+<h3 id="customer-commands"><a class="link" href="#customer-commands">3.2. Customer commands</a></h3>
+<div class="sect3">
+<h4 id="listing-all-customers"><a class="link" href="#listing-all-customers">3.2.1. Listing all customers</a></h4>
 <div class="paragraph">
 <p>Lists all current customers</p>
 </div>
 <div class="paragraph">
 <p>Format: -list</p>
 </div>
-<div class="paragraph">
-<p><strong>3.2.2.</strong><strong> Listing specific customer:</strong></p>
 </div>
+<div class="sect3">
+<h4 id="listing-specific-customer"><a class="link" href="#listing-specific-customer">3.2.2. Listing specific customer</a></h4>
 <div class="paragraph">
 <p>Lists the information of a specific customer</p>
 </div>
@@ -249,9 +159,9 @@
 <div class="paragraph">
 <p>Example: -list John Doe</p>
 </div>
-<div class="paragraph">
-<p><strong>3.2.3.</strong><strong> Editing customer info:</strong></p>
 </div>
+<div class="sect3">
+<h4 id="editing-customer-info"><a class="link" href="#editing-customer-info">3.2.3. Editing customer info</a></h4>
 <div class="paragraph">
 <p>Edits all of customer&#39;s info</p>
 </div>
@@ -286,9 +196,9 @@
 <pre>Number of orders -o</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>3.2.4. Editing specified customer info:</p>
 </div>
+<div class="sect3">
+<h4 id="editing-specified-customer-info"><a class="link" href="#editing-specified-customer-info">3.2.4. Editing specified customer info</a></h4>
 <div class="paragraph">
 <p>Edits a specified info type of a customer. See 3.2.3. Editing customer info for the list of info types</p>
 </div>
@@ -298,9 +208,9 @@
 <div class="paragraph">
 <p>Example: -edit -c John Doe -a -d Kent Ridge</p>
 </div>
-<div class="paragraph">
-<p>3.2.5. Sorting customer:</p>
 </div>
+<div class="sect3">
+<h4 id="sorting-customer"><a class="link" href="#sorting-customer">3.2.5. Sorting customer</a></h4>
 <div class="paragraph">
 <p>Sorts customers based on info type. If none is present, sort based on their names.  See 3.2.3. Editing customer info for the list of info types</p>
 </div>
@@ -310,9 +220,9 @@
 <div class="paragraph">
 <p>Example: -sort -rt</p>
 </div>
-<div class="paragraph">
-<p>3.2.6. Viewing history:</p>
 </div>
+<div class="sect3">
+<h4 id="viewing-history"><a class="link" href="#viewing-history">3.2.6. Viewing history</a></h4>
 <div class="paragraph">
 <p>Views order history of a customer</p>
 </div>
@@ -322,21 +232,9 @@
 <div class="paragraph">
 <p>Example: -history Mary</p>
 </div>
-<div class="paragraph">
-<p>3.2.7. Adding order:</p>
 </div>
-<div class="paragraph">
-<p>Adds an order for a customer</p>
-</div>
-<div class="paragraph">
-<p>Format: -order {customer name} -r {restaurant   name} -m {menu}</p>
-</div>
-<div class="paragraph">
-<p>Example: -order -c John Doe -r McDonald -m McSpicy</p>
-</div>
-<div class="paragraph">
-<p>3.2.8. Removing customer:</p>
-</div>
+<div class="sect3">
+<h4 id="removing-customer"><a class="link" href="#removing-customer">3.2.7. Removing customer</a></h4>
 <div class="paragraph">
 <p>Removes a customer from the database</p>
 </div>
@@ -346,24 +244,24 @@
 <div class="paragraph">
 <p>Example: -delete Donald Trump</p>
 </div>
-<div class="paragraph">
-<p>3.3. Restaurant commands</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="restaurant-commands"><a class="link" href="#restaurant-commands">3.3. Restaurant commands</a></h3>
 <div class="paragraph">
 <p>Commands in the restaurant context</p>
 </div>
-<div class="paragraph">
-<p>3.3.1. Listing all restaurants:</p>
-</div>
+<div class="sect3">
+<h4 id="listing-all-restaurants"><a class="link" href="#listing-all-restaurants">3.3.1. Listing all restaurants</a></h4>
 <div class="paragraph">
 <p>Lists all available restaurants</p>
 </div>
 <div class="paragraph">
 <p>Format: -list</p>
 </div>
-<div class="paragraph">
-<p>3.3.2. Entering specific restaurant:</p>
 </div>
+<div class="sect3">
+<h4 id="entering-specific-restaurant"><a class="link" href="#entering-specific-restaurant">3.3.2. Entering specific restaurant</a></h4>
 <div class="paragraph">
 <p>Enters a specific restaurant</p>
 </div>
@@ -373,9 +271,9 @@
 <div class="paragraph">
 <p>Example: -enter muthu&#39;s curry</p>
 </div>
-<div class="paragraph">
-<p>3.3.3. Adding food item:</p>
 </div>
+<div class="sect3">
+<h4 id="adding-food-item"><a class="link" href="#adding-food-item">3.3.3. Adding food item</a></h4>
 <div class="paragraph">
 <p>Adds a food item for a specific restaurant</p>
 </div>
@@ -385,9 +283,9 @@
 <div class="paragraph">
 <p>Example: -add chicken rice</p>
 </div>
-<div class="paragraph">
-<p>3.3.4. Removing food item:</p>
 </div>
+<div class="sect3">
+<h4 id="removing-food-item"><a class="link" href="#removing-food-item">3.3.4. Removing food item</a></h4>
 <div class="paragraph">
 <p>Removes a food item for a specific restaurant</p>
 </div>
@@ -397,9 +295,9 @@
 <div class="paragraph">
 <p>Example: -remove laksa</p>
 </div>
-<div class="paragraph">
-<p>3.3.5. Adding rating:</p>
 </div>
+<div class="sect3">
+<h4 id="adding-rating"><a class="link" href="#adding-rating">3.3.5. Adding rating</a></h4>
 <div class="paragraph">
 <p>Adds a rating (out of 5) for the restaurant</p>
 </div>
@@ -409,18 +307,9 @@
 <div class="paragraph">
 <p>Example: -rate 5</p>
 </div>
-<div class="paragraph">
-<p>3.3.6. Viewing orders:</p>
 </div>
-<div class="paragraph">
-<p>Views all the existing orders for the restaurant</p>
-</div>
-<div class="paragraph">
-<p>Format: -orders</p>
-</div>
-<div class="paragraph">
-<p>3.3.7. ChefHat food item:</p>
-</div>
+<div class="sect3">
+<h4 id="chefhat-food-item"><a class="link" href="#chefhat-food-item">3.3.6. ChefHat food item</a></h4>
 <div class="paragraph">
 <p>Marks a food item as Chef&#39;s recommendation</p>
 </div>
@@ -430,33 +319,33 @@
 <div class="paragraph">
 <p>Example: -chefhat nasi lemak</p>
 </div>
-<div class="paragraph">
-<p>3.4. Deliverymen commands</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="deliverymen-commands"><a class="link" href="#deliverymen-commands">3.4. Deliverymen commands</a></h3>
 <div class="paragraph">
 <p>Commands in the delivery men context</p>
 </div>
-<div class="paragraph">
-<p>3.4.1. Listing all deliverymen:</p>
-</div>
+<div class="sect3">
+<h4 id="listing-all-deliverymen"><a class="link" href="#listing-all-deliverymen">3.4.1. Listing all deliverymen</a></h4>
 <div class="paragraph">
 <p>Lists all deliverymen</p>
 </div>
 <div class="paragraph">
 <p>Format: -list</p>
 </div>
-<div class="paragraph">
-<p>3.4.2. Listing available deliverymen:</p>
 </div>
+<div class="sect3">
+<h4 id="listing-available-deliverymen"><a class="link" href="#listing-available-deliverymen">3.4.2. Listing available deliverymen</a></h4>
 <div class="paragraph">
 <p>Lists all available deliverymen</p>
 </div>
 <div class="paragraph">
 <p>Format: -lista</p>
 </div>
-<div class="paragraph">
-<p>3.4.3. Entering a specific deliveryman:</p>
 </div>
+<div class="sect3">
+<h4 id="entering-a-specific-deliveryman"><a class="link" href="#entering-a-specific-deliveryman">3.4.3. Entering a specific deliveryman</a></h4>
 <div class="paragraph">
 <p>Shows a deliveryman&#39;s basic info</p>
 </div>
@@ -466,9 +355,9 @@
 <div class="paragraph">
 <p>Example: -list Stanley Tay</p>
 </div>
-<div class="paragraph">
-<p>3.4.4. Assigning order to a deliveryman:</p>
 </div>
+<div class="sect3">
+<h4 id="assigning-order-to-a-deliveryman"><a class="link" href="#assigning-order-to-a-deliveryman">3.4.4. Assigning order to a deliveryman</a></h4>
 <div class="paragraph">
 <p>Assigns an order to an available deliveryman</p>
 </div>
@@ -478,9 +367,9 @@
 <div class="paragraph">
 <p>Example: -assn Stanley Tay #12</p>
 </div>
-<div class="paragraph">
-<p>3.4.5. Viewing delivery status of a deliveryman:</p>
 </div>
+<div class="sect3">
+<h4 id="viewing-delivery-status-of-a-deliveryman"><a class="link" href="#viewing-delivery-status-of-a-deliveryman">3.4.5. Viewing delivery status of a deliveryman</a></h4>
 <div class="paragraph">
 <p>Shows delivery status of an assigned deliveryman</p>
 </div>
@@ -490,16 +379,20 @@
 <div class="paragraph">
 <p>Example: -status Stanley Tay</p>
 </div>
-<div class="paragraph">
-<p>#</p>
 </div>
-<h1 id="4-command-summary" class="sect0"><a class="link" href="#4-command-summary">4. Command Summary</a></h1>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">4. Command Summary</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Command:</strong> format</p>
 </div>
-<div class="paragraph">
-<p>4.1. Universal Commands</p>
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Universal commands</p>
 <div class="ulist">
 <ul>
 <li>
@@ -522,9 +415,9 @@
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>4.2. Customer Commands</p>
-</div>
+</li>
+<li>
+<p>Customer commands</p>
 <div class="ulist">
 <ul>
 <li>
@@ -553,9 +446,9 @@
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>4.3. Restaurant Commands</p>
-</div>
+</li>
+<li>
+<p>Restaurant commands</p>
 <div class="ulist">
 <ul>
 <li>
@@ -581,9 +474,9 @@
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>4.4. Deliverymen Commands</p>
-</div>
+</li>
+<li>
+<p>Deliverymen commands</p>
 <div class="ulist">
 <ul>
 <li>
@@ -602,4 +495,9 @@
 <p>Show delivery status of deliveryman: -status {name}</p>
 </li>
 </ul>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 16:21:04 UTC</div></div></div></body></html>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 13:24:54 UTC</div></div></div></body></html>
