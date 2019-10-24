@@ -3,36 +3,44 @@
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">DeliveryMANs</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>DeliveryMANS - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>August 2019</code>      Licence: <code>NUS</code></p>
+<p>By: <code>Team AY1920S1-CS2103-T12-2</code>   Since: <code>Sept 2019</code>  Licence: <code>NUS</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a></li>
-<li><a href="#design">2. Design</a>
+<li><a href="#introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
+<li><a href="#software-overview">1.1. Software overview</a></li>
+<li><a href="#purpose">1.2. Purpose</a></li>
 </ul>
 </li>
-<li><a href="#implementation">3. Implementation</a>
+<li><a href="#setting-up">2. Setting up</a></li>
+<li><a href="#design">3. Design</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#undo-redo-feature">3.2. Undo/redo feature</a></li>
-<li><a href="#proposed-autocomplete-commands-feature">3.3. [Proposed] Autocomplete commands feature</a></li>
-<li><a href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
+<li><a href="#Design-Architecture">3.1. Architecture</a></li>
+<li><a href="#Design-Ui">3.2. UI component</a></li>
+<li><a href="#Design-Logic">3.3. Logic component</a></li>
+<li><a href="#Design-Model">3.4. Model component</a></li>
+<li><a href="#Design-Storage">3.5. Storage component</a></li>
+<li><a href="#Design-Commons">3.6. Common classes</a></li>
 </ul>
 </li>
-<li><a href="#documentation">4. Documentation</a></li>
-<li><a href="#testing">5. Testing</a></li>
-<li><a href="#dev-ops">6. Dev Ops</a></li>
+<li><a href="#implementation">4. Implementation</a>
+<ul class="sectlevel2">
+<li><a href="#proposed-undo-redo-feature">4.1. [Proposed] Undo/Redo feature</a></li>
+<li><a href="#undo-redo-feature">4.2. Undo/redo feature</a></li>
+<li><a href="#proposed-autocomplete-commands-feature">4.3. [Proposed] Autocomplete commands feature</a></li>
+<li><a href="#order-manager">4.4. Order Manager</a></li>
+<li><a href="#proposed-deliverymen-salary-adjustment-feature">4.5. [Proposed] Deliverymen salary adjustment feature</a></li>
+<li><a href="#proposed-data-encryption">4.6. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">4.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
+</ul>
+</li>
+<li><a href="#documentation">5. Documentation</a></li>
+<li><a href="#testing">6. Testing</a></li>
+<li><a href="#dev-ops">7. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
@@ -50,18 +58,35 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="software-overview"><a class="link" href="#software-overview">1.1. Software overview</a></h3>
 <div class="paragraph">
-<p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
+<p><strong>DeliveryMANs</strong> is a command-line application designed specifically for delivery centre administrators who are in charge of food delivery service. It encompasses a well-structured system for users to keep track and manage the entire delivery process. It facilitates food delivery service by coaliasing the delivery men, customers and restaurant menu. From auto-assigning deliverymen for deliveries when orders are made, to viewing statistics of the most popular dish of restaurants as well as customer ordering trends for further promotions, financial and business management decisions, <strong>DeliveryMANs</strong> is everything you need to help improve managing deliveries. With just a few simple commands, this delivery manager can help to kickstart your delivery service.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="purpose"><a class="link" href="#purpose">1.2. Purpose</a></h3>
+<div class="paragraph">
+<p>This document has been created to explain the software architecture and implementations of <strong>DeliveryMANs</strong>. The intended audience for this document are software testers and future developers.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<h2 id="setting-up"><a class="link" href="#setting-up">2. Setting up</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To setup <strong>DeliveryMANs</strong> on your system, please refer to the user guide <a href="UserGuide.html#Quick-start">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="design"><a class="link" href="#design">3. Design</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
+<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
@@ -149,6 +174,34 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="title">Figure 2. Class Diagram of the Logic Component</div>
 </div>
+<div class="paragraph">
+<p>In addition, there are 4 different contexts that the App has:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Universal</code>/<code>Order</code></p>
+</li>
+<li>
+<p><code>Customer</code></p>
+</li>
+<li>
+<p><code>Restaurant</code></p>
+</li>
+<li>
+<p><code>Deliverymen</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each context will allow the application the execute commands in the context the application is currently in. For example, <code>Customer</code> commands can only be executed in the <code>Customer</code> context. This is to allow separation between the 4 contexts, and also the 4 databases the App has. The <code>Universal</code> context will also execute commands pertaining to <code>Order</code>.</p>
+</div>
+<div class="paragraph">
+<p>Because of this, the context are interchangeable in the diagrams below (and the one above) as changing the context will not change how the application is structured. For example, when the diagram is shown in a <code>Customer</code> context, it will also apply in a <code>Restaurant</code> context.</p>
+</div>
+<div class="paragraph">
+<p>However, there are differences between the 4 different context that will be explained in the <a href="#Design-Model"><strong><code>Model</code></strong></a> section.</p>
+</div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
 <p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
@@ -164,7 +217,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.2. UI component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
@@ -175,7 +228,7 @@ The following class plays an important role at the architecture level:</p>
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>CustomerListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -195,7 +248,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.3. Logic component</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
@@ -209,7 +262,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>CustomerParser</code> class to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
@@ -248,7 +301,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
@@ -267,10 +320,10 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Address Book data.</p>
+<p>stores the customer, restaurant, deliverymen and order data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -293,7 +346,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
@@ -312,29 +365,29 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Address Book data in json format and read it back.</p>
+<p>can save the customer, restaurant, deliverymen and order data in json format and read it back.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">3.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
+<p>Classes used by multiple components are in the <code>seedu.deliverymans.commons</code> package.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">4.1. [Proposed] Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.1.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -476,7 +529,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -546,13 +599,13 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.2. Undo/redo feature</a></h3>
 <div class="paragraph">
 <p>The undo/redo feature lets users undo and redo changes to the data stored in the app, which were
 effected by commands they have executed.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.2.1. Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">4.2.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The main class containing the states of the data in the app is <code>UndoHistory</code>. The history is
 represented as a list of states. It includes the following methods:</p>
@@ -699,12 +752,12 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-autocomplete-commands-feature"><a class="link" href="#proposed-autocomplete-commands-feature">3.3. [Proposed] Autocomplete commands feature</a></h3>
+<h3 id="proposed-autocomplete-commands-feature"><a class="link" href="#proposed-autocomplete-commands-feature">4.3. [Proposed] Autocomplete commands feature</a></h3>
 <div class="paragraph">
 <p>This is a feature which allows you to view all available commands matching the input keyword or letters, eliminating the need to memorize the commands or leave a browser tab open with the UG/DG of this application.</p>
 </div>
 <div class="sect3">
-<h4 id="proposed-implementation-2"><a class="link" href="#proposed-implementation-2">3.3.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation-2"><a class="link" href="#proposed-implementation-2">4.3.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The autocomplete mechanism is facilitated by the ‘KeyListener’, which will pass the current character that is being pressed on the keyboard to the trie, a tree-like abstract data type (ADT). The list of matching commands will then be passed back to the ‘Ui’ and displayed via a dropdown box below the user input command box.</p>
 </div>
@@ -740,7 +793,7 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Below are a few design considerations of the autocomplete commands feature.</p>
 </div>
@@ -813,20 +866,153 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></h3>
+<h3 id="order-manager"><a class="link" href="#order-manager">4.4. Order Manager</a></h3>
+<div class="paragraph">
+<p>Order Manager is an address book of Orders, with some basic functions similar to that of a normal address book such as add, edit, delete and list. Additionally, Order Manager has some useful functions specifically catered towards the ease of management of orders.</p>
+</div>
+<div class="paragraph">
+<p>Firstly, the automated allocation of deliveryman once new orders are added. When a new order is created on the database, a deliveryman will be assigned to deliver the order based on whether he/she is present as well as whether he/she is currently preoccupied with delivering another order. This helps to ease the burden on the user as they would not need to manually allocate deliverymen to the orders. However, the feature to manually allocate is still present if the user wishes to do so.</p>
+</div>
+<div class="paragraph">
+<p>Secondly, the order manager allows for sorting of orders, based on date, customer, restaurant, menu or even deliveryman, depending on what information the user wishes to see. This allows for better management</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">4.4.1. Implementation</a></h4>
+<div class="paragraph">
+<p><strong>insert class diagram here</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>explains commands here, add ,del, edit, list, sort</strong></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-deliverymen-salary-adjustment-feature"><a class="link" href="#proposed-deliverymen-salary-adjustment-feature">4.5. [Proposed] Deliverymen salary adjustment feature</a></h3>
+<div class="paragraph">
+<p>This is a feature which allows the user to keep track of the deliverymen who have met the requirements for a salary increment
+based on their delivery rate and duration of service. It extends DeliveryMANS with a delivery record for every deliveryman as well as relevant analysis of the record.</p>
+</div>
+<div class="sect3">
+<h4 id="proposed-implementation-3"><a class="link" href="#proposed-implementation-3">4.5.1. Proposed Implementation</a></h4>
+<div class="paragraph">
+<p>The salary adjustment feature is primarily monitored by the 'Analyzer', which has access to the delivery record of every deliveryman in the database. From the record, the Analyzer computes two data:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Delivery rate</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is the number of orders per day.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Time in database</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is the time difference between the time when the deliveryman was added to the database and the current time when command is executed.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With these structure, it implements the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DeliverymenDatabase#getHistoryOf(Deliveryman index)</code>&#8201;&#8212;&#8201;Enters the delivery record of a specified deliveryman.</p>
+</li>
+<li>
+<p><code>DeliverymenDatabase#suggestPayList()</code>&#8201;&#8212;&#8201;Obtains a list of deliverymen who are eligible for pay rise.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the <code>suggestPayList</code> function works.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. Hooray! It&#8217;s the time of the month for the restaurant to adjust the workers' pay. The restaurant admin, who is in charge of managing the deliverymen, types in the <code>paylist</code> command.
+The command will access the <code>UniqueDeliverymenList</code> in order to obtain the list of deliverymen.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. For each deliveryman on the list, their delivery record will be analyzed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Time in data base: The current time will be obtained and the difference between the current time and the time of joining the database will be taken.</p>
+</li>
+<li>
+<p>Delivery rate: The number of orders completed over the time in database will be the delivery rate.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Step 3. If the delivery rate exceeds a certain threshold, the deliveryman will be added to the pay list.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-tracking-the-record-of-every-deliveryman"><a class="link" href="#aspect-tracking-the-record-of-every-deliveryman">Aspect: Tracking the record of every deliveryman</a></h5>
+<div class="paragraph">
+<p>This feature necessitates the tracking of the orders each deliveryman has completed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1(current choice): Saves the number of completed orders for each deliveryman and write to hard disk.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and takes up less memory.</p>
+</li>
+<li>
+<p>Cons: The details of the order cannot be tracked, even though they might be a potential criteria for pay rise.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Saves the specific completed orders (including the content of order) and write to hard disk.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for a thorough and more accurate analysis for suggesting pay rise</p>
+</li>
+<li>
+<p>Cons: Takes up significant amount of memory</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.6. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -857,7 +1043,7 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -865,7 +1051,7 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Documentation.html">here</a>.</p>
@@ -873,7 +1059,7 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">5. Testing</a></h2>
+<h2 id="testing"><a class="link" href="#testing">6. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Testing.html">here</a>.</p>
@@ -881,7 +1067,7 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="DevOps.html">here</a>.</p>
@@ -1247,4 +1433,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 13:24:54 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 17:14:38 UTC</div></div></div></body></html>

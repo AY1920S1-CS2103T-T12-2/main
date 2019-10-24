@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">DeliveryMANs</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>DeliveryMANS – User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>CS2103-T12-2</code>   Since: <code>Sept 2019</code>  Licence: <code>NUS</code></p>
+<p>By: <code>Team AY1920S1-CS2103-T12-2</code>   Since: <code>Sept 2019</code>  Licence: <code>NUS</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -19,7 +19,7 @@
 <li><a href="#deliverymen-commands">3.4. Deliverymen commands</a></li>
 </ul>
 </li>
-<li><a href="#command-summary">4. Command Summary</a></li>
+<li><a href="#command-summary">4. Command summary</a></li>
 </ul>
 </div>
 </div>
@@ -27,7 +27,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>DeliveryMANs is a command-line application designed specifically for delivery centre administrators who are in charge of food delivery service. It encompasses a well-structured system for users to keep track and manage the entire delivery process. It facilitates food delivery service by coaliasing the delivery men, customers and restaurant menu. From auto-assigning deliverymen for deliveries when orders are made, to viewing statistics of the most popular dish of restaurants as well as customer ordering trends for further promotions, financial and business management decisions, DeliveryMANs is everything you need to help improve managing deliveries. With just a few simple commands, this delivery manager can help to kickstart your delivery service.</p>
+<p><strong>DeliveryMANs</strong> is a command-line application designed specifically for delivery centre administrators who are in charge of food delivery service. It encompasses a well-structured system for users to keep track and manage the entire delivery process. It facilitates food delivery service by coaliasing the delivery men, customers and restaurant menu. From auto-assigning deliverymen for deliveries when orders are made, to viewing statistics of the most popular dish of restaurants as well as customer ordering trends for further promotions, financial and business management decisions, <strong>DeliveryMANs</strong> is everything you need to help improve managing deliveries. With just a few simple commands, this delivery manager can help to kickstart your delivery service.</p>
 </div>
 <div class="paragraph">
 <p>Get started with <a href="#Quick Start">[Quick Start]</a> and begin managing your deliveries today!</p>
@@ -41,10 +41,7 @@
 <p>Ensure you have Java 11 or above installed on your computer.</p>
 </div>
 <div class="paragraph">
-<p>Install the JAR file found on this website:</p>
-</div>
-<div class="paragraph">
-<p>[<a href="https://ay1920s1-cs2103t-t12-2.github.io/main" class="bare">https://ay1920s1-cs2103t-t12-2.github.io/main</a>](<a href="https://ay1920s1-cs2103t-t12-2.github.io/main" class="bare">https://ay1920s1-cs2103t-t12-2.github.io/main</a>)</p>
+<p>Click <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/releases">here</a> to download the JAR file for <strong>DeliveryMANs</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Open the application to begin. Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
@@ -55,13 +52,13 @@
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In DeliveryMANs, there are 2 types of commands: universal commands and context-specific commands.</p>
+<p>In <strong>DeliveryMANs</strong>, there are 2 types of commands: universal commands and context-specific commands.</p>
 </div>
 <div class="paragraph">
 <p>Universal commands can be used anywhere throughout the application. You can identify universal commands by its "-" convention followed by a keyword e.g. <code>-help</code>.</p>
 </div>
 <div class="paragraph">
-<p>Context-specific commands are commands which are only applicable for a specific context e.g. viewing customer ordering trends can only be accessed in the customer context.</p>
+<p>Context-specific commands are commands which are only applicable for a specific context. Commands such as viewing a customer ordering history can only be accessed in the customer context.</p>
 </div>
 <div class="paragraph">
 <p><strong>Command Format</strong></p>
@@ -69,10 +66,24 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Words in curly brackets are parameters to be supplied by the user e.g. in <code>add_order c/CUSTOMER r/RESTAURANT f/FOOD q/QUANTITY</code>, <code>CUSTOMER</code>, <code>RESTAURANT</code>, <code>FOOD</code> and <code>QUANTITY</code> are parameters to be replaced. <code>add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
+<p>Words in <code>UPPER_CASE</code> are parameters to be supplied by the user e.g. in <code>add_order c/CUSTOMER r/RESTAURANT f/FOOD q/QUANTITY</code>, <code>CUSTOMER</code>, <code>RESTAURANT</code>, <code>FOOD</code> and <code>QUANTITY</code> are parameters to be replaced.</p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><code>add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
+</div>
+</blockquote>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Items with <code>…</code> after them can be used multiple times e.g. <code>f/FOOD&#8230;&#8203;</code> can be used 1 or more: <code>f/3 Piece Chicken Meal</code>, <code>f/Pepperoni Pizza f/Char Kway Teow</code> etc.</p>
 </li>
 <li>
-<p>Items with <code>…</code> after them can be used multiple times e.g. <code>[f/FOOD]&#8230;&#8203;</code> can be used 1 or more: <code>f/3 Piece Chicken Meal</code>, <code>f/Pepperoni Pizza f/Char Kway Teow</code> etc.</p>
+<p>Items with <code>[]</code> are optional and can be ommitted e.g. <code>[t/TAG]&#8230;&#8203;</code></p>
 </li>
 </ul>
 </div>
@@ -84,7 +95,7 @@
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help <code>-help</code></a></h4>
 <div class="paragraph">
-<p>Generates a list of commands and tips for you.</p>
+<p>This generates a list of commands and tips for you.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>-help</code></p>
@@ -92,157 +103,266 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Context specific: -help {context}</p>
-</li>
-<li>
-<p>Example: -help customer</p>
-</li>
-<li>
-<p>Context specific commands: -help -cxt {context} -cmd {command}</p>
-</li>
-<li>
-<p>Example: -help -cxt customer -cmd sort</p>
+<p>Help with a specific context: <code>-help CONTEXT</code></p>
 </li>
 </ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><code>-help customer</code></p>
+</div>
+</blockquote>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Help with a specific context command: <code>-help cxt/CONTEXT cmd/COMMAND</code></p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><code>-help -cxt customer -cmd sort</code></p>
+</div>
+</blockquote>
 </div>
 </div>
 <div class="sect3">
 <h4 id="switching-context"><a class="link" href="#switching-context">3.1.2. Switching context</a></h4>
 <div class="paragraph">
-<p>Switches to a specific context for targeted commands</p>
+<p>This switches to a specific context for you to enter targeted commands. The list of contexts include: customer, deliveryman and restaurant. By default, the application will be in the universal context upon startup.</p>
+</div>
+<div class="sect4">
+<h5 id="switching-to-customer-context-code-customer-code"><a class="link" href="#switching-to-customer-context-code-customer-code">Switching to customer context <code>-customer</code></a></h5>
+<div class="paragraph">
+<p>This switches to the customer context for you to enter customer-specific commands.</p>
 </div>
 <div class="paragraph">
-<p>Format: -{context}</p>
+<p>Format: <code>-customer</code></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="switching-to-restaurant-context-code-restaurant-code"><a class="link" href="#switching-to-restaurant-context-code-restaurant-code">Switching to restaurant context <code>-restaurant</code></a></h5>
+<div class="paragraph">
+<p>This switches to the restaurant context for you to enter restaurant-specific commands.</p>
 </div>
 <div class="paragraph">
-<p>Example: -switch restaurant</p>
+<p>Format: <code>-restaurant</code></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="switching-to-deliveryman-context-code-deliveryman-code"><a class="link" href="#switching-to-deliveryman-context-code-deliveryman-code">Switching to deliveryman context <code>-deliveryman</code></a></h5>
+<div class="paragraph">
+<p>This switches to the deliveryman context for you to enter deliveryman-specific commands.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>-deliveryman</code></p>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-order-summary"><a class="link" href="#viewing-order-summary">3.1.3. Viewing order summary</a></h4>
+<h4 id="adding-of-orders-code-add_order-code"><a class="link" href="#adding-of-orders-code-add_order-code">3.1.3. Adding of orders <code>-add_order</code></a></h4>
 <div class="paragraph">
-<p>Views the current order summary</p>
+<p>This adds a new order to the database to be processed. The deliveryman to deliver the order will be allocated automatically based on the internal algorithms.</p>
 </div>
 <div class="paragraph">
-<p>Format: -summary</p>
+<p>Format: <code>-add c/CUSTOMER r/RESTAURANT f/FOOD&#8230;&#8203; q/QUANTITY&#8230;&#8203;</code></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><code>add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A valid customer <code>c/CUSTOMER</code>, restaurant <code>r/RESTAURANT</code> and restaurant menu item <code>f/FOOD</code> must be provided and exists currently in the database.</p>
+</li>
+<li>
+<p>The quantity of food to be delivered also be provided and be greater than 0.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-program"><a class="link" href="#exiting-program">3.1.4. Exiting program</a></h4>
+<h4 id="editing-of-orders-code-edit_order-code"><a class="link" href="#editing-of-orders-code-edit_order-code">3.1.4. Editing of orders <code>-edit_order</code></a></h4>
 <div class="paragraph">
-<p>Exits the program</p>
+<p>This enables you to edit an order. The order to edit will have to be specified by its index when you are entering the command.</p>
 </div>
 <div class="paragraph">
-<p>Format: -exit</p>
+<p>You can change:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The customer who made the order</p>
+</li>
+<li>
+<p>The restaurant and/or food ordered</p>
+</li>
+<li>
+<p>The quantity of the food ordered</p>
+</li>
+<li>
+<p>The deliveryman to deliver the order</p>
+</li>
+<li>
+<p>The delivery status of the order</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Format: <code>-edit_order i/INDEX [c/CUSTOMER] [r/RESTAURANT] [d/DELIVERYMAN] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203; [completed/DELIVERY_STATUS]</code></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><code>-edit_order i/1337 d/John Doe completed/true</code></p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The index <code>i/INDEX</code> provided must be within the order list size and be greater than or equals to 0.</p>
+</li>
+<li>
+<p>A customer <code>c/CUSTOMER</code>, restaurant <code>r/RESTAURANT</code> or restaurant menu item <code>f/FOOD</code> provided must be valid and exists currently in the database.</p>
+</li>
+<li>
+<p>Optional items with '[]' tags may be ommitted e.g. <code>[r/RESTAURANT]</code>. However at least 1 tag has to be present for the order to be edited.</p>
+</li>
+<li>
+<p>Delivery status <code>completed/DELIVERY_STATUS</code> must be true or false, if present.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-of-orders-code-delete_order-code"><a class="link" href="#deleting-of-orders-code-delete_order-code">3.1.5. Deleting of orders <code>-delete_order</code></a></h4>
+<div class="paragraph">
+<p>This enables you to delete an unwanted/cancelled order in the database by its index.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>-delete_order INDEX</code></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><code>-delete_order 3</code></p>
+</div>
+</blockquote>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-order-summary-code-order_summary-code"><a class="link" href="#viewing-order-summary-code-order_summary-code">3.1.6. Viewing order summary <code>-order_summary</code></a></h4>
+<div class="paragraph">
+<p>This brings up the current order summary for your viewing.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>-order_summary</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exiting-program-code-exit-code"><a class="link" href="#exiting-program-code-exit-code">3.1.7. Exiting program <code>-exit</code></a></h4>
+<div class="paragraph">
+<p>This exits the program.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>-exit</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="customer-commands"><a class="link" href="#customer-commands">3.2. Customer commands</a></h3>
-<div class="sect3">
-<h4 id="listing-all-customers"><a class="link" href="#listing-all-customers">3.2.1. Listing all customers</a></h4>
 <div class="paragraph">
-<p>Lists all current customers</p>
-</div>
-<div class="paragraph">
-<p>Format: -list</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="listing-specific-customer"><a class="link" href="#listing-specific-customer">3.2.2. Listing specific customer</a></h4>
-<div class="paragraph">
-<p>Lists the information of a specific customer</p>
-</div>
-<div class="paragraph">
-<p>Format: -list {customer name}</p>
-</div>
-<div class="paragraph">
-<p>Example: -list John Doe</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="editing-customer-info"><a class="link" href="#editing-customer-info">3.2.3. Editing customer info</a></h4>
-<div class="paragraph">
-<p>Edits all of customer&#39;s info</p>
-</div>
-<div class="paragraph">
-<p>Format: -edit {customer name} -n {name} -a {address} -rt {reward} -o {number of orders}</p>
-</div>
-<div class="paragraph">
-<p>Example: -edit John Doe -n Bob Doe -a Kent ridge -rt Gold -o 1</p>
+<p>These are commands pertaining to customer context of <strong>DeliveryMANs</strong>. The screenshot below shows how the customer context will look like in <strong>DeliveryMANs</strong>.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>List of info types: Syntax:</pre>
+<pre>screenshot of finalised DeliveryMANs showing customer list goes here</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>This is a customer and its information.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Name   -n</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Address   -a</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Reward Tier  -rt</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Number of orders -o</pre>
-</div>
+<pre>screenshot of finalised CustomerCard</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-specified-customer-info"><a class="link" href="#editing-specified-customer-info">3.2.4. Editing specified customer info</a></h4>
+<h4 id="adding-a-customer-code-add-code"><a class="link" href="#adding-a-customer-code-add-code">3.2.1. Adding a customer: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Edits a specified info type of a customer. See 3.2.3. Editing customer info for the list of info types</p>
+<p>This command allows you to add a new customer to the customer list. Name and phone number are necessary to a customer. Tags in customers are optional to include. They are used to specify the customer&#8217;s favourite cuisine. Multiple tags can be added to one customer.</p>
 </div>
 <div class="paragraph">
-<p>Format: -edit -c {customer name} {info type} -d    {description}</p>
+<p>Format: <code>add n/NAME p/PHONE [t/TAG]&#8230;&#8203;</code></p>
 </div>
+<div class="quoteblock">
+<blockquote>
 <div class="paragraph">
-<p>Example: -edit -c John Doe -a -d Kent Ridge</p>
+<p><code>add n/John Doe p/91234567 t/Japanese t/Noodles</code></p>
+</div>
+</blockquote>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sorting-customer"><a class="link" href="#sorting-customer">3.2.5. Sorting customer</a></h4>
+<h4 id="editing-a-customer-code-edit-code"><a class="link" href="#editing-a-customer-code-edit-code">3.2.2. Editing a customer: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Sorts customers based on info type. If none is present, sort based on their names.  See 3.2.3. Editing customer info for the list of info types</p>
+<p>This command allows you to edit an existing customer in the customer list. The index of a customer needs to be provided while the information to edit are optional. For example, you can edit the customer&#8217;s name without editing the phone number.</p>
 </div>
 <div class="paragraph">
-<p>Format: -sort {info type}</p>
+<p>Format: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
 </div>
+<div class="quoteblock">
+<blockquote>
 <div class="paragraph">
-<p>Example: -sort -rt</p>
+<p><code>edit 1 n/John Hoe p/97654321 t/Indian</code></p>
+</div>
+</blockquote>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-history"><a class="link" href="#viewing-history">3.2.6. Viewing history</a></h4>
+<h4 id="deleting-a-customer-code-delete-code"><a class="link" href="#deleting-a-customer-code-delete-code">3.2.3. Deleting a customer: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Views order history of a customer</p>
+<p>This command allows you to delete an existing customer in the customer list. The index of a customer needs to be provided.</p>
 </div>
 <div class="paragraph">
-<p>Format: -history {customer name}</p>
+<p>Format: <code>delete INDEX</code></p>
 </div>
+<div class="quoteblock">
+<blockquote>
 <div class="paragraph">
-<p>Example: -history Mary</p>
+<p><code>delete 1</code></p>
+</div>
+</blockquote>
 </div>
 </div>
 <div class="sect3">
-<h4 id="removing-customer"><a class="link" href="#removing-customer">3.2.7. Removing customer</a></h4>
+<h4 id="viewing-a-customer-s-order-history-code-history-code"><a class="link" href="#viewing-a-customer-s-order-history-code-history-code">3.2.4. Viewing a customer&#8217;s order history: <code>history</code></a></h4>
 <div class="paragraph">
-<p>Removes a customer from the database</p>
+<p>This command allows you to view a customer&#8217;s order history. The index of a customer needs to be provided.</p>
 </div>
 <div class="paragraph">
-<p>Format: -delete {customer name}</p>
+<p>Format: <code>history INDEX</code></p>
 </div>
+<div class="quoteblock">
+<blockquote>
 <div class="paragraph">
-<p>Example: -delete Donald Trump</p>
+<p><code>history 1</code></p>
+</div>
+</blockquote>
 </div>
 </div>
 </div>
@@ -384,7 +504,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">4. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">4. Command summary</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Command:</strong> format</p>
@@ -396,22 +516,31 @@
 <div class="ulist">
 <ul>
 <li>
-<p>View help: -help</p>
+<p>View help: <code>-help</code></p>
 </li>
 <li>
-<p>View order summary: -summary</p>
+<p>View order summary: <code>-order_summary</code></p>
 </li>
 <li>
-<p>Switch to restaurant context: -restaurant</p>
+<p>Add order: <code>-add c/CUSTOMER r/RESTAURANT f/FOOD&#8230;&#8203; q/QUANTITY&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Switch to customer context: -customer</p>
+<p>Edit order: <code>-edit_order i/INDEX [c/CUSTOMER] [r/RESTAURANT] [d/DELIVERYMAN] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203; [completed/DELIVERY_STATUS]</code></p>
 </li>
 <li>
-<p>Switch to deliverymen context: -deliverymen</p>
+<p>Delete order: <code>-delete_order INDEX</code></p>
 </li>
 <li>
-<p>Exit application: -exit</p>
+<p>Switch to restaurant context: <code>-restaurant</code></p>
+</li>
+<li>
+<p>Switch to customer context: <code>-customer</code></p>
+</li>
+<li>
+<p>Switch to deliverymen context: <code>-deliverymen</code></p>
+</li>
+<li>
+<p>Exit application: <code>-exit</code></p>
 </li>
 </ul>
 </div>
@@ -421,28 +550,16 @@
 <div class="ulist">
 <ul>
 <li>
-<p>List customers: -list</p>
+<p>Adding a customer: <code>add n/NAME p/PHONE [t/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>List specified customer info: -list {name}</p>
+<p>Editing a customer: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Edit customer info: -edit {customer name} -n      {customer name} -a {address} -r {reward tier} -o {number of order}</p>
+<p>Deleting a customer: <code>delete INDEX</code></p>
 </li>
 <li>
-<p>Edit specific customer info: -edit -n {customer name} {info type} -d {description}</p>
-</li>
-<li>
-<p>Sort customer to info type: -sort {info type}</p>
-</li>
-<li>
-<p>Show order history of customer: -history {customer name}</p>
-</li>
-<li>
-<p>Add order: -order {customer name} -r {restaurant name} -m {menu item}</p>
-</li>
-<li>
-<p>Delete customer: -delete {customer name}</p>
+<p>Viewing a customer&#8217;s order history: <code>history INDEX</code></p>
 </li>
 </ul>
 </div>
@@ -462,9 +579,6 @@
 </li>
 <li>
 <p>Remove food item: -remove {item}</p>
-</li>
-<li>
-<p>View order: -orders</p>
 </li>
 <li>
 <p>Add Rating from Customer: -rate {rating}</p>
@@ -500,4 +614,4 @@
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 13:24:54 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 17:14:38 UTC</div></div></div></body></html>
