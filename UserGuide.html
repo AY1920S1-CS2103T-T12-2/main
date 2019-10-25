@@ -274,7 +274,44 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-program-code-exit-code"><a class="link" href="#exiting-program-code-exit-code">3.1.7. Exiting program <code>-exit</code></a></h4>
+<h4 id="undoing-commands"><a class="link" href="#undoing-commands">3.1.7. Undoing commands</a></h4>
+<div class="paragraph">
+<p>This command undoes the effects of a command that you have previously executed.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>undo</code></p>
+</div>
+<div class="paragraph">
+<p>Say you have accidentally executed a command and now want to reverse it. Just type <code>undo</code> into the
+command line and press Enter like any other command. The result pane will then show the following:</p>
+</div>
+<div class="paragraph">
+<p>Successfully undid: (your previous command here)</p>
+</div>
+<div class="paragraph">
+<p>The command which you last performed has now been reversed. Subsequent invocations of <code>undo</code> will
+reverse commands which you have performed even earlier.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="redoing-commands"><a class="link" href="#redoing-commands">3.1.8. Redoing commands</a></h4>
+<div class="paragraph">
+<p>This command redoes the effects of a command that you have just undone, in effect undoing an undo.
+Similarly to <code>undo</code>, this command can be used multiple times in succession to bring back multiple
+commands which you have undone earlier.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>redo</code></p>
+</div>
+<div class="paragraph">
+<p>After performing <code>redo</code>, the result pane will show:</p>
+</div>
+<div class="paragraph">
+<p>Successfully redid: (your previous command here)</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exiting-program-code-exit-code"><a class="link" href="#exiting-program-code-exit-code">3.1.9. Exiting program <code>-exit</code></a></h4>
 <div class="paragraph">
 <p>This exits the program.</p>
 </div>
@@ -614,4 +651,4 @@
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-25 03:24:04 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-25 03:27:04 UTC</div></div></div></body></html>
