@@ -35,7 +35,7 @@
 <li><a href="#proposed-data-encryption">4.5. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">4.6. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.7. Configuration</a></li>
-<li><a href="#edit-mode">4.8. Edit Mode</a></li>
+<li><a href="#editmode">4.8. EditMode</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -919,11 +919,11 @@ The command will access the <code>UniqueDeliverymenList</code> in order to obtai
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-mode"><a class="link" href="#edit-mode">4.8. Edit Mode</a></h3>
+<h3 id="editmode"><a class="link" href="#editmode">4.8. EditMode</a></h3>
 <div class="paragraph">
 <p>A Restaurant object contains many attributes, including a List of Food items as its menu,
 which makes it difficult to edit an entire Restaurant object using 1 command line.
-This feature allows editing of a Restaurant&#8217;s details and Food menu under 1 mode, through different commands.</p>
+This feature allows editing of a specific Restaurant&#8217;s details and Food menu under 1 mode, through different commands.</p>
 </div>
 <div class="sect3">
 <h4 id="implementation-5"><a class="link" href="#implementation-5">4.8.1. Implementation</a></h4>
@@ -931,26 +931,22 @@ This feature allows editing of a Restaurant&#8217;s details and Food menu under 
 <ul>
 <li>
 <p><strong>Model</strong>:
-ModelManager now contains a editingRestaurantList in addition to the filteredRestaurantList.
-access to the Restaurant currently under EditMode.</p>
+ModelManager now contains a editingRestaurantList in addition to the filteredRestaurantList, which stores
+and allows access to the Restaurant currently under EditMode.</p>
 </li>
 <li>
-<p><strong>Logic</strong>:</p>
+<p><strong>Logic</strong>:
+The Logic for EditMode is facilitated by <code>Context</code> enum type.
+A different Parser will parse the userInput based on the current context.
+The <code>editmode</code> command will change the current context to <code>Editing</code>,
+and commands for EditMode can only be accessed if under <code>Editing</code> Context.</p>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p>A different Parser will parse the userInput based on the current context.
-Current commands for EditMode can only be accessed if under Editing Context.</p>
-</div>
-<div class="ulist">
-<ul>
 <li>
-<p><strong>Ui</strong>:
-Changes to the Ui for edit mode is facilitated by <code>Context</code> enum type.
-Changes to the Ui will be made accordingly,
-An extra StackPane showing the restaurant under EditMode currently will be displayed,
-while the StackPane displaying the list of Restaurants originally will be filled with the restaurants Food menu instead.</p>
+<p><strong>UI</strong>:
+Current context will be passed to UI by the command result returned by <code>editmode</code> command.
+Changes to the UI for EditMode is made accordingly if under <code>Editing</code> Context.
+An extra StackPane showing the restaurant under EditMode will be displayed,
+while the StackPane displaying the list of Restaurants originally will be filled with the restaurant&#8217;s Food menu instead.</p>
 </li>
 </ul>
 </div>
@@ -1354,4 +1350,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-25 03:38:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-25 03:42:26 UTC</div></div></div></body></html>
