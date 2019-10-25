@@ -409,72 +409,92 @@ commands which you have undone earlier.</p>
 <p>Commands in the restaurant context</p>
 </div>
 <div class="sect3">
-<h4 id="listing-all-restaurants"><a class="link" href="#listing-all-restaurants">3.3.1. Listing all restaurants</a></h4>
+<h4 id="adding-a-restaurant-code-add-code"><a class="link" href="#adding-a-restaurant-code-add-code">3.3.1. Adding a Restaurant: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Lists all available restaurants</p>
+<p>This command adds a Restaurant to the Restaurant Database.</p>
 </div>
 <div class="paragraph">
-<p>Format: -list</p>
+<p>Format: <code>add n/NAME l/LOCATION [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>add n/KFC l/Jurong t/FastFood</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="entering-specific-restaurant"><a class="link" href="#entering-specific-restaurant">3.3.2. Entering specific restaurant</a></h4>
+<h4 id="deleting-a-restaurant-code-delete-code"><a class="link" href="#deleting-a-restaurant-code-delete-code">3.3.2. Deleting a Restaurant: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Enters a specific restaurant</p>
+<p>This command deletes the Restaurant identified by the Index in the list of Restaurants from the Restaurant Database</p>
 </div>
 <div class="paragraph">
-<p>Format: -enter {restaurant}</p>
+<p>Format: <code>delete INDEX</code></p>
 </div>
 <div class="paragraph">
-<p>Example: -enter muthu&#39;s curry</p>
+<p>Example: <code>delete 1</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-food-item"><a class="link" href="#adding-food-item">3.3.3. Adding food item</a></h4>
+<h4 id="entering-editmode-code-edit-code"><a class="link" href="#entering-editmode-code-edit-code">3.3.3. Entering EditMode: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Adds a food item for a specific restaurant</p>
+<p>This command enters EditMode for the Restaurant identified by the Index in the list of Restaurants.
+Unlocks commands for editing details, adding and removing of Food Items in the menu.</p>
 </div>
 <div class="paragraph">
-<p>Format: -add {item}</p>
+<p>Format: <code>edit INDEX</code></p>
 </div>
 <div class="paragraph">
-<p>Example: -add chicken rice</p>
+<p>Example: <code>edit 1</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="removing-food-item"><a class="link" href="#removing-food-item">3.3.4. Removing food item</a></h4>
+<h4 id="editing-a-restaurant-under-editmode-code-editdetails-code"><a class="link" href="#editing-a-restaurant-under-editmode-code-editdetails-code">3.3.4. Editing a Restaurant (Under EditMode): <code>editdetails</code></a></h4>
 <div class="paragraph">
-<p>Removes a food item for a specific restaurant</p>
+<p>This command edits the details of the Restaurant under EditMode.</p>
 </div>
 <div class="paragraph">
-<p>Format: -remove {item}</p>
+<p>Format: <code>editdetails [n/NAME] [l/LOCATION] [t/TAG]…​</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When editing tags, the existing tags of the restaurant will be removed i.e adding of tags is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all the restaurant’s tags by typing t/ without specifying any tags after it.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Example: -remove laksa</p>
+<p>Example: <code>editdetails n/New KFC l/Tuas</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-rating"><a class="link" href="#adding-rating">3.3.5. Adding rating</a></h4>
+<h4 id="adding-food-item-under-editmode-code-add-code"><a class="link" href="#adding-food-item-under-editmode-code-add-code">3.3.5. Adding food item (Under EditMode): <code>add</code></a></h4>
 <div class="paragraph">
-<p>Adds a rating (out of 5) for the restaurant</p>
+<p>This command adds a Food item for the Restaurant under EditMode.</p>
 </div>
 <div class="paragraph">
-<p>Format: -rate {rating}</p>
+<p>Format: <code>add n/NAME a/PRICE [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Example: -rate 5</p>
+<p>Example: <code>add n/Chicken a/7.90 t/Popular</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="chefhat-food-item"><a class="link" href="#chefhat-food-item">3.3.6. ChefHat food item</a></h4>
+<h4 id="removing-food-item-under-editmode-code-delete-code"><a class="link" href="#removing-food-item-under-editmode-code-delete-code">3.3.6. Removing food item (Under EditMode): <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Marks a food item as Chef&#39;s recommendation</p>
+<p>This command removes the Food item identified by the Index in the Menu list of the Restaurant under EditMode.</p>
 </div>
 <div class="paragraph">
-<p>Format: -chefhat {item}</p>
+<p>Format: <code>remove INDEX</code></p>
 </div>
 <div class="paragraph">
-<p>Example: -chefhat nasi lemak</p>
+<p>Example: <code>remove 1</code></p>
 </div>
 </div>
 </div>
@@ -643,22 +663,22 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>List restaurants: -list</p>
+<p>Adding a restaurant: <code>add n/NAME l/LOCATION [t/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Enter specific restaurant: -enter {restaurant}</p>
+<p>Deleting a restaurant: <code>delete INDEX</code></p>
 </li>
 <li>
-<p>Add food item: -add {item}</p>
+<p>Entering EditMode: <code>edit INDEX</code></p>
 </li>
 <li>
-<p>Remove food item: -remove {item}</p>
+<p>Editing a restaurant: <code>editdetails [n/NAME] [l/LOCATION] [t/TAG]…​</code></p>
 </li>
 <li>
-<p>Add Rating from Customer: -rate {rating}</p>
+<p>Adding food item: <code>add n/NAME a/PRICE [t/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>ChefHat Food Item: -chefhat {item}</p>
+<p>Removing food item: <code>delete INDEX</code></p>
 </li>
 </ul>
 </div>
@@ -694,4 +714,4 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-25 03:27:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-25 03:29:12 UTC</div></div></div></body></html>
