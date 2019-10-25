@@ -132,12 +132,12 @@
 <div class="sect3">
 <h4 id="switching-context"><a class="link" href="#switching-context">3.1.2. Switching context</a></h4>
 <div class="paragraph">
-<p>This switches to a specific context for you to enter targeted commands. The list of contexts include: customer, deliveryman and restaurant. By default, the application will be in the universal context upon startup.</p>
+<p>This command switches to a specific context for you to enter targeted commands. The list of contexts include: customer, deliveryman and restaurant. By default, the application will be in the universal context upon startup.</p>
 </div>
 <div class="sect4">
 <h5 id="switching-to-customer-context-code-customer-code"><a class="link" href="#switching-to-customer-context-code-customer-code">Switching to customer context <code>-customer</code></a></h5>
 <div class="paragraph">
-<p>This switches to the customer context for you to enter customer-specific commands.</p>
+<p>This command switches to the customer context for you to enter customer-specific commands.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>-customer</code></p>
@@ -146,7 +146,7 @@
 <div class="sect4">
 <h5 id="switching-to-restaurant-context-code-restaurant-code"><a class="link" href="#switching-to-restaurant-context-code-restaurant-code">Switching to restaurant context <code>-restaurant</code></a></h5>
 <div class="paragraph">
-<p>This switches to the restaurant context for you to enter restaurant-specific commands.</p>
+<p>This command switches to the restaurant context for you to enter restaurant-specific commands.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>-restaurant</code></p>
@@ -155,7 +155,7 @@
 <div class="sect4">
 <h5 id="switching-to-deliveryman-context-code-deliveryman-code"><a class="link" href="#switching-to-deliveryman-context-code-deliveryman-code">Switching to deliveryman context <code>-deliveryman</code></a></h5>
 <div class="paragraph">
-<p>This switches to the deliveryman context for you to enter deliveryman-specific commands.</p>
+<p>This command switches to the deliveryman context for you to enter deliveryman-specific commands.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>-deliveryman</code></p>
@@ -165,7 +165,7 @@
 <div class="sect3">
 <h4 id="adding-of-orders-code-add_order-code"><a class="link" href="#adding-of-orders-code-add_order-code">3.1.3. Adding of orders <code>-add_order</code></a></h4>
 <div class="paragraph">
-<p>This adds a new order to the database to be processed. The deliveryman to deliver the order will be allocated automatically based on the internal algorithms.</p>
+<p>This command adds a new order to the database to be processed. The deliveryman to deliver the order will be allocated automatically based on the internal algorithms.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>-add c/CUSTOMER r/RESTAURANT f/FOOD&#8230;&#8203; q/QUANTITY&#8230;&#8203;</code></p>
@@ -251,7 +251,7 @@
 <div class="sect3">
 <h4 id="deleting-of-orders-code-delete_order-code"><a class="link" href="#deleting-of-orders-code-delete_order-code">3.1.5. Deleting of orders <code>-delete_order</code></a></h4>
 <div class="paragraph">
-<p>This enables you to delete an unwanted/cancelled order in the database by its index.</p>
+<p>This command enables you to delete an unwanted/cancelled order in the database by its index.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>-delete_order INDEX</code></p>
@@ -267,7 +267,7 @@
 <div class="sect3">
 <h4 id="viewing-order-summary-code-order_summary-code"><a class="link" href="#viewing-order-summary-code-order_summary-code">3.1.6. Viewing order summary <code>-order_summary</code></a></h4>
 <div class="paragraph">
-<p>This brings up the current order summary for your viewing.</p>
+<p>This command brings up the current order summary for your viewing.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>-order_summary</code></p>
@@ -313,7 +313,7 @@ commands which you have undone earlier.</p>
 <div class="sect3">
 <h4 id="exiting-program-code-exit-code"><a class="link" href="#exiting-program-code-exit-code">3.1.9. Exiting program <code>-exit</code></a></h4>
 <div class="paragraph">
-<p>This exits the program.</p>
+<p>This comamnd exits the program.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>-exit</code></p>
@@ -484,57 +484,94 @@ commands which you have undone earlier.</p>
 <p>Commands in the delivery men context</p>
 </div>
 <div class="sect3">
-<h4 id="listing-all-deliverymen"><a class="link" href="#listing-all-deliverymen">3.4.1. Listing all deliverymen</a></h4>
+<h4 id="adding-a-deliveryman-code-add-code"><a class="link" href="#adding-a-deliveryman-code-add-code">3.4.1. Adding a deliveryman: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Lists all deliverymen</p>
+<p>This command adds a new deliveryman to the deliverymen database. Name and phone number are necessary to a deliveryman.</p>
 </div>
 <div class="paragraph">
-<p>Format: -list</p>
+<p>Format: <code>add n/NAME p/PHONE [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>`add n/John Doe p/91234567  `</p>
+</div>
+</blockquote>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-available-deliverymen"><a class="link" href="#listing-available-deliverymen">3.4.2. Listing available deliverymen</a></h4>
+<h4 id="editing-a-deliveryman-code-edit-code"><a class="link" href="#editing-a-deliveryman-code-edit-code">3.4.2. Editing a deliveryman: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Lists all available deliverymen</p>
+<p>This command edits an existing deliveryman in the deliverymen database.
+Format: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
 </div>
+<div class="quoteblock">
+<blockquote>
 <div class="paragraph">
-<p>Format: -lista</p>
+<p><code>edit 1 n/John Hoe p/97654321 t/Indian</code></p>
+</div>
+</blockquote>
 </div>
 </div>
 <div class="sect3">
-<h4 id="entering-a-specific-deliveryman"><a class="link" href="#entering-a-specific-deliveryman">3.4.3. Entering a specific deliveryman</a></h4>
+<h4 id="deleting-a-deliveryman-code-delete-code"><a class="link" href="#deleting-a-deliveryman-code-delete-code">3.4.3. Deleting a deliveryman: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Shows a deliveryman&#39;s basic info</p>
+<p>This command deletes an existing deliveryman in the deliverymen database. The index of a deliveryman needs to be provided.</p>
 </div>
 <div class="paragraph">
-<p>Format: -list {name}</p>
+<p>Format: <code>delete INDEX</code></p>
 </div>
+<div class="quoteblock">
+<blockquote>
 <div class="paragraph">
-<p>Example: -list Stanley Tay</p>
+<p><code>delete 1</code></p>
+</div>
+</blockquote>
 </div>
 </div>
 <div class="sect3">
-<h4 id="assigning-order-to-a-deliveryman"><a class="link" href="#assigning-order-to-a-deliveryman">3.4.4. Assigning order to a deliveryman</a></h4>
+<h4 id="listing-available-deliverymen"><a class="link" href="#listing-available-deliverymen">3.4.4. Listing available deliverymen</a></h4>
 <div class="paragraph">
-<p>Assigns an order to an available deliveryman</p>
+<p>This command lists all available deliverymen</p>
 </div>
 <div class="paragraph">
-<p>Format: -assn {name}{#orderIndex}</p>
-</div>
-<div class="paragraph">
-<p>Example: -assn Stanley Tay #12</p>
+<p>Format: <code>lista</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-delivery-status-of-a-deliveryman"><a class="link" href="#viewing-delivery-status-of-a-deliveryman">3.4.5. Viewing delivery status of a deliveryman</a></h4>
+<h4 id="entering-a-specific-deliveryman"><a class="link" href="#entering-a-specific-deliveryman">3.4.5. Entering a specific deliveryman</a></h4>
 <div class="paragraph">
-<p>Shows delivery status of an assigned deliveryman</p>
+<p>This command shows a deliveryman&#8217;s basic info</p>
 </div>
 <div class="paragraph">
-<p>Format: status {name}</p>
+<p>Format: <code>list NAME</code></p>
 </div>
 <div class="paragraph">
-<p>Example: -status Stanley Tay</p>
+<p>Example: <code>list Stanley Tay</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="assigning-order-to-a-deliveryman"><a class="link" href="#assigning-order-to-a-deliveryman">3.4.6. Assigning order to a deliveryman</a></h4>
+<div class="paragraph">
+<p>This command assigns an order to an available deliveryman</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>assn NAME #ORDERINDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>assn Stanley Tay #12</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="obtains-a-list-of-deliverymen-eligible-for-pay-rise"><a class="link" href="#obtains-a-list-of-deliverymen-eligible-for-pay-rise">3.4.7. Obtains a list of deliverymen eligible for pay rise</a></h4>
+<div class="paragraph">
+<p>This command displays a list of deliverymen who met the pre-determined requirements for a pay rise.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>payrise</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>payrise</code></p>
 </div>
 </div>
 </div>
@@ -587,16 +624,16 @@ commands which you have undone earlier.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Adding a customer: <code>add n/NAME p/PHONE [t/TAG]&#8230;&#8203;</code></p>
+<p>Add a customer: <code>add n/NAME p/PHONE [t/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Editing a customer: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
+<p>Edit a customer: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Deleting a customer: <code>delete INDEX</code></p>
+<p>Delete a customer: <code>delete INDEX</code></p>
 </li>
 <li>
-<p>Viewing a customer&#8217;s order history: <code>history INDEX</code></p>
+<p>View a customer&#8217;s order history: <code>history INDEX</code></p>
 </li>
 </ul>
 </div>
@@ -631,19 +668,25 @@ commands which you have undone earlier.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>List deliverymen: -list</p>
+<p>Add a deliveryman: <code>add n/NAME p/PHONE</code></p>
 </li>
 <li>
-<p>List available deliverymen: -lista</p>
+<p>Delete a deliveryman: <code>delete INDEX</code></p>
 </li>
 <li>
-<p>List specific deliveryman info: -list {name}</p>
+<p>Edit a deliveryman: `edit INDEX [n/NAME] [p/PHONE]</p>
 </li>
 <li>
-<p>Assign order to deliveryman: -assn {name} {order}</p>
+<p>List available deliverymen: <code>lista</code></p>
 </li>
 <li>
-<p>Show delivery status of deliveryman: -status {name}</p>
+<p>List specific deliveryman info: <code>list NAME</code></p>
+</li>
+<li>
+<p>Assign order to deliveryman: <code>assn NAME #orderINDEX</code></p>
+</li>
+<li>
+<p>List deliverymen eligible for pay rise: <code>payrise</code></p>
 </li>
 </ul>
 </div>
@@ -651,4 +694,4 @@ commands which you have undone earlier.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-25 03:27:04 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-25 03:27:28 UTC</div></div></div></body></html>
