@@ -27,7 +27,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>DeliveryMANs</strong> is a command-line application designed specifically for delivery centre administrators who are in charge of food delivery service. It encompasses a well-structured system for users to keep track and manage the entire delivery process. It facilitates food delivery service by coaliasing the delivery men, customers and restaurant menu. From auto-assigning deliverymen for deliveries when orders are made, to viewing statistics of the most popular dish of restaurants as well as customer ordering trends for further promotions, financial and business management decisions, <strong>DeliveryMANs</strong> is everything you need to help improve managing deliveries. With just a few simple commands, this delivery manager can help to kickstart your delivery service.</p>
+<p><strong>DeliveryMANS</strong> is a command-line application designed specifically for delivery centre administrators who are in charge of food delivery service. It encompasses a well-structured system for users to keep track and manage the entire delivery process. It facilitates food delivery service by coaliasing the delivery men, customers and restaurant menu. From auto-assigning deliverymen for deliveries when orders are made, to viewing statistics of the most popular dish of restaurants as well as customer ordering trends for further promotions, financial and business management decisions, <strong>DeliveryMANS</strong> is everything you need to help improve managing deliveries. With just a few simple commands, this delivery manager can help to kickstart your delivery service.</p>
 </div>
 <div class="paragraph">
 <p>Get started with <a href="#Quick Start">[Quick Start]</a> and begin managing your deliveries today!</p>
@@ -41,7 +41,7 @@
 <p>Ensure you have Java 11 or above installed on your computer.</p>
 </div>
 <div class="paragraph">
-<p>Click <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/releases">here</a> to download the JAR file for <strong>DeliveryMANs</strong>.</p>
+<p>Click <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/releases">here</a> to download the JAR file for <strong>DeliveryMANS</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Open the application to begin. Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
@@ -52,7 +52,7 @@
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In <strong>DeliveryMANs</strong>, there are 2 types of commands: universal commands and context-specific commands.</p>
+<p>In <strong>DeliveryMANS</strong>, there are 2 types of commands: universal commands and context-specific commands.</p>
 </div>
 <div class="paragraph">
 <p>Universal commands can be used anywhere throughout the application. You can identify universal commands by its "-" convention followed by a keyword e.g. <code>-help</code>.</p>
@@ -313,7 +313,7 @@ commands which you have undone earlier.</p>
 <div class="sect3">
 <h4 id="exiting-program-code-exit-code"><a class="link" href="#exiting-program-code-exit-code">3.1.9. Exiting program <code>-exit</code></a></h4>
 <div class="paragraph">
-<p>This comamnd exits the program.</p>
+<p>This command exits the program.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>-exit</code></p>
@@ -323,11 +323,11 @@ commands which you have undone earlier.</p>
 <div class="sect2">
 <h3 id="customer-commands"><a class="link" href="#customer-commands">3.2. Customer commands</a></h3>
 <div class="paragraph">
-<p>These are commands pertaining to customer context of <strong>DeliveryMANs</strong>. The screenshot below shows how the customer context will look like in <strong>DeliveryMANs</strong>.</p>
+<p>These are commands pertaining to customer context of <strong>DeliveryMANS</strong>. The screenshot below shows how the customer context will look like in <strong>DeliveryMANS</strong>.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>screenshot of finalised DeliveryMANs showing customer list goes here</pre>
+<pre>screenshot of finalised DeliveryMANS showing customer list goes here</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -501,67 +501,60 @@ Unlocks commands for editing details, adding and removing of Food Items in the m
 <div class="sect2">
 <h3 id="deliverymen-commands"><a class="link" href="#deliverymen-commands">3.4. Deliverymen commands</a></h3>
 <div class="paragraph">
-<p>Commands in the delivery men context</p>
+<p>These are the commands you can use after entering the deliverymen context (via the command <code>deliverymen</code>).</p>
 </div>
 <div class="sect3">
 <h4 id="adding-a-deliveryman-code-add-code"><a class="link" href="#adding-a-deliveryman-code-add-code">3.4.1. Adding a deliveryman: <code>add</code></a></h4>
 <div class="paragraph">
-<p>This command adds a new deliveryman to the deliverymen database. Name and phone number are necessary to a deliveryman.</p>
+<p>This command allows you to add a new deliveryman to the deliverymen database. Name and phone number are compulsory fields.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add n/NAME p/PHONE [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>add n/NAME p/PHONE</code></p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
-<p>`add n/John Doe p/91234567  `</p>
-</div>
-</blockquote>
+<p>Example: <code>add n/John Doe p/91234567</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="editing-a-deliveryman-code-edit-code"><a class="link" href="#editing-a-deliveryman-code-edit-code">3.4.2. Editing a deliveryman: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>This command edits an existing deliveryman in the deliverymen database.
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
+<p>This command allows you to edit an existing deliveryman in the deliverymen database. You must edit at least one field (eg. name, phone number).</p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
-<p><code>edit 1 n/John Hoe p/97654321 t/Indian</code></p>
+<p>Format: <code>edit INDEX [n/NAME] [p/PHONE]</code></p>
 </div>
-</blockquote>
+<div class="paragraph">
+<p>Example: <code>edit 1 n/John Hoe p/97654321</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="deleting-a-deliveryman-code-delete-code"><a class="link" href="#deleting-a-deliveryman-code-delete-code">3.4.3. Deleting a deliveryman: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>This command deletes an existing deliveryman in the deliverymen database. The index of a deliveryman needs to be provided.</p>
+<p>This command allows you to delete an existing deliveryman in the deliverymen database. You only have to provide the index of the deliveryman.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>delete INDEX</code></p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
-<p><code>delete 1</code></p>
-</div>
-</blockquote>
+<p>Example: <code>delete 1</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="listing-available-deliverymen"><a class="link" href="#listing-available-deliverymen">3.4.4. Listing available deliverymen</a></h4>
 <div class="paragraph">
-<p>This command lists all available deliverymen</p>
+<p>This command allows you to view all the deliverymen who are available for delivery (ie. ready to be assigned food orders).</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>lista</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>lista</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="entering-a-specific-deliveryman"><a class="link" href="#entering-a-specific-deliveryman">3.4.5. Entering a specific deliveryman</a></h4>
 <div class="paragraph">
-<p>This command shows a deliveryman&#8217;s basic info</p>
+<p>This command allows you to view a deliveryman&#8217;s basic information.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>list NAME</code></p>
@@ -573,7 +566,19 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
 <div class="sect3">
 <h4 id="assigning-order-to-a-deliveryman"><a class="link" href="#assigning-order-to-a-deliveryman">3.4.6. Assigning order to a deliveryman</a></h4>
 <div class="paragraph">
-<p>This command assigns an order to an available deliveryman</p>
+<p>This command allows you to manually assign an order to an available deliveryman.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Auto-assignment of orders is enabled by default. Should you wish to manually assign an order, this command can be used.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Format: <code>assn NAME #ORDERINDEX</code></p>
@@ -583,9 +588,21 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="obtains-a-list-of-deliverymen-eligible-for-pay-rise"><a class="link" href="#obtains-a-list-of-deliverymen-eligible-for-pay-rise">3.4.7. Obtains a list of deliverymen eligible for pay rise</a></h4>
+<h4 id="obtaining-a-list-of-deliverymen-eligible-for-pay-rise"><a class="link" href="#obtaining-a-list-of-deliverymen-eligible-for-pay-rise">3.4.7. Obtaining a list of deliverymen eligible for pay rise</a></h4>
 <div class="paragraph">
-<p>This command displays a list of deliverymen who met the pre-determined requirements for a pay rise.</p>
+<p>This command allows you to view a list of deliverymen who have met the pre-determined requirements for a pay rise.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The pre-determined requirements are based on two factors: <strong>delivery rate</strong> and <strong>time in database</strong> of the deliveryman.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Format: <code>payrise</code></p>
@@ -700,7 +717,7 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
 <p>Delete a deliveryman: <code>delete INDEX</code></p>
 </li>
 <li>
-<p>Edit a deliveryman: `edit INDEX [n/NAME] [p/PHONE]</p>
+<p>Edit a deliveryman: <code>edit INDEX [n/NAME] [p/PHONE]</code></p>
 </li>
 <li>
 <p>List available deliverymen: <code>lista</code></p>
@@ -720,4 +737,4 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-25 03:42:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-25 11:48:51 UTC</div></div></div></body></html>
