@@ -52,13 +52,22 @@
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p><strong>Command Types</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
 <p>In <strong>DeliveryMANS</strong>, there are 2 types of commands: universal commands and context-specific commands.</p>
-</div>
-<div class="paragraph">
-<p>Universal commands can be used anywhere throughout the application. You can identify universal commands by its "-" convention followed by a keyword e.g. <code>-help</code>.</p>
-</div>
-<div class="paragraph">
-<p>Context-specific commands are commands which are only applicable for a specific context. Commands such as viewing a customer ordering history can only be accessed in the customer context.</p>
+</li>
+<li>
+<p>Universal commands can be called under any context in the application.</p>
+</li>
+<li>
+<p>Context-specific commands can only be accessed in a specific context. Context-specific commands comprise customer,
+restaurant and deliverymen commands, which can only be called under the customer, restaurant and deliverymen context
+respectively.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><strong>Command Format</strong></p>
@@ -66,21 +75,35 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are parameters to be supplied by the user e.g. in <code>add_order c/CUSTOMER r/RESTAURANT f/FOOD q/QUANTITY</code>, <code>CUSTOMER</code>, <code>RESTAURANT</code>, <code>FOOD</code> and <code>QUANTITY</code> are parameters to be replaced.</p>
-</li>
-</ul>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
-</div>
-</blockquote>
-</div>
+<p>Command words for universal commands are prepended with "-"</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Items with <code>…</code> after them can be used multiple times e.g. <code>f/FOOD&#8230;&#8203;</code> can be used 1 or more: <code>f/3 Piece Chicken Meal</code>, <code>f/Pepperoni Pizza f/Char Kway Teow</code> etc.</p>
+<p>Example Usage: <code>-help</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Words in <code>UPPER_CASE</code> are parameters to be supplied by the user e.g. in <code>add_order c/CUSTOMER r/RESTAURANT f/FOOD q/QUANTITY</code>,
+<code>CUSTOMER</code>, <code>RESTAURANT</code>, <code>FOOD</code> and <code>QUANTITY</code> are parameters to be supplied.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example Usage: <code>add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Items with <code>…</code> after them can be used multiple times e.g. <code>f/FOOD&#8230;&#8203;</code> can be used 1 or more:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example Usage: <code>f/3 Piece Chicken Meal</code> or <code>f/Pepperoni Pizza f/Char Kway Teow</code></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Items with <code>[]</code> are optional and can be ommitted e.g. <code>[t/TAG]&#8230;&#8203;</code></p>
@@ -90,7 +113,8 @@
 <div class="sect2">
 <h3 id="universal-commands"><a class="link" href="#universal-commands">3.1. Universal commands</a></h3>
 <div class="paragraph">
-<p>These are general commands to assist you in controlling the app, which are not directly related to the customer, restaurant and delivery men.</p>
+<p>These are general commands to assist you in controlling the app, which are not directly related to the customer,
+restaurant and deliverymen.</p>
 </div>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help <code>-help</code></a></h4>
@@ -104,35 +128,32 @@
 <ul>
 <li>
 <p>Help with a specific context: <code>-help CONTEXT</code></p>
-</li>
-</ul>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>-help customer</code></p>
-</div>
-</blockquote>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Help with a specific context command: <code>-help cxt/CONTEXT cmd/COMMAND</code></p>
+<p>Example: <code>-help customer</code></p>
 </li>
 </ul>
 </div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p><code>-help -cxt customer -cmd sort</code></p>
+</li>
+<li>
+<p>Help with a specific context command: <code>-help cxt/CONTEXT cmd/COMMAND</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>-help -cxt customer -cmd sort</code></p>
+</li>
+</ul>
 </div>
-</blockquote>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="switching-context"><a class="link" href="#switching-context">3.1.2. Switching context</a></h4>
 <div class="paragraph">
-<p>This command switches to a specific context for you to enter targeted commands. The list of contexts include: customer, deliveryman and restaurant. By default, the application will be in the universal context upon startup.</p>
+<p>This command switches to a specific context for you to enter targeted commands. The list of contexts include:
+customer, deliveryman and restaurant. By default, the application will be in the universal context upon startup.</p>
 </div>
 <div class="sect4">
 <h5 id="switching-to-customer-context-code-customer-code"><a class="link" href="#switching-to-customer-context-code-customer-code">Switching to customer context <code>-customer</code></a></h5>
@@ -165,17 +186,14 @@
 <div class="sect3">
 <h4 id="adding-of-orders-code-add_order-code"><a class="link" href="#adding-of-orders-code-add_order-code">3.1.3. Adding of orders <code>-add_order</code></a></h4>
 <div class="paragraph">
-<p>This command adds a new order to the database to be processed. The deliveryman to deliver the order will be allocated automatically based on the internal algorithms.</p>
+<p>This command adds a new order to the database to be processed. The deliveryman to deliver the order will be allocated
+automatically based on the internal algorithms.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>-add c/CUSTOMER r/RESTAURANT f/FOOD&#8230;&#8203; q/QUANTITY&#8230;&#8203;</code></p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
-<p><code>add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
-</div>
-</blockquote>
+<p>Example:  <code>add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
 </div>
 <div class="paragraph">
 <p>Requirements:</p>
@@ -183,7 +201,8 @@
 <div class="ulist">
 <ul>
 <li>
-<p>A valid customer <code>c/CUSTOMER</code>, restaurant <code>r/RESTAURANT</code> and restaurant menu item <code>f/FOOD</code> must be provided and exists currently in the database.</p>
+<p>A valid customer <code>c/CUSTOMER</code>, restaurant <code>r/RESTAURANT</code> and restaurant menu item <code>f/FOOD</code> must be provided and
+exists currently in the database.</p>
 </li>
 <li>
 <p>The quantity of food to be delivered also be provided and be greater than 0.</p>
@@ -221,12 +240,8 @@
 <div class="paragraph">
 <p>Format: <code>-edit_order i/INDEX [c/CUSTOMER] [r/RESTAURANT] [d/DELIVERYMAN] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203; [completed/DELIVERY_STATUS]</code></p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
-<p><code>-edit_order i/1337 d/John Doe completed/true</code></p>
-</div>
-</blockquote>
+<p>Example: <code>-edit_order i/1337 d/John Doe completed/true</code></p>
 </div>
 <div class="paragraph">
 <p>Requirements:</p>
@@ -256,12 +271,8 @@
 <div class="paragraph">
 <p>Format: <code>-delete_order INDEX</code></p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
-<p><code>-delete_order 3</code></p>
-</div>
-</blockquote>
+<p>Example: <code>-delete_order 3</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -346,12 +357,8 @@ commands which you have undone earlier.</p>
 <div class="paragraph">
 <p>Format: <code>add n/NAME p/PHONE [t/TAG]&#8230;&#8203;</code></p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
-<p><code>add n/John Doe p/91234567 t/Japanese t/Noodles</code></p>
-</div>
-</blockquote>
+<p>Example: <code>add n/John Doe p/91234567 t/Japanese t/Noodles</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -362,12 +369,8 @@ commands which you have undone earlier.</p>
 <div class="paragraph">
 <p>Format: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAGS]&#8230;&#8203;</code></p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
-<p><code>edit 1 n/John Hoe p/97654321 t/Indian</code></p>
-</div>
-</blockquote>
+<p>Example: <code>edit 1 n/John Hoe p/97654321 t/Indian</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -378,12 +381,8 @@ commands which you have undone earlier.</p>
 <div class="paragraph">
 <p>Format: <code>delete INDEX</code></p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
-<p><code>delete 1</code></p>
-</div>
-</blockquote>
+<p>Example: <code>delete 1</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -394,12 +393,8 @@ commands which you have undone earlier.</p>
 <div class="paragraph">
 <p>Format: <code>history INDEX</code></p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
-<p><code>history 1</code></p>
-</div>
-</blockquote>
+<p>Example: <code>history 1</code></p>
 </div>
 </div>
 </div>
@@ -409,9 +404,9 @@ commands which you have undone earlier.</p>
 <p>Commands in the restaurant context</p>
 </div>
 <div class="sect3">
-<h4 id="adding-a-restaurant-code-add-code"><a class="link" href="#adding-a-restaurant-code-add-code">3.3.1. Adding a Restaurant: <code>add</code></a></h4>
+<h4 id="adding-a-restaurant-code-add-code"><a class="link" href="#adding-a-restaurant-code-add-code">3.3.1. Adding a restaurant: <code>add</code></a></h4>
 <div class="paragraph">
-<p>This command adds a Restaurant to the Restaurant Database.</p>
+<p>This command adds a restaurant to the restaurant database.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>add n/NAME l/LOCATION [t/TAG]&#8230;&#8203;</code></p>
@@ -421,12 +416,19 @@ commands which you have undone earlier.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-restaurant-code-delete-code"><a class="link" href="#deleting-a-restaurant-code-delete-code">3.3.2. Deleting a Restaurant: <code>delete</code></a></h4>
+<h4 id="deleting-a-restaurant-code-delete-code"><a class="link" href="#deleting-a-restaurant-code-delete-code">3.3.2. Deleting a restaurant: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>This command deletes the Restaurant identified by the Index in the list of Restaurants from the Restaurant Database</p>
+<p>This command deletes the restaurant at the specified index in the restaurant list from the restaurant database.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>delete INDEX</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>INDEX</code> must be a positive integer from 1 to n, the number of restaurants in the restaurant list.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Example: <code>delete 1</code></p>
@@ -435,8 +437,15 @@ commands which you have undone earlier.</p>
 <div class="sect3">
 <h4 id="entering-editmode-code-edit-code"><a class="link" href="#entering-editmode-code-edit-code">3.3.3. Entering EditMode: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>This command enters EditMode for the Restaurant identified by the Index in the list of Restaurants.
-Unlocks commands for editing details, adding and removing of Food Items in the menu.</p>
+<p>This command enters EditMode for the restaurant identified by the specified index in the restaurant list.
+Displays the restaurant&#8217;s details and menu.
+Unlocks commands for editing details, adding and removing of food items
+in the menu, and adding of rating.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/EditMode.png" alt="EditMode" width="790">
+</div>
 </div>
 <div class="paragraph">
 <p>Format: <code>edit INDEX</code></p>
@@ -446,9 +455,14 @@ Unlocks commands for editing details, adding and removing of Food Items in the m
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-restaurant-under-editmode-code-editdetails-code"><a class="link" href="#editing-a-restaurant-under-editmode-code-editdetails-code">3.3.4. Editing a Restaurant (Under EditMode): <code>editdetails</code></a></h4>
+<h4 id="editing-restaurant-s-details-under-editmode-code-editdetails-code"><a class="link" href="#editing-restaurant-s-details-under-editmode-code-editdetails-code">3.3.4. Editing restaurant&#8217;s details (under EditMode): <code>editdetails</code></a></h4>
 <div class="paragraph">
-<p>This command edits the details of the Restaurant under EditMode.</p>
+<p>This command edits the details of the restaurant under EditMode.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/EditDetails.png" alt="EditDetails" width="790">
+</div>
 </div>
 <div class="paragraph">
 <p>Format: <code>editdetails [n/NAME] [l/LOCATION] [t/TAG]…​</code></p>
@@ -474,27 +488,68 @@ Unlocks commands for editing details, adding and removing of Food Items in the m
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-food-item-under-editmode-code-add-code"><a class="link" href="#adding-food-item-under-editmode-code-add-code">3.3.5. Adding food item (Under EditMode): <code>add</code></a></h4>
+<h4 id="adding-food-item-under-editmode-code-add-code"><a class="link" href="#adding-food-item-under-editmode-code-add-code">3.3.5. Adding food item (under EditMode): <code>add</code></a></h4>
 <div class="paragraph">
-<p>This command adds a Food item for the Restaurant under EditMode.</p>
+<p>This command adds a food item to the menu of the restaurant under EditMode.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>add n/NAME a/PRICE [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>add n/Chicken a/7.90 t/Popular</code></p>
+<p>Example: <code>add n/Chicken a/7.90 t/Recommended</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="removing-food-item-under-editmode-code-delete-code"><a class="link" href="#removing-food-item-under-editmode-code-delete-code">3.3.6. Removing food item (Under EditMode): <code>delete</code></a></h4>
+<h4 id="deleting-food-item-under-editmode-code-delete-code"><a class="link" href="#deleting-food-item-under-editmode-code-delete-code">3.3.6. Deleting food item (under EditMode): <code>delete</code></a></h4>
 <div class="paragraph">
-<p>This command removes the Food item identified by the Index in the Menu list of the Restaurant under EditMode.</p>
+<p>This command deletes the food item at the specified index in the menu of the restaurant under EditMode.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>remove INDEX</code></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>INDEX</code> must be a positive integer from 1 to n, the number of food items in the restaurant&#8217;s menu.</p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>Example: <code>remove 1</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-a-rating-under-editmode-rate"><a class="link" href="#adding-a-rating-under-editmode-rate">3.3.7. Adding a rating (under EditMode): 'rate'</a></h4>
+<div class="paragraph">
+<p>This command adds a rating to the restaurant under EditMode and updates the new average rating of all the ratings
+added to date.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/AddRating.png" alt="AddRating" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Format: <code>rate RATING</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>RATING</code> must be a non-negative integer from 0 to 5.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example: <code>rate 4</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exiting-editmode-exitedit"><a class="link" href="#exiting-editmode-exitedit">3.3.8. Exiting EditMode: 'exitedit'</a></h4>
+<div class="paragraph">
+<p>This command exits EditMode for the specific restaurant and returns to the list of restaurants</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>exitedit</code></p>
 </div>
 </div>
 </div>
@@ -695,13 +750,16 @@ The pre-determined requirements are based on two factors: <strong>delivery rate<
 <p>Entering EditMode: <code>edit INDEX</code></p>
 </li>
 <li>
-<p>Editing a restaurant: <code>editdetails [n/NAME] [l/LOCATION] [t/TAG]…​</code></p>
+<p>Editing a restaurant&#8217;s details: <code>editdetails [n/NAME] [l/LOCATION] [t/TAG]…​</code></p>
 </li>
 <li>
-<p>Adding food item: <code>add n/NAME a/PRICE [t/TAG]&#8230;&#8203;</code></p>
+<p>Adding a food item: <code>add n/NAME a/PRICE [t/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Removing food item: <code>delete INDEX</code></p>
+<p>Deleting a food item: <code>delete INDEX</code></p>
+</li>
+<li>
+<p>Adding a rating: <code>rate RATING</code></p>
 </li>
 </ul>
 </div>
@@ -737,4 +795,4 @@ The pre-determined requirements are based on two factors: <strong>delivery rate<
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-28 08:01:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-28 16:44:16 UTC</div></div></div></body></html>
