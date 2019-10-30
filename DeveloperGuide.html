@@ -921,34 +921,113 @@ The command will access the <code>UniqueDeliverymenList</code> in order to obtai
 <div class="sect2">
 <h3 id="editmode"><a class="link" href="#editmode">4.8. EditMode</a></h3>
 <div class="paragraph">
-<p>A Restaurant object contains many attributes, including a List of Food items as its menu,
-which makes it difficult to edit an entire Restaurant object using 1 command line.
-This feature allows editing of a specific Restaurant&#8217;s details and Food menu under 1 mode, through different commands.</p>
+<p>A <code>Restaurant</code> object contains many attributes. On top of a <code>Name</code>, <code>Location</code>, <code>Rating</code> and a list of <code>Tag</code>,
+it also includes a list of <code>Food</code> as its menu. This makes it difficult to edit an entire <code>Restaurant</code> object
+using just one <code>Command</code>. The EditMode feature allows editing of a specific <code>Restaurant</code> object&#8217;s details and menu
+separately under 1 mode, using different commands.</p>
 </div>
 <div class="sect3">
 <h4 id="implementation-5"><a class="link" href="#implementation-5">4.8.1. Implementation</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Model</strong>:
-ModelManager now contains a editingRestaurantList in addition to the filteredRestaurantList, which stores
-and allows access to the Restaurant currently under EditMode.</p>
-</li>
-<li>
-<p><strong>Logic</strong>:
-The Logic for EditMode is facilitated by <code>Context</code> enum type.
-A different Parser will parse the userInput based on the current context.
-The <code>editmode</code> command will change the current context to <code>Editing</code>,
-and commands for EditMode can only be accessed if under <code>Editing</code> Context.</p>
-</li>
-<li>
-<p><strong>UI</strong>:
-Current context will be passed to UI by the command result returned by <code>editmode</code> command.
-Changes to the UI for EditMode is made accordingly if under <code>Editing</code> Context.
-An extra StackPane showing the restaurant under EditMode will be displayed,
-while the StackPane displaying the list of Restaurants originally will be filled with the restaurant&#8217;s Food menu instead.</p>
+<p><strong>Model</strong>:</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>In addition to the <code>filteredRestaurantList</code> that contains all the restaurants in the restaurant database,
+<code>ModelManager</code> now contains a <code>editingRestaurantList</code>, which contains and allows access to the restaurant
+currently under EditMode. Upon calling of <code>editmode INDEX</code> command, the restaurant
+referenced by the <code>INDEX</code> in the list of restaurants will be placed in the <code>editingRestaurantList</code>.
+Subsequent commands that edit the restaurant, such as <code>addFoodCommand</code>, <code>addRatingCommand</code> and <code>editDetailsCommand</code>
+will create a new restaurant with the edited attributes and replace the restaurant in the <code>editingRestaurantList</code>
+with the new edited restaurant.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Logic</strong>:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>Logic</code> for EditMode is facilitated by <code>Context</code> enum type, which contains the following constants:
+<code>GLOBAL</code>, <code>CUSTOMER</code>, <code>RESTAURANT</code>, <code>DELIVERYMEN</code> and <code>EDITING</code>. It determines the <code>Context</code> the application is in,
+as well as the commands the user can access.</p>
+</div>
+<div class="paragraph">
+<p>It is contained inside <code>UniversalParser</code> as an attribute. When the user inputs the command,
+<code>userInput</code> will always be parsed by <code>UniversalParser</code> first, regardless of the current <code>Context</code>.
+The reason for this is to check for universal commands, which are accessible in all <code>Context</code>.
+Subsequently, if the command word in <code>userInput</code> matches none of the universal commands, then <code>UniversalParser</code>
+will create a context specific <code>Parser</code> based on the current <code>Context</code> it is in, which takes over and parses the
+<code>userInput</code>. Any context switching command will then change the <code>Context</code> in <code>UniversalParser</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following class diagram shows the structure of the <code>UniversalParser</code>:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Insert PNG for ParserClassDiagram.puml
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happens when the user enters the command to enter EditMode:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Insert PNG for ParserActivityDiagram.puml
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>UI</strong>:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Commands that change the <code>Context</code>, and hence the UI, will pass the new <code>Context</code> to <code>MainWindow</code> in the Ui package
+via the <code>CommandResult</code> returned by the command.
+When <code>MainWindow</code> receives this , it will do the changes to the Ui accordingly via the function call
+<code>MainWindow#changeDisplay()</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>editModeCommand</code> changes the <code>Context</code> to <code>Context.EDITING</code>. <code>MainWindow</code> will then display an extra <code>StackPane</code>
+showing the restaurant under EditMode, while the <code>StackPane</code> displaying the list of Restaurants
+originally will be filled with the restaurant&#8217;s <code>Food</code> menu instead.
+Once <code>exitEditCommand</code> is called, <code>Editing</code> context is exited, the stackpane will be hidden,
+and the list of restaurants will be shown again.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram summarises how the <code>editModeCommand</code> changes the Ui:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Insert PNG for MainWindowSequenceDiagram.puml
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -1066,26 +1145,32 @@ while the StackPane displaying the list of Restaurants originally will be filled
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Administrator</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">generate statistics</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see which restaurants use our app the most</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Administrator</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">see the expected timings of the orders</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">know the priority of the orders</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Administrator</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add or remove menu items from restaurant menus</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">restaurants can adjust their menus whenever without any delay</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add and remove food items from restaurants' menu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update restaurants' menu</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Administrator</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort restaurant by popularity/ food type/ availability</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">recommend restaurants to customers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add and remove restaurants</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update the list of restaurants in the database</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Administrator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit restaurants' details</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update the details of restaurants</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Administrator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add ratings for restaurants</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update the displayed ratings of restaurants</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -1350,4 +1435,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 14:03:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 14:07:13 UTC</div></div></div></body></html>
