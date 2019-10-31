@@ -75,11 +75,11 @@ respectively.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Command words for universal commands are prepended with "-"</p>
+<p>Command words for universal commands are prepended with "-" <strong>(not for now)</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Example Usage: <code>-help</code>.</p>
+<p>Example Usage: <code>help</code>.</p>
 </li>
 </ul>
 </div>
@@ -123,17 +123,17 @@ restaurant and deliverymen.</p>
 <p>&#160;<br></p>
 </div>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help <code>-help</code></a></h4>
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help: <code>help</code></a></h4>
 <div class="paragraph">
 <p>This generates a list of commands and tips for you.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>-help</code></p>
+<p>Format: <code>help</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Example: <code>-help</code></p>
+<p>Example: <code>help</code></p>
 </li>
 </ul>
 </div>
@@ -148,30 +148,30 @@ restaurant and deliverymen.</p>
 customer, deliveryman and restaurant. By default, the application will be in the universal context upon startup.</p>
 </div>
 <div class="sect4">
-<h5 id="switching-to-customer-context-code-customer-code"><a class="link" href="#switching-to-customer-context-code-customer-code">Switching to customer context <code>-customer</code></a></h5>
+<h5 id="switching-to-customer-context-code-customer-code"><a class="link" href="#switching-to-customer-context-code-customer-code">Switching to customer context: <code>customer</code></a></h5>
 <div class="paragraph">
 <p>This command switches to the customer context for you to enter customer-specific commands.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>-customer</code></p>
+<p>Format: <code>customer</code></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="switching-to-restaurant-context-code-restaurant-code"><a class="link" href="#switching-to-restaurant-context-code-restaurant-code">Switching to restaurant context <code>-restaurant</code></a></h5>
+<h5 id="switching-to-restaurant-context-code-restaurant-code"><a class="link" href="#switching-to-restaurant-context-code-restaurant-code">Switching to restaurant context: <code>restaurant</code></a></h5>
 <div class="paragraph">
 <p>This command switches to the restaurant context for you to enter restaurant-specific commands.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>-restaurant</code></p>
+<p>Format: <code>restaurant</code></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="switching-to-deliveryman-context-code-deliveryman-code"><a class="link" href="#switching-to-deliveryman-context-code-deliveryman-code">Switching to deliveryman context <code>-deliveryman</code></a></h5>
+<h5 id="switching-to-deliveryman-context-code-deliverymen-code"><a class="link" href="#switching-to-deliveryman-context-code-deliverymen-code">Switching to deliveryman context: <code>deliverymen</code></a></h5>
 <div class="paragraph">
 <p>This command switches to the deliveryman context for you to enter deliveryman-specific commands.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>-deliveryman</code></p>
+<p>Format: <code>deliverymen</code></p>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -179,13 +179,13 @@ customer, deliveryman and restaurant. By default, the application will be in the
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-of-orders-code-add_order-code"><a class="link" href="#adding-of-orders-code-add_order-code">3.1.3. Adding of orders <code>-add_order</code></a></h4>
+<h4 id="adding-an-order-code-add_order-code"><a class="link" href="#adding-an-order-code-add_order-code">3.1.3. Adding an order: <code>add_order</code></a></h4>
 <div class="paragraph">
 <p>This command adds a new order to the database to be processed. The deliveryman to deliver the order will be allocated
 automatically based on the internal algorithms.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>-add c/CUSTOMER r/RESTAURANT f/FOOD&#8230;&#8203; q/QUANTITY&#8230;&#8203;</code></p>
+<p>Format: <code>add c/CUSTOMER r/RESTAURANT f/FOOD&#8230;&#8203; q/QUANTITY&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Example:  <code>add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
@@ -209,7 +209,7 @@ exists currently in the database.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-of-orders-code-edit_order-code"><a class="link" href="#editing-of-orders-code-edit_order-code">3.1.4. Editing of orders <code>-edit_order</code></a></h4>
+<h4 id="editing-an-order-code-edit_order-code"><a class="link" href="#editing-an-order-code-edit_order-code">3.1.4. Editing an order: <code>edit_order</code></a></h4>
 <div class="paragraph">
 <p>This enables you to edit an order. The order to edit will have to be specified by its index when you are entering the command.</p>
 </div>
@@ -236,10 +236,10 @@ exists currently in the database.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Format: <code>-edit_order i/INDEX [c/CUSTOMER] [r/RESTAURANT] [d/DELIVERYMAN] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203; [completed/DELIVERY_STATUS]</code></p>
+<p>Format: <code>edit_order i/INDEX [c/CUSTOMER] [r/RESTAURANT] [d/DELIVERYMAN] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203; [completed/DELIVERY_STATUS]</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>-edit_order i/1337 d/John Doe completed/true</code></p>
+<p>Example: <code>edit_order i/1337 d/John Doe completed/true</code></p>
 </div>
 <div class="paragraph">
 <p>Requirements:</p>
@@ -265,27 +265,27 @@ exists currently in the database.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-of-orders-code-delete_order-code"><a class="link" href="#deleting-of-orders-code-delete_order-code">3.1.5. Deleting of orders <code>-delete_order</code></a></h4>
+<h4 id="deleting-an-order-code-delete_order-code"><a class="link" href="#deleting-an-order-code-delete_order-code">3.1.5. Deleting an order: <code>delete_order</code></a></h4>
 <div class="paragraph">
 <p>This command enables you to delete an unwanted/cancelled order in the database by its index.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>-delete_order INDEX</code></p>
+<p>Format: <code>delete_order INDEX</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>-delete_order 3</code></p>
+<p>Example: <code>delete_order 3</code></p>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-command-code-undo-code"><a class="link" href="#undoing-command-code-undo-code">3.1.6. Undoing command <code>-undo</code></a></h4>
+<h4 id="undoing-a-command-code-undo-code"><a class="link" href="#undoing-a-command-code-undo-code">3.1.6. Undoing a command: <code>undo</code></a></h4>
 <div class="paragraph">
 <p>This command undoes the effects of a command that you have previously executed.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>-undo</code></p>
+<p>Format: <code>undo</code></p>
 </div>
 <div class="paragraph">
 <p>Say you have accidentally executed a command and now want to reverse it. Just type <code>undo</code> into the
@@ -303,14 +303,14 @@ reverse commands which you have performed even earlier.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-command-code-redo-code"><a class="link" href="#redoing-command-code-redo-code">3.1.7. Redoing command <code>-redo</code></a></h4>
+<h4 id="redoing-a-command-code-redo-code"><a class="link" href="#redoing-a-command-code-redo-code">3.1.7. Redoing a command: <code>redo</code></a></h4>
 <div class="paragraph">
 <p>This command redoes the effects of a command that you have just undone, in effect undoing an undo.
 Similarly to <code>undo</code>, this command can be used multiple times in succession to bring back multiple
 commands which you have undone earlier.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>-redo</code></p>
+<p>Format: <code>redo</code></p>
 </div>
 <div class="paragraph">
 <p>After performing <code>redo</code>, the result pane will show:</p>
@@ -323,12 +323,12 @@ commands which you have undone earlier.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-program-code-exit-code"><a class="link" href="#exiting-program-code-exit-code">3.1.8. Exiting program <code>-exit</code></a></h4>
+<h4 id="exiting-program-code-exit-code"><a class="link" href="#exiting-program-code-exit-code">3.1.8. Exiting program: <code>exit</code></a></h4>
 <div class="paragraph">
 <p>This command exits the program.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>-exit</code></p>
+<p>Format: <code>exit</code></p>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -632,7 +632,21 @@ added to date.</p>
 <div class="sect3">
 <h4 id="editing-a-deliveryman-code-edit-code"><a class="link" href="#editing-a-deliveryman-code-edit-code">3.4.2. Editing a deliveryman: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>This command allows you to edit an existing deliveryman in the deliverymen database. You must edit at least one field (eg. name, phone number).</p>
+<p>This command allows you to edit an existing deliveryman in the deliverymen database. You must edit at least one field
+(eg. name, phone number).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Editing the info of a deliveryman will reset the status of the deliveryman to <strong>UNAVAILABLE</strong>. You will have
+to switch it back to <strong>AVAILABLE</strong> through the <code>status</code> command explained in <em>Section 3.4.5</em>.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Format: <code>edit INDEX [n/NAME] [p/PHONE]</code></p>
@@ -647,7 +661,8 @@ added to date.</p>
 <div class="sect3">
 <h4 id="deleting-a-deliveryman-code-delete-code"><a class="link" href="#deleting-a-deliveryman-code-delete-code">3.4.3. Deleting a deliveryman: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>This command allows you to delete an existing deliveryman in the deliverymen database. You only have to provide the index of the deliveryman.</p>
+<p>This command allows you to delete an existing deliveryman in the deliverymen database. You only have to provide the
+index of the deliveryman.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>delete INDEX</code></p>
@@ -660,9 +675,26 @@ added to date.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-available-deliverymen"><a class="link" href="#listing-available-deliverymen">3.4.4. Listing available deliverymen</a></h4>
+<h4 id="listing-status-lists-of-deliverymen-code-lista-code"><a class="link" href="#listing-status-lists-of-deliverymen-code-lista-code">3.4.4. Listing status lists of deliverymen: <code>lista</code></a></h4>
 <div class="paragraph">
-<p>This command allows you to view all the deliverymen who are available for delivery (ie. ready to be assigned food orders).</p>
+<p>This command allows you to view all the deliverymen sorted according to their statuses. For your easy navigation,
+you can click on any of the three buttons to show the status list that you wish to view
+<strong>(Yes, it took me one whole day to learn JavaFX and implement that shit)</strong>, as shown in Fig X.Y below.</p>
+</div>
+<div class="paragraph">
+<p><code>(Diagram to be added here)</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A deliveryman can have one of the 3 statuses: <strong>AVAILABLE</strong>, <strong>UNAVAILABLE</strong>, <strong>DELIVERING</strong>.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Format: <code>lista</code></p>
@@ -675,69 +707,75 @@ added to date.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="entering-a-specific-deliveryman"><a class="link" href="#entering-a-specific-deliveryman">3.4.5. Entering a specific deliveryman</a></h4>
+<h4 id="changing-status-of-a-deliveryman-code-status-code"><a class="link" href="#changing-status-of-a-deliveryman-code-status-code">3.4.5. Changing status of a deliveryman: <code>status</code></a></h4>
+<div class="paragraph">
+<p>This command allows you to switch the status of a deliveryman between <strong>AVAILABLE</strong> and <strong>UNAVAILABLE</strong>. Using this command
+will prompt the status lists as well (that can be done through <code>lista</code> command explained in <em>Section 3.4.4</em>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You are not allowed to change the status of a deliveryman who has the status <strong>DELIVERING</strong>. Completion of the
+the assigned delivery will automatically set it back to <strong>AVAILABLE</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>status INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>status 3</code></p>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-the-statistics-of-the-deliverymen-statuses-code-stats-code"><a class="link" href="#viewing-the-statistics-of-the-deliverymen-statuses-code-stats-code">3.4.6. Viewing the statistics of the deliverymen statuses: <code>stats</code></a></h4>
+<div class="paragraph">
+<p>This command allows you to view the statistics of the current statuses of deliverymen. Relevant statistics such as the
+utilisation level will also be computed and displayed for your reference.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>stats</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>stats</code></p>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="entering-a-specific-deliveryman-code-enter-code"><a class="link" href="#entering-a-specific-deliveryman-code-enter-code">3.4.7. Entering a specific deliveryman: <code>enter</code></a></h4>
 <div class="paragraph">
 <p>This command allows you to view a deliveryman&#8217;s basic information.</p>
 </div>
-<div class="paragraph">
-<p>Format: <code>list NAME</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>list Stanley Tay</code></p>
-</div>
-<div class="paragraph">
-<p>&#160;<br></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="assigning-order-to-a-deliveryman"><a class="link" href="#assigning-order-to-a-deliveryman">3.4.6. Assigning order to a deliveryman</a></h4>
-<div class="paragraph">
-<p>This command allows you to manually assign an order to an available deliveryman.</p>
-</div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Auto-assignment of orders is enabled by default. Should you wish to manually assign an order, this command can be used.
+This is half-implemented. But you can still use it. For fun. But if you have time.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Format: <code>assn NAME #ORDERINDEX</code></p>
+<p>Format: <code>enter INDEX</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>assn Stanley Tay #12</code></p>
+<p>Example: <code>enter 1</code></p>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="obtaining-a-list-of-deliverymen-eligible-for-pay-rise"><a class="link" href="#obtaining-a-list-of-deliverymen-eligible-for-pay-rise">3.4.7. Obtaining a list of deliverymen eligible for pay rise</a></h4>
-<div class="paragraph">
-<p>This command allows you to view a list of deliverymen who have met the pre-determined requirements for a pay rise.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The pre-determined requirements are based on two factors: <strong>delivery rate</strong> and <strong>time in database</strong> of the deliveryman.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Format: <code>payrise</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>payrise</code></p>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -759,37 +797,37 @@ The pre-determined requirements are based on two factors: <strong>delivery rate<
 <div class="ulist">
 <ul>
 <li>
-<p>View help: <code>-help</code></p>
+<p>View help: <code>help</code></p>
 </li>
 <li>
-<p>View order summary: <code>-order_summary</code></p>
+<p>View order summary: <code>order_summary</code></p>
 </li>
 <li>
-<p>Add order: <code>-add c/CUSTOMER r/RESTAURANT f/FOOD&#8230;&#8203; q/QUANTITY&#8230;&#8203;</code></p>
+<p>Add order: <code>add c/CUSTOMER r/RESTAURANT f/FOOD&#8230;&#8203; q/QUANTITY&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Edit order: <code>-edit_order i/INDEX [c/CUSTOMER] [r/RESTAURANT] [d/DELIVERYMAN] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203; [completed/DELIVERY_STATUS]</code></p>
+<p>Edit order: <code>edit_order i/INDEX [c/CUSTOMER] [r/RESTAURANT] [d/DELIVERYMAN] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203; [completed/DELIVERY_STATUS]</code></p>
 </li>
 <li>
-<p>Delete order: <code>-delete_order INDEX</code></p>
+<p>Delete order: <code>delete_order INDEX</code></p>
 </li>
 <li>
-<p>Switch to restaurant context: <code>-restaurant</code></p>
+<p>Switch to restaurant context: <code>restaurant</code></p>
 </li>
 <li>
-<p>Switch to customer context: <code>-customer</code></p>
+<p>Switch to customer context: <code>customer</code></p>
 </li>
 <li>
-<p>Switch to deliverymen context: <code>-deliverymen</code></p>
+<p>Switch to deliverymen context: <code>deliverymen</code></p>
 </li>
 <li>
-<p>Undo command: <code>-undo</code></p>
+<p>Undo command: <code>undo</code></p>
 </li>
 <li>
-<p>Redo command: <code>-redo</code></p>
+<p>Redo command: <code>redo</code></p>
 </li>
 <li>
-<p>Exit application: <code>-exit</code></p>
+<p>Exit application: <code>exit</code></p>
 </li>
 </ul>
 </div>
@@ -818,25 +856,25 @@ The pre-determined requirements are based on two factors: <strong>delivery rate<
 <div class="ulist">
 <ul>
 <li>
-<p>Adding a restaurant: <code>add n/NAME l/LOCATION [t/TAG]&#8230;&#8203;</code></p>
+<p>Add a restaurant: <code>add n/NAME l/LOCATION [t/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Deleting a restaurant: <code>delete INDEX</code></p>
+<p>Delete a restaurant: <code>delete INDEX</code></p>
 </li>
 <li>
-<p>Entering EditMode: <code>edit INDEX</code></p>
+<p>Enter EditMode: <code>edit INDEX</code></p>
 </li>
 <li>
-<p>Editing a restaurant&#8217;s details: <code>editdetails [n/NAME] [l/LOCATION] [t/TAG]…​</code></p>
+<p>Edit a restaurant&#8217;s details: <code>editdetails [n/NAME] [l/LOCATION] [t/TAG]…​</code></p>
 </li>
 <li>
-<p>Adding a food item: <code>add n/NAME a/PRICE [t/TAG]&#8230;&#8203;</code></p>
+<p>Add a food item: <code>add n/NAME a/PRICE [t/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Deleting a food item: <code>delete INDEX</code></p>
+<p>Delete a food item: <code>delete INDEX</code></p>
 </li>
 <li>
-<p>Adding a rating: <code>rate RATING</code></p>
+<p>Add a rating: <code>rate RATING</code></p>
 </li>
 </ul>
 </div>
@@ -855,16 +893,16 @@ The pre-determined requirements are based on two factors: <strong>delivery rate<
 <p>Edit a deliveryman: <code>edit INDEX [n/NAME] [p/PHONE]</code></p>
 </li>
 <li>
-<p>List available deliverymen: <code>lista</code></p>
+<p>List deliverymen sorted by status: <code>lista</code></p>
 </li>
 <li>
-<p>List specific deliveryman info: <code>list NAME</code></p>
+<p>Switch status of a deliveryman: <code>status INDEX</code></p>
 </li>
 <li>
-<p>Assign order to deliveryman: <code>assn NAME #orderINDEX</code></p>
+<p>View statistics for deliverymen current statuses: <code>stats</code></p>
 </li>
 <li>
-<p>List deliverymen eligible for pay rise: <code>payrise</code></p>
+<p>List specific deliveryman info: <code>enter INDEX</code></p>
 </li>
 </ul>
 </div>
@@ -872,4 +910,4 @@ The pre-determined requirements are based on two factors: <strong>delivery rate<
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:45:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:47:23 UTC</div></div></div></body></html>
