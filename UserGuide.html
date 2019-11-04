@@ -181,7 +181,7 @@ customer, deliveryman and restaurant. By default, the application will be in the
 <div class="sect3">
 <h4 id="adding-an-order-code-add_order-code"><a class="link" href="#adding-an-order-code-add_order-code">3.1.3. Adding an order: <code>-add_order</code></a></h4>
 <div class="paragraph">
-<p>This command adds a new order to the database to be processed. The deliveryman to deliver the order will be allocated
+<p>This command allows you to add a new order to the database to be processed. The deliveryman to deliver the order will be allocated
 automatically based on the internal algorithms.</p>
 </div>
 <div class="paragraph">
@@ -209,9 +209,37 @@ exists currently in the database.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-an-order-code-edit_order-code"><a class="link" href="#editing-an-order-code-edit_order-code">3.1.4. Editing an order: <code>-edit_order</code></a></h4>
+<h4 id="completing-an-order-code-complete_order-code"><a class="link" href="#completing-an-order-code-complete_order-code">3.1.4. Completing an order: <code>-complete_order</code></a></h4>
 <div class="paragraph">
-<p>This enables you to edit an order. The order to edit will have to be specified by its index when you are entering the command.</p>
+<p>This command allows you to complete an order in the database by its index.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>-complete_order INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example:  <code>-complete_order 3</code></p>
+</div>
+<div class="paragraph">
+<p>Requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A deliveryman must be assigned to the order before it can be completed.</p>
+</li>
+<li>
+<p>The index provided must be within the order list size and be greater than or equals to 0.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-an-order-code-edit_order-code"><a class="link" href="#editing-an-order-code-edit_order-code">3.1.5. Editing an order: <code>-edit_order</code></a></h4>
+<div class="paragraph">
+<p>This command enables you to edit an order. The order to edit will have to be specified by its index when you are entering the command.</p>
 </div>
 <div class="paragraph">
 <p>You can change:</p>
@@ -256,7 +284,7 @@ exists currently in the database.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-an-order-code-delete_order-code"><a class="link" href="#deleting-an-order-code-delete_order-code">3.1.5. Deleting an order: <code>-delete_order</code></a></h4>
+<h4 id="deleting-an-order-code-delete_order-code"><a class="link" href="#deleting-an-order-code-delete_order-code">3.1.6. Deleting an order: <code>-delete_order</code></a></h4>
 <div class="paragraph">
 <p>This command enables you to delete an unwanted/cancelled order in the database by its index.</p>
 </div>
@@ -267,11 +295,46 @@ exists currently in the database.</p>
 <p>Example: <code>-delete_order 3</code></p>
 </div>
 <div class="paragraph">
+<p>Requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The index provided must be within the order list size and be greater than or equals to 0.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p>&#160;<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-a-command-code-undo-code"><a class="link" href="#undoing-a-command-code-undo-code">3.1.6. Undoing a command: <code>-undo</code></a></h4>
+<h4 id="listing-all-orders-code-list_orders-code"><a class="link" href="#listing-all-orders-code-list_orders-code">3.1.7. Listing all orders: <code>-list_orders</code></a></h4>
+<div class="paragraph">
+<p>This command enables you to view all orders currently in the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>-list_orders</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>-list_orders</code></p>
+</div>
+<div class="paragraph">
+<p>Requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The index provided must be within the order list size and be greater than or equals to 0.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undoing-a-command-code-undo-code"><a class="link" href="#undoing-a-command-code-undo-code">3.1.8. Undoing a command: <code>-undo</code></a></h4>
 <div class="paragraph">
 <p>This command undoes the effects of a command that you have previously executed.</p>
 </div>
@@ -294,7 +357,7 @@ reverse commands which you have performed even earlier.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-a-command-code-redo-code"><a class="link" href="#redoing-a-command-code-redo-code">3.1.7. Redoing a command: <code>-redo</code></a></h4>
+<h4 id="redoing-a-command-code-redo-code"><a class="link" href="#redoing-a-command-code-redo-code">3.1.9. Redoing a command: <code>-redo</code></a></h4>
 <div class="paragraph">
 <p>This command redoes the effects of a command that you have just undone, in effect undoing an undo.
 Similarly to <code>-undo</code>, this command can be used multiple times in succession to bring back multiple
@@ -314,7 +377,7 @@ commands which you have undone earlier.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-program-code-exit-code"><a class="link" href="#exiting-program-code-exit-code">3.1.8. Exiting program: <code>-exit</code></a></h4>
+<h4 id="exiting-program-code-exit-code"><a class="link" href="#exiting-program-code-exit-code">3.1.10. Exiting program: <code>-exit</code></a></h4>
 <div class="paragraph">
 <p>This command exits the program.</p>
 </div>
@@ -788,37 +851,40 @@ This is half-implemented. But you can still use it. For fun. But if you have tim
 <div class="ulist">
 <ul>
 <li>
-<p>View help: <code>help</code></p>
+<p>View help: <code>-help</code></p>
 </li>
 <li>
-<p>View order summary: <code>order_summary</code></p>
+<p>Add order: <code>-add_order c/CUSTOMER r/RESTAURANT f/FOOD&#8230;&#8203; q/QUANTITY&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Add order: <code>add c/CUSTOMER r/RESTAURANT f/FOOD&#8230;&#8203; q/QUANTITY&#8230;&#8203;</code></p>
+<p>Complete order: <code>-complete_order INDEX</code></p>
 </li>
 <li>
-<p>Edit order: <code>edit_order i/INDEX [c/CUSTOMER] [r/RESTAURANT] [d/DELIVERYMAN] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203; [completed/DELIVERY_STATUS]</code></p>
+<p>Edit order: <code>-edit_order i/INDEX [c/CUSTOMER] [r/RESTAURANT] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Delete order: <code>delete_order INDEX</code></p>
+<p>Delete order: <code>-delete_order INDEX</code></p>
 </li>
 <li>
-<p>Switch to restaurant context: <code>restaurant</code></p>
+<p>List orders: <code>-list_orders</code></p>
 </li>
 <li>
-<p>Switch to customer context: <code>customer</code></p>
+<p>Switch to restaurant context: <code>-restaurant</code></p>
 </li>
 <li>
-<p>Switch to deliverymen context: <code>deliverymen</code></p>
+<p>Switch to customer context: <code>-customer</code></p>
 </li>
 <li>
-<p>Undo command: <code>undo</code></p>
+<p>Switch to deliverymen context: <code>-deliverymen</code></p>
 </li>
 <li>
-<p>Redo command: <code>redo</code></p>
+<p>Undo command: <code>-undo</code></p>
 </li>
 <li>
-<p>Exit application: <code>exit</code></p>
+<p>Redo command: <code>-redo</code></p>
+</li>
+<li>
+<p>Exit application: <code>-exit</code></p>
 </li>
 </ul>
 </div>
@@ -901,4 +967,4 @@ This is half-implemented. But you can still use it. For fun. But if you have tim
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-04 04:34:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-04 05:26:10 UTC</div></div></div></body></html>
