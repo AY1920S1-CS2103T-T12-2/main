@@ -123,17 +123,17 @@ restaurant and deliverymen.</p>
 <p>&#160;<br></p>
 </div>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help: <code>help</code></a></h4>
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help: <code>-help</code></a></h4>
 <div class="paragraph">
 <p>This generates a list of commands and tips for you.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
+<p>Format: <code>-help</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Example: <code>help</code></p>
+<p>Example: <code>-help</code></p>
 </li>
 </ul>
 </div>
@@ -148,30 +148,30 @@ restaurant and deliverymen.</p>
 customer, deliveryman and restaurant. By default, the application will be in the universal context upon startup.</p>
 </div>
 <div class="sect4">
-<h5 id="switching-to-customer-context-code-customer-code"><a class="link" href="#switching-to-customer-context-code-customer-code">Switching to customer context: <code>customer</code></a></h5>
+<h5 id="switching-to-customer-context-code-customer-code"><a class="link" href="#switching-to-customer-context-code-customer-code">Switching to customer context: <code>-customer</code></a></h5>
 <div class="paragraph">
 <p>This command switches to the customer context for you to enter customer-specific commands.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>customer</code></p>
+<p>Format: <code>-customer</code></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="switching-to-restaurant-context-code-restaurant-code"><a class="link" href="#switching-to-restaurant-context-code-restaurant-code">Switching to restaurant context: <code>restaurant</code></a></h5>
+<h5 id="switching-to-restaurant-context-code-restaurant-code"><a class="link" href="#switching-to-restaurant-context-code-restaurant-code">Switching to restaurant context: <code>-restaurant</code></a></h5>
 <div class="paragraph">
 <p>This command switches to the restaurant context for you to enter restaurant-specific commands.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>restaurant</code></p>
+<p>Format: <code>-restaurant</code></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="switching-to-deliveryman-context-code-deliverymen-code"><a class="link" href="#switching-to-deliveryman-context-code-deliverymen-code">Switching to deliveryman context: <code>deliverymen</code></a></h5>
+<h5 id="switching-to-deliveryman-context-code-deliverymen-code"><a class="link" href="#switching-to-deliveryman-context-code-deliverymen-code">Switching to deliveryman context: <code>-deliverymen</code></a></h5>
 <div class="paragraph">
 <p>This command switches to the deliveryman context for you to enter deliveryman-specific commands.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>deliverymen</code></p>
+<p>Format: <code>-deliverymen</code></p>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -179,16 +179,16 @@ customer, deliveryman and restaurant. By default, the application will be in the
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-an-order-code-add_order-code"><a class="link" href="#adding-an-order-code-add_order-code">3.1.3. Adding an order: <code>add_order</code></a></h4>
+<h4 id="adding-an-order-code-add_order-code"><a class="link" href="#adding-an-order-code-add_order-code">3.1.3. Adding an order: <code>-add_order</code></a></h4>
 <div class="paragraph">
 <p>This command adds a new order to the database to be processed. The deliveryman to deliver the order will be allocated
 automatically based on the internal algorithms.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add c/CUSTOMER r/RESTAURANT f/FOOD&#8230;&#8203; q/QUANTITY&#8230;&#8203;</code></p>
+<p>Format: <code>-add_order c/CUSTOMER r/RESTAURANT f/FOOD&#8230;&#8203; q/QUANTITY&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Example:  <code>add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
+<p>Example:  <code>-add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
 </div>
 <div class="paragraph">
 <p>Requirements:</p>
@@ -209,7 +209,7 @@ exists currently in the database.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-an-order-code-edit_order-code"><a class="link" href="#editing-an-order-code-edit_order-code">3.1.4. Editing an order: <code>edit_order</code></a></h4>
+<h4 id="editing-an-order-code-edit_order-code"><a class="link" href="#editing-an-order-code-edit_order-code">3.1.4. Editing an order: <code>-edit_order</code></a></h4>
 <div class="paragraph">
 <p>This enables you to edit an order. The order to edit will have to be specified by its index when you are entering the command.</p>
 </div>
@@ -227,19 +227,13 @@ exists currently in the database.</p>
 <li>
 <p>The quantity of the food ordered</p>
 </li>
-<li>
-<p>The deliveryman to deliver the order</p>
-</li>
-<li>
-<p>The delivery status of the order</p>
-</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Format: <code>edit_order i/INDEX [c/CUSTOMER] [r/RESTAURANT] [d/DELIVERYMAN] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203; [completed/DELIVERY_STATUS]</code></p>
+<p>Format: <code>-edit_order i/INDEX [c/CUSTOMER] [r/RESTAURANT] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>edit_order i/1337 d/John Doe completed/true</code></p>
+<p>Example: <code>-edit_order i/1337 c/John Doe</code></p>
 </div>
 <div class="paragraph">
 <p>Requirements:</p>
@@ -255,9 +249,6 @@ exists currently in the database.</p>
 <li>
 <p>Optional items with '[]' tags may be ommitted e.g. <code>[r/RESTAURANT]</code>. However at least 1 tag has to be present for the order to be edited.</p>
 </li>
-<li>
-<p>Delivery status <code>completed/DELIVERY_STATUS</code> must be true or false, if present.</p>
-</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -265,37 +256,37 @@ exists currently in the database.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-an-order-code-delete_order-code"><a class="link" href="#deleting-an-order-code-delete_order-code">3.1.5. Deleting an order: <code>delete_order</code></a></h4>
+<h4 id="deleting-an-order-code-delete_order-code"><a class="link" href="#deleting-an-order-code-delete_order-code">3.1.5. Deleting an order: <code>-delete_order</code></a></h4>
 <div class="paragraph">
 <p>This command enables you to delete an unwanted/cancelled order in the database by its index.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete_order INDEX</code></p>
+<p>Format: <code>-delete_order INDEX</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>delete_order 3</code></p>
+<p>Example: <code>-delete_order 3</code></p>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-a-command-code-undo-code"><a class="link" href="#undoing-a-command-code-undo-code">3.1.6. Undoing a command: <code>undo</code></a></h4>
+<h4 id="undoing-a-command-code-undo-code"><a class="link" href="#undoing-a-command-code-undo-code">3.1.6. Undoing a command: <code>-undo</code></a></h4>
 <div class="paragraph">
 <p>This command undoes the effects of a command that you have previously executed.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>undo</code></p>
+<p>Format: <code>-undo</code></p>
 </div>
 <div class="paragraph">
-<p>Say you have accidentally executed a command and now want to reverse it. Just type <code>undo</code> into the
+<p>Say you have accidentally executed a command and now want to reverse it. Just type <code>-undo</code> into the
 command line and press Enter like any other command. The result pane will then show the following:</p>
 </div>
 <div class="paragraph">
 <p>Successfully undid: (your previous command here)</p>
 </div>
 <div class="paragraph">
-<p>The command which you last performed has now been reversed. Subsequent invocations of <code>undo</code> will
+<p>The command which you last performed has now been reversed. Subsequent invocations of <code>-undo</code> will
 reverse commands which you have performed even earlier.</p>
 </div>
 <div class="paragraph">
@@ -303,17 +294,17 @@ reverse commands which you have performed even earlier.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-a-command-code-redo-code"><a class="link" href="#redoing-a-command-code-redo-code">3.1.7. Redoing a command: <code>redo</code></a></h4>
+<h4 id="redoing-a-command-code-redo-code"><a class="link" href="#redoing-a-command-code-redo-code">3.1.7. Redoing a command: <code>-redo</code></a></h4>
 <div class="paragraph">
 <p>This command redoes the effects of a command that you have just undone, in effect undoing an undo.
-Similarly to <code>undo</code>, this command can be used multiple times in succession to bring back multiple
+Similarly to <code>-undo</code>, this command can be used multiple times in succession to bring back multiple
 commands which you have undone earlier.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>redo</code></p>
+<p>Format: <code>-redo</code></p>
 </div>
 <div class="paragraph">
-<p>After performing <code>redo</code>, the result pane will show:</p>
+<p>After performing <code>-redo</code>, the result pane will show:</p>
 </div>
 <div class="paragraph">
 <p>Successfully redid: (your previous command here)</p>
@@ -323,12 +314,12 @@ commands which you have undone earlier.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-program-code-exit-code"><a class="link" href="#exiting-program-code-exit-code">3.1.8. Exiting program: <code>exit</code></a></h4>
+<h4 id="exiting-program-code-exit-code"><a class="link" href="#exiting-program-code-exit-code">3.1.8. Exiting program: <code>-exit</code></a></h4>
 <div class="paragraph">
 <p>This command exits the program.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>exit</code></p>
+<p>Format: <code>-exit</code></p>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -910,4 +901,4 @@ This is half-implemented. But you can still use it. For fun. But if you have tim
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-03 18:52:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-04 04:34:42 UTC</div></div></div></body></html>
