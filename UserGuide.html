@@ -75,22 +75,22 @@ respectively.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Command words for universal commands are prepended with "-" <strong>(not for now)</strong></p>
+<p>Command words for universal commands are prepended with "-"</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Example Usage: <code>help</code>.</p>
+<p>Example Usage: <code>-help</code>.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Words in <code>UPPER_CASE</code> are parameters to be supplied by the user e.g. in <code>add_order c/CUSTOMER r/RESTAURANT f/FOOD q/QUANTITY</code>,
+<p>Words in <code>UPPER_CASE</code> are parameters to be supplied by the user e.g. in <code>-add_order c/CUSTOMER r/RESTAURANT f/FOOD q/QUANTITY</code>,
 <code>CUSTOMER</code>, <code>RESTAURANT</code>, <code>FOOD</code> and <code>QUANTITY</code> are parameters to be supplied.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Example Usage: <code>add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
+<p>Example Usage: <code>-add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
 </li>
 </ul>
 </div>
@@ -106,7 +106,7 @@ respectively.</p>
 </div>
 </li>
 <li>
-<p>Items with <code>[]</code> are optional and can be ommitted e.g. <code>[t/TAG]&#8230;&#8203;</code></p>
+<p>Items with <code>[]</code> are optional and can be omitted e.g. <code>[t/TAG]&#8230;&#8203;</code></p>
 </li>
 </ul>
 </div>
@@ -190,19 +190,45 @@ automatically based on the internal algorithms.</p>
 <div class="paragraph">
 <p>Example:  <code>-add_order c/Donald Trump r/KFC f/Chicken Bucket q/100</code></p>
 </div>
-<div class="paragraph">
-<p>Requirements:</p>
+<div class="olist start">
+<div class="title">Example use case</div>
+<ol class="start">
+<li>
+<p>Type the command statement from the example above into the program and press <strong>Enter</strong> to execute it.
+image::userguide\AddOrder1.png[width="790"]</p>
+</li>
+<li>
+<p>If you are successful, the result box displays the message: "".
+image::userguide\AddOrder2.png[width="790"]</p>
+</li>
+<li>
+<p>The order list shows the newly added order.
+image::userguide\AddOrder3.png[width="790"]</p>
+</li>
+</ol>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="ulist">
+<div class="title">Requirements</div>
 <ul>
 <li>
 <p>A valid customer <code>c/CUSTOMER</code>, restaurant <code>r/RESTAURANT</code> and restaurant menu item <code>f/FOOD</code> must be provided and
 exists currently in the database.</p>
 </li>
 <li>
-<p>The quantity of food to be delivered also be provided and be greater than 0.</p>
+<p>The quantity of food <code>q/QUANTITY</code> to be delivered also be provided and be greater than 0.</p>
 </li>
 </ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -219,18 +245,44 @@ exists currently in the database.</p>
 <div class="paragraph">
 <p>Example:  <code>-complete_order 3</code></p>
 </div>
-<div class="paragraph">
-<p>Requirements:</p>
+<div class="olist start">
+<div class="title">Example use case</div>
+<ol class="start">
+<li>
+<p>Type the command statement from the example above into the program and press <strong>Enter</strong> to execute it.
+image::userguide\CompleteOrder1.png[width="790"]</p>
+</li>
+<li>
+<p>If you are successful, the result box displays the message: "".
+image::userguide\CompleteOrder2.png[width="790"]</p>
+</li>
+<li>
+<p>The order list shows the delivery status of the order as completed.
+image::userguide\CompleteOrder3.png[width="790"]</p>
+</li>
+</ol>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="ulist">
+<div class="title">Requirements</div>
 <ul>
 <li>
-<p>A deliveryman must be assigned to the order before it can be completed.</p>
+<p>A deliveryman must already be assigned to the order before it can be completed.</p>
 </li>
 <li>
 <p>The index provided must be within the order list size and be greater than or equals to 0.</p>
 </li>
 </ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -247,13 +299,13 @@ exists currently in the database.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The customer who made the order</p>
+<p>The customer <code>c/CUSTOMER</code> who made the order</p>
 </li>
 <li>
-<p>The restaurant and/or food ordered</p>
+<p>The restaurant <code>r/RESTAURANT</code> which the order was made from</p>
 </li>
 <li>
-<p>The quantity of the food ordered</p>
+<p>The food <code>f/FOOD</code> ordered as well as its quantity ``q/QUANTITY</p>
 </li>
 </ul>
 </div>
@@ -263,10 +315,32 @@ exists currently in the database.</p>
 <div class="paragraph">
 <p>Example: <code>-edit_order i/1337 c/John Doe</code></p>
 </div>
-<div class="paragraph">
-<p>Requirements:</p>
+<div class="olist start">
+<div class="title">Example use case</div>
+<ol class="start">
+<li>
+<p>Type the command statement from the example above into the program and press <strong>Enter</strong> to execute it.
+image::userguide\EditOrder1.png[width="790"]</p>
+</li>
+<li>
+<p>If you are successful, the result box displays the message: "".
+image::userguide\EditOrder2.png[width="790"]</p>
+</li>
+<li>
+<p>The order list shows the updated order.
+image::userguide\EditOrder3.png[width="790"]</p>
+</li>
+</ol>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="ulist">
+<div class="title">Requirements</div>
 <ul>
 <li>
 <p>The index <code>i/INDEX</code> provided must be within the order list size and be greater than or equals to 0.</p>
@@ -278,6 +352,10 @@ exists currently in the database.</p>
 <p>Optional items with '[]' tags may be ommitted e.g. <code>[r/RESTAURANT]</code>. However at least 1 tag has to be present for the order to be edited.</p>
 </li>
 </ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -294,15 +372,41 @@ exists currently in the database.</p>
 <div class="paragraph">
 <p>Example: <code>-delete_order 3</code></p>
 </div>
-<div class="paragraph">
-<p>Requirements:</p>
+<div class="olist start">
+<div class="title">Example use case</div>
+<ol class="start">
+<li>
+<p>Type the command statement from the example above into the program and press <strong>Enter</strong> to execute it.
+image::userguide\DeleteOrder1.png[width="790"]</p>
+</li>
+<li>
+<p>If you are successful, the result box displays the message: "".
+image::userguide\DeleteOrder2.png[width="790"]</p>
+</li>
+<li>
+<p>The order list shows that the order has been deleted.
+image::userguide\DeleteOrder3.png[width="790"]</p>
+</li>
+</ol>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="ulist">
+<div class="title">Requirements</div>
 <ul>
 <li>
 <p>The index provided must be within the order list size and be greater than or equals to 0.</p>
 </li>
 </ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -319,15 +423,22 @@ exists currently in the database.</p>
 <div class="paragraph">
 <p>Example: <code>-list_orders</code></p>
 </div>
-<div class="paragraph">
-<p>Requirements:</p>
-</div>
-<div class="ulist">
-<ul>
+<div class="olist start">
+<div class="title">Example use case</div>
+<ol class="start">
 <li>
-<p>The index provided must be within the order list size and be greater than or equals to 0.</p>
+<p>Type the command statement from the example above into the program and press <strong>Enter</strong> to execute it.
+image::userguide\ListOrder1.png[width="790"]</p>
 </li>
-</ul>
+<li>
+<p>If you are successful, the result box displays the message: "".
+image::userguide\ListOrder2.png[width="790"]</p>
+</li>
+<li>
+<p>The order list shows all orders currently in the database.
+image::userguide\ListOrder3.png[width="790"]</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -436,6 +547,25 @@ commands which you have undone earlier.</p>
 <div class="paragraph">
 <p>Example: <code>edit 1 n/John Hoe p/97654321</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>add requirements here</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
@@ -451,6 +581,25 @@ commands which you have undone earlier.</p>
 <div class="paragraph">
 <p>Example: <code>delete 1</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>add requirements here</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
@@ -465,6 +614,25 @@ commands which you have undone earlier.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>history 1</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>add requirements here</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -497,6 +665,25 @@ commands which you have undone earlier.</p>
 <div class="paragraph">
 <p>Example: <code>add n/KFC l/Jurong t/FastFood</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>add requirements here</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
@@ -518,6 +705,25 @@ commands which you have undone earlier.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>delete 1</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>add requirements here</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -559,7 +765,18 @@ in the menu, and adding of rating.</p>
 <div class="paragraph">
 <p>Format: <code>editdetails [n/NAME] [l/LOCATION] [t/TAG]…​</code></p>
 </div>
+<div class="paragraph">
+<p>Example: <code>editdetails n/New KFC l/Tuas</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="ulist">
+<div class="title">Requirements</div>
 <ul>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -575,8 +792,9 @@ in the menu, and adding of rating.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Example: <code>editdetails n/New KFC l/Tuas</code></p>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -600,6 +818,25 @@ in the menu, and adding of rating.</p>
 <div class="paragraph">
 <p>Example: <code>add n/Chicken a/7.90 t/Recommended</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>add requirements here</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
@@ -622,6 +859,25 @@ in the menu, and adding of rating.</p>
 <div class="paragraph">
 <p>Example: <code>delete 1</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>add requirements here</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
@@ -640,15 +896,27 @@ added to date.</p>
 <div class="paragraph">
 <p>Format: <code>rate RATING</code></p>
 </div>
+<div class="paragraph">
+<p>Example: <code>rate 4</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="ulist">
+<div class="title">Requirements</div>
 <ul>
 <li>
 <p><code>RATING</code> must be a non-negative integer from 0 to 5.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Example: <code>rate 4</code></p>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -686,6 +954,25 @@ added to date.</p>
 <div class="paragraph">
 <p>Example: <code>add n/John Doe p/91234567</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>add reqs here</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
@@ -715,6 +1002,25 @@ to switch it back to <strong>AVAILABLE</strong> through the <code>status</code> 
 <div class="paragraph">
 <p>Example: <code>edit 1 n/John Hoe p/97654321</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>add reqs here</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
@@ -730,6 +1036,25 @@ index of the deliveryman.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>delete 1</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>add reqs here</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -792,6 +1117,25 @@ the assigned delivery will automatically set it back to <strong>AVAILABLE</stron
 <div class="paragraph">
 <p>Example: <code>status 3</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>add reqs here</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
@@ -834,6 +1178,25 @@ This is half-implemented. But you can still use it. For fun. But if you have tim
 </div>
 <div class="paragraph">
 <p>Example: <code>enter 1</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>add reqs here</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -977,4 +1340,4 @@ This is half-implemented. But you can still use it. For fun. But if you have tim
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-04 17:31:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-05 03:01:16 UTC</div></div></div></body></html>
