@@ -29,7 +29,7 @@
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">4.1. Undo/redo feature</a></li>
-<li><a href="#autocomplete-commands-feature">4.2. Autocomplete commands feature</a></li>
+<li><a href="#proposed-autocomplete-commands-feature">4.2. [Proposed] Autocomplete commands feature</a></li>
 <li><a href="#order-manager">4.3. Order Manager</a></li>
 <li><a href="#deliverymen-salary-adjustment-feature">4.4. Deliverymen salary adjustment feature</a></li>
 <li><a href="#proposed-data-encryption">4.5. [Proposed] Data Encryption</a></li>
@@ -538,14 +538,17 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete-commands-feature"><a class="link" href="#autocomplete-commands-feature">4.2. Autocomplete commands feature</a></h3>
+<h3 id="proposed-autocomplete-commands-feature"><a class="link" href="#proposed-autocomplete-commands-feature">4.2. [Proposed] Autocomplete commands feature</a></h3>
 <div class="paragraph">
 <p>This is a feature which allows you to view all available commands matching the input keyword or letters, eliminating the need to memorize the commands or leave a browser tab open with the UG/DG of this application.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">4.2.1. Implementation</a></h4>
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.2.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The autocomplete mechanism is facilitated by the ‘KeyListener’, which will pass the current character that is being pressed on the keyboard to the trie, a tree-like abstract data type (ADT). The list of matching commands will then be passed back to the ‘Ui’ and displayed via a dropdown box below the user input command box.</p>
+</div>
+<div class="paragraph">
+<p>For implementation of the trie, please consult ‘google’ or ‘stackoverflow’.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the autocomplete mechanism behaves at each step.</p>
@@ -557,7 +560,7 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 <p><strong>insert picture of the ui at startup</strong></p>
 </div>
 <div class="paragraph">
-<p>Step 2: The user wants to switch to the customer context for customer-focused commands with the command ‘customer’, however is unsure how to spell the command and types in ‘cus’. The ‘KeyListener’ passes the characters that have been typed to the trie. The trie searches for relevant commands and pass them as a list to the ‘Ui’, which displays the relevant results in a dropdown box below the user input command box.</p>
+<p>Step 2: The user wants to switch to the customer context for customer-focused commands with the command ‘customer’, however is unsure how to spell the command and types in ‘cus’. The ‘KeyListener’ will pass the characters that have been typed to the trie. The trie will then search for relevant commands and pass them as a list to the ‘Ui’, which will display the relevant results in a dropdown box below the user input command box.</p>
 </div>
 <div class="paragraph">
 <p><strong>insert picture of 'cus' being typed in/ class diagram</strong></p>
@@ -685,7 +688,7 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 <p><strong>insert object diagrams here + brief explanation of object diagrams</strong></p>
 </div>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">4.3.1. Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">4.3.1. Implementation</a></h4>
 <div class="paragraph">
 <p><strong>Add command:</strong> <code>-add_order</code></p>
 </div>
@@ -752,7 +755,7 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 based on their delivery rate and duration of service. It extends DeliveryMANS with a delivery record for every deliveryman as well as relevant analysis of the record.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">4.4.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">4.4.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The salary adjustment feature is primarily monitored by the 'Analyzer', which has access to the delivery record of every deliveryman in the database. From the record, the Analyzer computes two data:</p>
 </div>
@@ -924,7 +927,7 @@ using just one <code>Command</code>. The EditMode feature allows editing of a sp
 separately under 1 mode, using different commands.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-6"><a class="link" href="#implementation-6">4.8.1. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">4.8.1. Implementation</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1432,4 +1435,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-05 17:27:14 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-05 17:36:05 UTC</div></div></div></body></html>
