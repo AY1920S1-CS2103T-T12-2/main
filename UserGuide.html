@@ -237,7 +237,7 @@ exists currently in the database.</p>
 <div class="sect3">
 <h4 id="completing-an-order-code-complete_order-code"><a class="link" href="#completing-an-order-code-complete_order-code">3.1.4. Completing an order: <code>-complete_order</code></a></h4>
 <div class="paragraph">
-<p>This command allows you to complete an order in the database by its index.</p>
+<p>This command allows you to complete an order in the database by its order name.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>-complete_order ORDERNAME</code></p>
@@ -276,7 +276,7 @@ image::userguide\CompleteOrder3.png[width="790"]</p>
 <p>A deliveryman must already be assigned to the order before it can be completed.</p>
 </li>
 <li>
-<p>The <code>ORDERNAME</code> must exist in the order list.</p>
+<p>The order name <code>ORDERNAME</code> must exist in the order list.</p>
 </li>
 </ul>
 </div>
@@ -291,7 +291,7 @@ image::userguide\CompleteOrder3.png[width="790"]</p>
 <div class="sect3">
 <h4 id="editing-an-order-code-edit_order-code"><a class="link" href="#editing-an-order-code-edit_order-code">3.1.5. Editing an order: <code>-edit_order</code></a></h4>
 <div class="paragraph">
-<p>This command enables you to edit an order. The order to edit will have to be specified by its index when you are entering the command.</p>
+<p>This command enables you to edit an order. The order to edit will have to be specified by its order name when you are entering the command.</p>
 </div>
 <div class="paragraph">
 <p>You can change:</p>
@@ -305,15 +305,15 @@ image::userguide\CompleteOrder3.png[width="790"]</p>
 <p>The restaurant <code>r/RESTAURANT</code> which the order was made from</p>
 </li>
 <li>
-<p>The food <code>f/FOOD</code> ordered as well as its quantity ``q/QUANTITY</p>
+<p>The food <code>f/FOOD</code> ordered as well as its quantity <code>q/QUANTITY</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Format: <code>-edit_order i/INDEX [c/CUSTOMER] [r/RESTAURANT] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203;</code></p>
+<p>Format: <code>-edit_order n/ORDERNAME [c/CUSTOMER] [r/RESTAURANT] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>-edit_order i/1337 c/John Doe</code></p>
+<p>Example: <code>-edit_order n/Order 1337 c/John Doe</code></p>
 </div>
 <div class="olist start">
 <div class="title">Example use case</div>
@@ -343,7 +343,7 @@ image::userguide\EditOrder3.png[width="790"]</p>
 <div class="title">Requirements</div>
 <ul>
 <li>
-<p>The <code>ORDERNAME</code> must exist in the order list.</p>
+<p>The order name <code>n/ORDERNAME</code> must exist in the order list.</p>
 </li>
 <li>
 <p>A customer <code>c/CUSTOMER</code>, restaurant <code>r/RESTAURANT</code> or restaurant menu item <code>f/FOOD</code> provided must be valid and exists currently in the database.</p>
@@ -364,7 +364,7 @@ image::userguide\EditOrder3.png[width="790"]</p>
 <div class="sect3">
 <h4 id="deleting-an-order-code-delete_order-code"><a class="link" href="#deleting-an-order-code-delete_order-code">3.1.6. Deleting an order: <code>-delete_order</code></a></h4>
 <div class="paragraph">
-<p>This command enables you to delete an unwanted/cancelled order in the database by its index.</p>
+<p>This command enables you to delete an unwanted/cancelled order in the database by its order name.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>-delete_order ORDERNAME</code></p>
@@ -400,7 +400,7 @@ image::userguide\DeleteOrder3.png[width="790"]</p>
 <div class="title">Requirements</div>
 <ul>
 <li>
-<p>The <code>ORDERNAME</code> must exist in the order list.</p>
+<p>The order name <code>ORDERNAME</code> must exist in the order list.</p>
 </li>
 </ul>
 </div>
@@ -1257,7 +1257,7 @@ This is half-implemented. But you can still use it. For fun. But if you have tim
 <p>Edit order: <code>-edit_order n/ORDERNAME [c/CUSTOMER] [r/RESTAURANT] [f/FOOD]&#8230;&#8203; [q/QUANTITY]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Delete order: <code>-delete_order INDEX</code></p>
+<p>Delete order: <code>-delete_order ORDERNAME</code></p>
 </li>
 <li>
 <p>List orders: <code>-list_orders</code></p>
@@ -1364,4 +1364,4 @@ This is half-implemented. But you can still use it. For fun. But if you have tim
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 06:29:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 08:04:25 UTC</div></div></div></body></html>
