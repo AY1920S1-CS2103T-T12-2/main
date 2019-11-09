@@ -32,10 +32,11 @@
 <li><a href="#autocomplete-commands-feature">4.2. Autocomplete commands feature</a></li>
 <li><a href="#order-manager">4.3. Order Manager</a></li>
 <li><a href="#deliverymen-salary-adjustment-feature">4.4. Deliverymen salary adjustment feature</a></li>
-<li><a href="#proposed-data-encryption">4.5. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">4.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.7. Configuration</a></li>
-<li><a href="#editmode">4.8. EditMode</a></li>
+<li><a href="#automated-tagging-of-customer">4.5. Automated tagging of customer</a></li>
+<li><a href="#proposed-data-encryption">4.6. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">4.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
+<li><a href="#editmode">4.9. EditMode</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -883,20 +884,44 @@ The command will access the <code>UniqueDeliverymenList</code> in order to obtai
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.5. [Proposed] Data Encryption</a></h3>
+<h3 id="automated-tagging-of-customer"><a class="link" href="#automated-tagging-of-customer">4.5. Automated tagging of customer</a></h3>
+<div class="paragraph">
+<p>Tags determine the customer&#8217;s favourite cuisine. It is helpful to the user as having this information will enable the user to make better analysis on the current trend of food. Although we can opt for the user to manually add in tags, it might be problematic once the number of customers in the database gets too large for a single user to handle. Thus, this feature aids the user by automatically tagging the customer based on the customer&#8217;s order history.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-6"><a class="link" href="#implementation-6">4.5.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>Tag</code> of the <code>Customer</code> is related to the <code>Tag</code> of the <code>Restaurant</code>. If an <code>Order</code> has been added to the database, the <code>Tag</code> of the <code>Restaurant</code> will be added to the <code>Tag</code> of the <code>Customer</code>. If the <code>Customer</code> has multiple <code>Order</code> s, the <code>Tag</code> that will be shown on the <code>CustomerCard</code> will be the highest two <code>Tag</code> s. This is the main process on how the application automatically tags the customers.</p>
+</div>
+<div class="paragraph">
+<p>An activity diagram below shows the automated tagging process.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>activity diagram</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.5.2. Design considerations</a></h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.6. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -927,13 +952,13 @@ The command will access the <code>UniqueDeliverymenList</code> in order to obtai
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editmode"><a class="link" href="#editmode">4.8. EditMode</a></h3>
+<h3 id="editmode"><a class="link" href="#editmode">4.9. EditMode</a></h3>
 <div class="paragraph">
 <p>A <code>Restaurant</code> object contains many attributes. On top of a <code>Name</code>, <code>Location</code>, <code>Rating</code> and a list of <code>Tag</code>,
 it also includes a list of <code>Food</code> as its menu, as well as a list of <code>Order</code>. This makes it difficult to edit
@@ -941,7 +966,7 @@ an entire <code>Restaurant</code> object using just one <code>Command</code>. Th
 specific <code>Restaurant</code> object&#8217;s details, menu and orders separately under 1 mode, using different commands.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-6"><a class="link" href="#implementation-6">4.8.1. Implementation</a></h4>
+<h4 id="implementation-7"><a class="link" href="#implementation-7">4.9.1. Implementation</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1045,7 +1070,7 @@ Insert PNG for MainWindowSequenceDiagram.puml
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.8.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.9.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-structure-of-the-parsers"><a class="link" href="#aspect-structure-of-the-parsers">Aspect: Structure of the Parsers</a></h5>
 <div class="ulist">
@@ -1481,4 +1506,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 15:36:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 19:27:05 UTC</div></div></div></body></html>
