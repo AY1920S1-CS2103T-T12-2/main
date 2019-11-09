@@ -477,18 +477,38 @@ image::userguide\EditOrder3.png[width="790"]</p>
 <div class="title">Example use case</div>
 <ol class="start">
 <li>
-<p>Type the command statement from the example above into the program and press <strong>Enter</strong> to execute it.
-image::userguide\DeleteOrder1.png[width="790"]</p>
-</li>
-<li>
-<p>If you are successful, the result box displays the message: "".
-image::userguide\DeleteOrder2.png[width="790"]</p>
-</li>
-<li>
-<p>The order list shows that the order has been deleted.
-image::userguide\DeleteOrder3.png[width="790"]</p>
+<p>Type the command statement from the example above into the program and press <strong>Enter</strong> to execute it.</p>
 </li>
 </ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/DeleteOrder1.png" alt="DeleteOrder1" width="790">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If you are successful, the result box displays the message: "".</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/DeleteOrder2.png" alt="DeleteOrder2" width="790">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The order list shows that the order has been deleted.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/DeleteOrder3.png" alt="DeleteOrder3" width="790">
+</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -606,17 +626,17 @@ commands which you have undone earlier.</p>
 <div class="paragraph">
 <p>These are commands pertaining to customer context of <strong>DeliveryMANS</strong>. The screenshot below shows how the customer context will look like in <strong>DeliveryMANS</strong>.</p>
 </div>
-<div class="literalblock">
+<div class="imageblock">
 <div class="content">
-<pre>screenshot of finalised DeliveryMANS showing customer list goes here</pre>
+<img src="images/userguide/CustomerList.png" alt="CustomerList" width="790">
 </div>
 </div>
 <div class="paragraph">
-<p>This is a customer and its information.</p>
+<p>This is a customer and its information. Each card will display the customer&#8217;s username, favourite cuisine, name, phone number, address and the number of orders the customer has made.</p>
 </div>
-<div class="literalblock">
+<div class="imageblock">
 <div class="content">
-<pre>screenshot of finalised CustomerCard</pre>
+<img src="images/userguide/CustomerCard.png" alt="CustomerCard" width="790">
 </div>
 </div>
 <div class="paragraph">
@@ -654,13 +674,41 @@ commands which you have undone earlier.</p>
 <div class="sect3">
 <h4 id="editing-a-customer-code-edit-code"><a class="link" href="#editing-a-customer-code-edit-code">3.2.2. Editing a customer: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>This command allows you to edit an existing customer in the customer list. The index of a customer needs to be provided while the information to edit are optional. For example, you can edit the customer&#8217;s <code>NAME</code> without editing <code>PHONE</code>.</p>
+<p>This command allows you to edit an existing customer in the customer list. The index of a customer needs to be provided while the information to edit are optional.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>edit INDEX [n/NAME] [p/PHONE] [a/ADDRESS]</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>edit 1 n/John Hoe p/97654321</code></p>
+<p>Example: <code>edit 1 n/John Woe p/97654321</code></p>
+</div>
+<div class="olist arabic">
+<div class="title">Example use case</div>
+<ol class="arabic">
+<li>
+<p>You want to change John Doe&#8217;s phone number but his address stays the same.</p>
+</li>
+<li>
+<p>Simply type in <code>edit 1 p/97654321</code> into the command line and press enter.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/CustomerEdit.png" alt="CustomerEdit" width="790">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>The result box will display that the edit is successful and John Doe&#8217;s phone number has changed.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/CustomerEditResult.png" alt="CustomerEditResult" width="790">
+</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -729,6 +777,34 @@ commands which you have undone earlier.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>history 1</code></p>
+</div>
+<div class="olist arabic">
+<div class="title">Example use case</div>
+<ol class="arabic">
+<li>
+<p>You want to view John Doe&#8217;s order history.</p>
+</li>
+<li>
+<p>Simply type in <code>history 1</code> into the command line and press enter.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/CustomerHistory.png" alt="CustomerHistory" width="790">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>John Doe&#8217;s order history will be listed on the right panel.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/CustomerHistoryResult.png" alt="CustomerHistoryResult" width="790">
+</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1453,4 +1529,4 @@ This is half-implemented. But you can still use it. For fun. But if you have tim
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 11:27:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 15:36:23 UTC</div></div></div></body></html>
