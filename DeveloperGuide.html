@@ -547,19 +547,19 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 <h4 id="implementation-3"><a class="link" href="#implementation-3">4.2.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The autocomplete mechanism is facilitated by the <code>KeyListener</code> and a <code>Trie</code>, a tree-like abstract data type (ADT). (Explained below)
-The <code>KeyListener</code> passes the current input text in the input command box to the <code>TrieManager</code> via <code>LogicManager#getAutoCompleteResults</code>.
-The <code>TrieManager</code> calls <code>Trie#autoCompleteCommandWord</code> and a sorted list of matching commands is passed back to the <code>CommandBox</code> and is displayed on the <code>Ui</code> via a dropdown box below the user input command box.</p>
+The <code>KeyListener</code> passes the current input text in the input command box to the <code>TrieManager</code> via <code>LogicManager#getAutoCompleteResults()</code>.
+The <code>TrieManager</code> calls <code>Trie#autoCompleteCommandWord()</code> and a sorted list of matching commands is passed back to the <code>CommandBox</code> and is displayed on the <code>Ui</code> via a dropdown box below the user input command box.</p>
 </div>
 <div class="paragraph">
 <p>The underlying data structure used is a directed <code>Graph</code> with the <code>Trie</code> as a <code>Node</code> and <code>HashMap&lt;Character, Trie&gt;</code> to represent all outgoing edges.
 The <code>Keys</code> in the <code>HashMap</code> are <code>Characters</code> in the command words while the <code>Values</code> are the <code>Tries</code> containing the subsequent <code>Characters</code> in the command words.
-Each <code>Trie</code> contains a <code>List&lt;String&gt;</code> of command words, which is returned when <code>Trie#autoCompleteCommandWord</code> is called.</p>
+Each <code>Trie</code> contains a <code>List&lt;String&gt;</code> of command words, which is returned when <code>Trie#autoCompleteCommandWord()</code> is called.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the autocomplete mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1: You launch the application. The <code>TrieManager</code> initializes the respective <code>Tries</code> with their context-specific command words using <code>Trie#insertCommand</code>.
+<p>Step 1: You launch the application. The <code>TrieManager</code> initializes the respective <code>Tries</code> with their context-specific command words using <code>Trie#insertCommand()</code>.
 The <code>Trie</code> adds each <code>Character</code> of the input <code>String</code> and new <code>Tries</code> into the <code>HashMap&lt;Character, Trie&gt;</code>, as well as the command word into the <code>List&lt;String&gt;</code>, recursively as illustrated by the activity diagram below.</p>
 </div>
 <div class="imageblock">
@@ -570,16 +570,14 @@ The <code>Trie</code> adds each <code>Character</code> of the input <code>String
 <div class="paragraph">
 <p>Step 2: You want to add an order to the database, however are uncertain how to spell the command and type in <code><em>‘order’</em></code>.
 The <code>KeyListener</code> passes the <code>String</code> in the <code>CommandBox</code> to the <code>Trie</code> via the <code>LogicManager</code> and <code>TrieManager</code>.
-The trie searches for relevant commands and pass them as a list back to the <code>CommandBox</code> via <code>Trie#getAutoCompleteCommandWord</code>, <code>Trie#search</code> and <code>Trie#getAllCommandWords</code>.
+The trie searches for relevant commands and pass them as a list back to the <code>CommandBox</code> via <code>Trie#getAutoCompleteCommandWord()</code>, <code>Trie#search()</code> and <code>Trie#getAllCommandWords()</code>.
 The ‘Ui’ displays the relevant results in a dropdown box below the user input command box.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AutoCompleteSequenceDiagram.png" alt="AutoCompleteSequenceDiagram" width="790">
 </div>
-</div>
-<div class="paragraph">
-<p><strong>insert label for seq diagram - Sequence diagram illustrating step 2</strong></p>
+<div class="title">Figure 9. Sequence diagram illustrating the handling of user input via autocomplete</div>
 </div>
 <div class="paragraph">
 <p>Step 3: You can now complete the command you want by entering the relevant command shown in the dropdown box.</p>
@@ -640,7 +638,7 @@ The ‘Ui’ displays the relevant results in a dropdown box below the user inpu
 </strong> Cons: Tedious to implement, as <code>Tries</code> are not currently implemented in Java.
 * <strong>Alternative 2:</strong> Use a list to store all current commands.
 <strong> Pros: Easy to implement as lists are already available in Java.
-</strong> Cons: Inefficient and slow searching, because of the need to iterate through the entire list of commands while calling ‘.substring()’ and ‘.contains()’ methods.</p>
+</strong> Cons: Inefficient and slow searching, because of the need to iterate through the entire list of commands while calling <code>.substring()</code> and <code>.contains()</code> methods.</p>
 </div>
 <div class="paragraph">
 <p>Alternative 1 was selected, as it allows for faster searching and listing of relevant commands compared to alternative 2.</p>
@@ -894,7 +892,7 @@ The command will access the <code>UniqueDeliverymenList</code> in order to obtai
 <div class="content">
 <img src="images/plantuml/AutoTagAddActivityDiagram.png" alt="AutoTagAddActivityDiagram">
 </div>
-<div class="title">Figure 9. Activity diagram of tagging process</div>
+<div class="title">Figure 10. Activity diagram of tagging process</div>
 </div>
 <div class="paragraph">
 <p>Another function called <code>changeMainTag()</code> is used to change the main <code>Tag</code>s of the <code>Customer</code> to show on the <code>CustomerCard</code>. The activity diagram below shows how the application determines the top two <code>Tag</code>s:</p>
@@ -903,7 +901,7 @@ The command will access the <code>UniqueDeliverymenList</code> in order to obtai
 <div class="content">
 <img src="images/plantuml/ChangeTagActivityDiagram.png" alt="ChangeTagActivityDiagram">
 </div>
-<div class="title">Figure 10. Activity diagram of changing <code>Customer</code>'s main <code>Tag</code>s</div>
+<div class="title">Figure 11. Activity diagram of changing <code>Customer</code>'s main <code>Tag</code>s</div>
 </div>
 </div>
 <div class="sect3">
@@ -1594,4 +1592,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 09:18:09 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 10:48:49 UTC</div></div></div></body></html>
