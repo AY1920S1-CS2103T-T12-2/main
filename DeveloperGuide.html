@@ -546,7 +546,7 @@ If the <code>current</code> state pointer is at index <code>history.size() - 1</
 <div class="sect3">
 <h4 id="implementation-3"><a class="link" href="#implementation-3">4.2.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The autocomplete mechanism is facilitated by the <code>KeyListener</code> and a <code>Trie</code>, a tree-like abstract data type (ADT). (Explained below)
+<p>The autocomplete mechanism is facilitated by the <code>KeyListener</code> and a <code>Trie</code>, a tree-like abstract data type (ADT).
 The <code>KeyListener</code> passes the current input text in the input command box to the <code>TrieManager</code> via <code>LogicManager#getAutoCompleteResults()</code>.
 The <code>TrieManager</code> calls <code>Trie#autoCompleteCommandWord()</code> and a sorted list of matching commands is passed back to the <code>CommandBox</code> and is displayed on the <code>Ui</code> via a dropdown box below the user input command box.</p>
 </div>
@@ -631,14 +631,35 @@ The ‘Ui’ displays the relevant results in a dropdown box below the user inpu
 </div>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-the-autocomplete-commands-feature"><a class="link" href="#aspect-data-structure-to-support-the-autocomplete-commands-feature">Aspect: Data structure to support the autocomplete commands feature</a></h5>
-<div class="paragraph">
-<p>replace with something else
-* <strong>Alternative 1 (current choice):</strong> Use a <code>Trie</code> to store <code>Characters</code> of commands as keys.
-<strong> Pros: Efficient and rapid searching, retrieving and displaying of results due to the tree-like ADT.
-</strong> Cons: Tedious to implement, as <code>Tries</code> are not currently implemented in Java.
-* <strong>Alternative 2:</strong> Use a list to store all current commands.
-<strong> Pros: Easy to implement as lists are already available in Java.
-</strong> Cons: Inefficient and slow searching, because of the need to iterate through the entire list of commands while calling <code>.substring()</code> and <code>.contains()</code> methods.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a <code>Trie</code> to store <code>Characters</code> of commands as keys.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Efficient and rapid searching, retrieving and displaying of results due to the tree-like ADT.</p>
+</li>
+<li>
+<p>Cons: Tedious to implement, as <code>Tries</code> are not currently implemented in Java.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use a list to store all current commands.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement as lists are already available in Java.</p>
+</li>
+<li>
+<p>Cons: Inefficient and slow searching, because of the need to iterate through the entire list of commands while calling <code>.substring()</code> and <code>.contains()</code> methods.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Alternative 1 was selected, as it allows for faster searching and listing of relevant commands compared to alternative 2.</p>
@@ -1592,4 +1613,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 10:48:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:07:27 UTC</div></div></div></body></html>
