@@ -885,20 +885,101 @@ The command will access the <code>UniqueDeliverymenList</code> in order to obtai
 <div class="sect3">
 <h4 id="implementation-6"><a class="link" href="#implementation-6">4.5.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The <code>Tag</code> of the <code>Customer</code> is related to the <code>Tag</code> of the <code>Restaurant</code>. If an <code>Order</code> has been added to the database, the <code>Tag</code> of the <code>Restaurant</code> will be added to the <code>Tag</code> of the <code>Customer</code>. If the <code>Customer</code> has multiple <code>Order</code> s, the <code>Tag</code> that will be shown on the <code>CustomerCard</code> will be the highest two <code>Tag</code> s. This is the main process on how the application automatically tags the customers.</p>
+<p>The <code>Tag</code> of the <code>Customer</code> is related to the <code>Tag</code> of the <code>Restaurant</code>. If an <code>Order</code> has been added to the database, the <code>Tag</code> of the <code>Restaurant</code> will be added to the <code>Tag</code> of the <code>Customer</code>. If the <code>Customer</code> has multiple <code>Order</code>s, the <code>Tag</code> that will be shown on the <code>CustomerCard</code> will be the highest two <code>Tag</code>s. This is the main process on how the application automatically tags the customers.</p>
 </div>
 <div class="paragraph">
-<p>An activity diagram below shows the automated tagging process.</p>
+<p>An activity diagram below shows the automated tagging process when adding an order:</p>
 </div>
-<div class="literalblock">
+<div id="fig-AutoTaggingDiagram" class="imageblock">
 <div class="content">
-<pre>activity diagram</pre>
+<img src="images/plantuml/AutoTagAddActivityDiagram.png" alt="AutoTagAddActivityDiagram">
 </div>
+<div class="title">Figure 9. Activity diagram of tagging process</div>
+</div>
+<div class="paragraph">
+<p>Another function called <code>changeMainTag()</code> is used to change the main <code>Tag</code>s of the <code>Customer</code> to show on the <code>CustomerCard</code>. The activity diagram below shows how the application determines the top two <code>Tag</code>s:</p>
+</div>
+<div id="fig-ChangingTagsDiagram" class="imageblock">
+<div class="content">
+<img src="images/plantuml/ChangeTagActivityDiagram.png" alt="ChangeTagActivityDiagram">
+</div>
+<div class="title">Figure 10. Activity diagram of changing <code>Customer</code>'s main <code>Tag</code>s</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.5.2. Design considerations</a></h4>
-
+<div class="paragraph">
+<p><strong>Aspect: Method of editing <code>Customer</code>'s <code>Tag</code>s</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Adding, deleting and editing of <code>Order</code> will edit the <code>Tag</code>s in <code>Customer</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Only the commands that add, delete or edit an <code>Order</code> will require editing the <code>Customer</code>'s <code>Tag</code>s.</p>
+</li>
+<li>
+<p>Cons: Creates more dependency between <code>Customer</code> and <code>Command</code> classes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alterative 2:</strong> <code>Customer</code> storing a list of <code>Order</code>s and iterate through that list to get the number of <code>Tag</code>s.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Editing <code>Customer</code>'s <code>Tag</code>s only happen in the <code>Customer</code> object itself and doesn&#8217;t need to depend on information from other objects.</p>
+</li>
+<li>
+<p>Cons: Every single change to any <code>Order</code> has to be reflected on <code>Customer</code>'s <code>Order</code> list. Including edits to <code>Order</code>s made in <code>Deliverymen</code> and <code>Restaurant</code> context. This makes <code>Customer</code> have a lot of dependency with other classes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose to go with the first alternative as <code>Customer</code> class will have lesser dependency with other classes when editing tags. In addition, displaying the <code>Customer</code>'s order history will only require <code>Customer</code> to access the <code>OrderDatabase</code> to get the list of orders. Both of these requirements together still makes the <code>Customer</code> class have lesser dependency with other classes compared to implementing the second alternative that makes the <code>Customer</code> class have dependencies with every <code>Order</code> related classes.</p>
+</div>
+<div class="paragraph">
+<p><strong>Aspect: Method of storing <code>Tag</code>s</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Using a map to store the <code>Customer</code>'s <code>Tag</code>s where key is the <code>Tag</code> and value is the number of tags.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Faster access of <code>Tag</code>s in the map and getting the number of a certain <code>Tag</code> only takes O(1) time.</p>
+</li>
+<li>
+<p>Cons: More memory is needed to store the information. A map to store all <code>Tag</code>s and a set to store the main <code>Tag</code>(s) to display on <code>CustomerCard</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Using a list that stores all <code>Tag</code>s that are in <code>Customer</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The list is capable of storing all of the <code>Tag</code>s that <code>Customer</code> has.</p>
+</li>
+<li>
+<p>Cons: The list needs to be iterated through to determine the top <code>Tag</code>(s) of <code>Customer</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose to go with alternative 1 as we believe speed is more important to the user and sacrificing memory space is the better choice.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1513,4 +1594,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 07:58:12 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 08:04:20 UTC</div></div></div></body></html>
