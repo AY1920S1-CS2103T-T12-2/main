@@ -33,10 +33,7 @@
 <li><a href="#order-manager">4.3. Order Manager</a></li>
 <li><a href="#deliverymen-salary-adjustment-feature">4.4. Deliverymen salary adjustment feature</a></li>
 <li><a href="#automated-tagging-of-customer">4.5. Automated tagging of customer</a></li>
-<li><a href="#proposed-data-encryption">4.6. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">4.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
-<li><a href="#editmode">4.9. EditMode</a></li>
+<li><a href="#editmode">4.6. EditMode</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -1002,184 +999,188 @@ The command will access the <code>UniqueDeliverymenList</code> in order to obtai
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.6. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
-<div class="paragraph">
-<p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
-</li>
-<li>
-<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
-</li>
-<li>
-<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Logging Levels</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
-</li>
-<li>
-<p><code>WARNING</code> : Can continue, but with caution</p>
-</li>
-<li>
-<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
-</li>
-<li>
-<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
-<div class="paragraph">
-<p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editmode"><a class="link" href="#editmode">4.9. EditMode</a></h3>
+<h3 id="editmode"><a class="link" href="#editmode">4.6. EditMode</a></h3>
 <div class="paragraph">
 <p>A <code>Restaurant</code> object contains many attributes. On top of a <code>Name</code>, <code>Location</code>, <code>Rating</code> and a list of <code>Tag</code>,
 it also includes a list of <code>Food</code> as its menu, as well as a list of <code>Order</code>. This makes it difficult to edit
-an entire <code>Restaurant</code> object using just one <code>Command</code>. The EditMode feature allows editing of a
-specific <code>Restaurant</code> object&#8217;s details, menu and orders separately under 1 mode, using different commands.</p>
+an entire <code>Restaurant</code> object using just one <code>Command</code>.</p>
+</div>
+<div class="paragraph">
+<p>The EditMode feature allows editing of a specific <code>Restaurant</code> object&#8217;s details (name, location, rating, tags),
+menu and orders individually under 1 interface, using different commands.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-7"><a class="link" href="#implementation-7">4.9.1. Implementation</a></h4>
+<h4 id="implementation-7"><a class="link" href="#implementation-7">4.6.1. Implementation</a></h4>
+<div class="paragraph">
+<p><strong>Model</strong>:</p>
+</div>
+<div class="paragraph">
+<p>In addition to the <code>filteredRestaurantList</code> that contains all the restaurants in the restaurant database,
+<code>ModelManager</code> now contains a <code>editingRestaurantList</code>, which holds and allows access to the single restaurant
+currently under EditMode.</p>
+</div>
+<div class="paragraph">
+<p>When user inputs the <code>editmode INDEX</code> command:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Model</strong>:</p>
+<p>The restaurant referenced by the <code>INDEX</code> in the list of restaurants will be placed
+in the <code>editingRestaurantList</code> via the function call <code>Model#setEditingRestaurant(Restaurant editingRestaurant</code>.</p>
+</li>
+<li>
+<p>Subsequent commands that edit the restaurant, such as <code>AddFoodCommand</code>, <code>DeleteFoodCommand</code>, <code>AddRatingCommand</code>
+and <code>EditDetailsCommand</code> will create a new restaurant with the edited attributes.</p>
+</li>
+<li>
+<p>The outdated restaurant will be replaced with the new edited restaurant
+in both the <code>filteredRestaurantList</code> and <code>editingRestaurantList</code> via the function call
+<code>Model#setRestaurant(Restaurant oldRestaurant, Restaurant newRestaurant)</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>In addition to the <code>filteredRestaurantList</code> that contains all the restaurants in the restaurant database,
-<code>ModelManager</code> now contains a <code>editingRestaurantList</code>, which contains and allows access to the restaurant
-currently under EditMode. Upon calling of <code>editmode INDEX</code> command, the restaurant
-referenced by the <code>INDEX</code> in the list of restaurants will be placed in the <code>editingRestaurantList</code>.
-Subsequent commands that edit the restaurant, such as <code>addFoodCommand</code>, <code>addRatingCommand</code> and <code>editDetailsCommand</code>
-will create a new restaurant with the edited attributes and replace the restaurant in the <code>editingRestaurantList</code>
-with the new edited restaurant.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
 <p><strong>Logic</strong>:</p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
 <p>The <code>Logic</code> for EditMode is facilitated by <code>Context</code> enum type, which contains the following constants:
 <code>GLOBAL</code>, <code>CUSTOMER</code>, <code>RESTAURANT</code>, <code>DELIVERYMEN</code> and <code>EDITING</code>. It determines the <code>Context</code> the application is in,
-as well as the commands the user can access.</p>
+as well as the commands the user can access. It is contained inside <code>LogicManager</code> as an attribute.</p>
 </div>
 <div class="paragraph">
-<p>It is contained inside <code>UniversalParser</code> as an attribute. When the user inputs the command,
-<code>userInput</code> will always be parsed by <code>UniversalParser</code> first, regardless of the current <code>Context</code>.
-The reason for this is to check for universal commands, which are accessible in all <code>Context</code>.
-Subsequently, if the command word in <code>userInput</code> matches none of the universal commands, then <code>UniversalParser</code>
-will create a context specific <code>Parser</code> based on the current <code>Context</code> it is in, which takes over and parses the
-<code>userInput</code>. Any context switching command will then change the <code>Context</code> in <code>UniversalParser</code>.</p>
+<p>The following class diagram shows the relevant structure of <code>Logic</code> and <code>Parser</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developerguide/ParserClassDiagram.png" alt="ParserClassDiagram">
+</div>
 </div>
 <div class="paragraph">
-<p>The following class diagram shows the structure of the <code>UniversalParser</code>:</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Insert PNG for ParserClassDiagram.puml
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarises what happens when the user enters the command to enter EditMode:</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Insert PNG for ParserActivityDiagram.puml
-</td>
-</tr>
-</table>
+<p>When the user inputs a command:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>UI</strong>:</p>
+<p><code>userInput</code> will always be parsed by <code>UniversalParser</code> first, regardless of the current <code>Context</code>.
+The reason for this is to check for universal commands, which are accessible in all <code>Context</code>.</p>
+</li>
+<li>
+<p>Subsequently, if the command word in <code>userInput</code> matches none of the universal commands, then <code>UniversalParser</code>
+will create a context specific <code>Parser</code> based on the current <code>Context</code>, i.e. <code>CustomerParser</code>, <code>RestaurantParser</code>,
+<code>DeliverymenParser</code>, <code>EditingParser</code>, which takes over and parses the <code>userInput</code>.
+Any context switching command will then change the <code>Context</code> in <code>LogicManager</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Commands that change the <code>Context</code>, and hence the UI, will pass the new <code>Context</code> to <code>MainWindow</code> in the Ui package
-via the <code>CommandResult</code> returned by the command.
-When <code>MainWindow</code> receives this new <code>Context</code>, it will do the changes to the Ui accordingly via the function call
-<code>MainWindow#changeDisplay(Context context)</code>.</p>
+<p>The following activity diagram summarises what happens when the user enters a command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developerguide/ParserActivityDiagram.png" alt="ParserActivityDiagram">
+</div>
 </div>
 <div class="paragraph">
-<p><code>editModeCommand</code> changes the <code>Context</code> to <code>Context.EDITING</code>. <code>MainWindow</code> will then display an extra <code>StackPane</code>
-showing the restaurant under EditMode, while the <code>StackPane</code> displaying the list of Restaurants
-originally will be filled with the restaurant&#8217;s <code>Food</code> menu instead.
-Once <code>exitEditCommand</code> is called, <code>Editing</code> context is exited, the stackpane will be hidden,
-and the list of restaurants will be shown again.</p>
+<p>The <code>EditModeCommand</code> to enter EditMode for a restaurant can only be accessed if <code>LogicManager</code> is under
+<code>Context.RESTAURANT</code>. When user inputs the <code>editmode INDEX</code> command:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>UniversalParser</code> will parse it first.</p>
+</li>
+<li>
+<p>Since <code>editmode</code> matches none of the universal commands, <code>UniversalParser</code> will create a new <code>RestaurantParser</code>
+(since current context is <code>Context.RESTAURANT</code>).</p>
+</li>
+<li>
+<p>The new <code>RestaurantParser</code> will then parse the <code>userInput</code> and subsequently change the <code>Context</code> in <code>LogicManager</code> to <code>Context.EDITING</code>,
+unlocking commands to edit the restaurant, such as <code>AddFoodCommand</code>, <code>DeleteFoodCommand</code>, <code>AddRatingCommand</code>
+and <code>EditDetailsCommand</code>.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram summarises how the <code>editModeCommand</code> changes the Ui:</p>
+<p><strong>UI</strong>:</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Insert PNG for MainWindowSequenceDiagram.puml
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Commands that change the UI will either:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pass its command class to <code>MainWindow</code> in the UI package if the command doesn&#8217;t change the <code>Context</code></p>
+</li>
+<li>
+<p>Pass the new <code>Context</code> to <code>MainWindow</code> in the UI package if the command changes the <code>Context</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>as the second parameter of the <code>CommandResult</code> returned by the command.</p>
+</div>
+<div class="paragraph">
+<p>When <code>MainWindow</code> receives the <code>CommandResult</code>, it will extract out either the command class or <code>Context</code> from
+<code>CommandResult</code> and make changes to the UI accordingly via the function call
+<code>MainWindow#changeDisplay(Context context)</code> or <code>MainWindow#changeDisplay(Class commandClassName)</code>.</p>
+</div>
+<div class="paragraph">
+<p>When user inputs the <code>EditModeCommand</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Since <code>Context</code> is changed to <code>Context.EDITING</code>, it will be passed as the second parameter of the <code>CommandResult</code>
+returned by the <code>EditModeCommand</code>.</p>
+</li>
+<li>
+<p>Upon receiving this new <code>Context</code>, <code>MainWindow</code> will call the function <code>changeDisplay(Context.EDITING)</code> to change
+the UI. An extra <code>StackPane</code> showing the restaurant under EditMode will be displayed,
+while the <code>SplitPane</code> displaying the list of restaurants originally will now be filled with the restaurant&#8217;s <code>Food</code> menu
+and <code>Order</code> list.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram summarises how the <code>EditModeCommand</code> changes the UI:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developerguide/MainWindowSequenceDiagram.png" alt="MainWindowSequenceDiagram">
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.9.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.6.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-structure-of-the-parsers"><a class="link" href="#aspect-structure-of-the-parsers">Aspect: Structure of the Parsers</a></h5>
+<h5 id="aspect-structure-of-code-logic-code-and-code-parser-code"><a class="link" href="#aspect-structure-of-code-logic-code-and-code-parser-code">Aspect: Structure of <code>Logic</code> and <code>Parser</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative:</strong> LogicManager contains all 4 parsers instead of Containing only UniversalParser whcih then creates
-the other 3 parsers.</p>
+<p><strong>Current:</strong> <code>LogicManager</code> contains only the <code>UniversalParser</code>, which then creates a context-specific parser
+depending on the current <code>Context</code> in <code>LogicManager</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Makes more sense to have LogicManager containing all 4 parsers which are activated separately based
+<p>Pros: Checking whether <code>userInput</code> is a universal command only needs to be done once in <code>UniversalParser</code></p>
+</li>
+<li>
+<p>Cons: Doesn&#8217;t make as much sense for <code>UniversalParser</code> to be able to create other context-specific parsers.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative:</strong> Instead of containing only the <code>UniversalParser</code>, which then creates the other 4 context-specific
+parsers, <code>LogicManager</code> contains all 5 parsers.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Makes more sense to have <code>LogicManager</code> containing all 5 parsers which parses <code>userInput</code> individually based
 on the current context.</p>
 </li>
 <li>
-<p>Cons: Every single universal command would have to be checked repeatedly in each context-specific parser.</p>
+<p>Cons: Checking whether <code>userInput</code> is a universal command needs to be repeated in each context-specific parser.</p>
 </li>
 </ul>
 </div>
@@ -1188,31 +1189,32 @@ on the current context.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-changing-of-user-interface"><a class="link" href="#aspect-changing-of-user-interface">Aspect: Changing of User Interface</a></h5>
+<h5 id="aspect-changing-of-ui"><a class="link" href="#aspect-changing-of-ui">Aspect: Changing of UI</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Current:</strong> Ui changed depending on</p>
+<p><strong>Current:</strong> If the <code>Command</code> that changes the UI does not change the <code>Context</code>, pass its command name
+to <code>MainWindow</code> instead of creating a new <code>Context</code> to signal a change in UI.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will only need 1 method signature to change the display of User Interface.</p>
+<p>Pros: Does not create unnecessary <code>Context</code>.</p>
 </li>
 <li>
-<p>Cons: It will create many unnecessary contexts that the Parser will never be in apart from this situation.</p>
+<p>Cons: 2 method signatures are needed for <code>MainWindow#changeDisplay</code> to change the UI.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative:</strong></p>
+<p><strong>Alternative:</strong> A new <code>Context</code> is created for every <code>Command</code> that changes the UI.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will only need 1 method signature to change the display of User Interface.</p>
+<p>Pros: Only 1 method signature is needed for <code>MainWindow#changeDisplay</code> to change the UI.</p>
 </li>
 <li>
-<p>Cons: It will create many unnecessary contexts that the Parser will never be in apart from this situation.</p>
+<p>Cons: Creates many unnecessary <code>Context</code> that <code>LogicManager</code> will never be in.</p>
 </li>
 </ul>
 </div>
@@ -1613,4 +1615,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 16:50:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 17:25:29 UTC</div></div></div></body></html>
