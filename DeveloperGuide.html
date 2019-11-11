@@ -673,15 +673,24 @@ The ‘Ui’ displays the relevant results in a dropdown box below the user inpu
 <div class="paragraph">
 <p>Order manager implements its own <code>Model</code>, <code>Command</code> and <code>Parser</code> for the <code>Logic Component</code>, <code>JsonOrderDatabaseStorage</code>, <code>JsonSerializableOrderDatabase</code>, <code>JsonAdaptedOrder</code> and <code>JsonAdaptedFoodOrder</code>, along with methods in the <code>StorageManager</code> for the <code>Storage Component</code> and lastly, <code>OrderCard</code> and <code>OrderListPanel</code> for displaying on the <code>Ui Component</code>.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/OrderClassDiagram.png" alt="OrderClassDiagram" width="790">
+</div>
+<div class="title">Figure 9. Class diagram illustrating the design of <code>Order</code> components</div>
+</div>
 <div class="sect3">
 <h4 id="implementation-4"><a class="link" href="#implementation-4">4.3.1. Implementation</a></h4>
 <div class="paragraph">
-<p>Listed are the implementations of each command.</p>
+<p>Listed are the implementations of each command. The sequence of command execution for <code>Orders</code> is as follows: the <code>LogicManager</code> receives input from the user and calls <code>UniversalParser#parseCommand()</code>.
+The <code>UniversalParser</code> calls the respective <code>OrderCommandParser#parse()</code> to create new <code>OrderCommand</code> objects.
+The object is passed back to the <code>LogicManager</code>, and executed through <code>OrderCommand#execute()</code>. The <code>ModelManager</code> is used for the storing of changes to <code>Orders</code> (if any), and the <code>CommandResult</code> is passed back to the <code>LogicManager</code> to be displayed on the <code>Ui</code> for the user.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/OrderSequenceDiagram.png" alt="OrderSequenceDiagram" width="790">
 </div>
+<div class="title">Figure 10. Sequence diagram illustrating the execution of <code>Order</code> commands</div>
 </div>
 <div class="paragraph">
 <p><strong>Add command:</strong> <code>-add_order</code></p>
@@ -881,7 +890,7 @@ This interaction of the relevant classes are illustrated in the class diagram be
 <div class="content">
 <img src="images/StatisticsFeatureClassDiagram.png" alt="StatisticsFeatureClassDiagram">
 </div>
-<div class="title">Figure 9. Partial Structure of Deliverymen Database</div>
+<div class="title">Figure 11. Partial Structure of Deliverymen Database</div>
 </div>
 <div class="paragraph">
 <p>The <code>DeliverymenDatabase</code> acts as an agent for both components to parse information around. This helps to maintains a clear
@@ -894,7 +903,7 @@ separation of concerns to carry out different functions.</p>
 <div class="content">
 <img src="images/DeliverymenStatistics.png" alt="DeliverymenStatistics">
 </div>
-<div class="title">Figure 10. Sequence Diagram of Retrieving Deliverymen Statistics</div>
+<div class="title">Figure 12. Sequence Diagram of Retrieving Deliverymen Statistics</div>
 </div>
 <div class="paragraph">
 <p>As seen in Figure 10, for every use of the <code>stats</code> command, a <code>RecordCard</code> object is created. The <code>Analyzer</code> will take in the status lists and the <code>RecordCard</code>
@@ -976,7 +985,7 @@ Changes to status-related issues may cause regressions to the statistics feature
 <div class="content">
 <img src="images/plantuml/AutoTagAddActivityDiagram.png" alt="AutoTagAddActivityDiagram">
 </div>
-<div class="title">Figure 11. Activity diagram of tagging process</div>
+<div class="title">Figure 13. Activity diagram of tagging process</div>
 </div>
 <div class="paragraph">
 <p>Another function called <code>changeMainTag()</code> is used to change the main <code>Tag</code>s of the <code>Customer</code> to show on the <code>CustomerCard</code>. The activity diagram below shows how the application determines the top two <code>Tag</code>s:</p>
@@ -985,7 +994,7 @@ Changes to status-related issues may cause regressions to the statistics feature
 <div class="content">
 <img src="images/plantuml/ChangeTagActivityDiagram.png" alt="ChangeTagActivityDiagram">
 </div>
-<div class="title">Figure 12. Activity diagram of changing <code>Customer</code>'s main <code>Tag</code>s</div>
+<div class="title">Figure 14. Activity diagram of changing <code>Customer</code>'s main <code>Tag</code>s</div>
 </div>
 </div>
 <div class="sect3">
@@ -1736,4 +1745,4 @@ Expected: No change in any deliveryman status. Error details shown in the status
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:49:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:06:55 UTC</div></div></div></body></html>
