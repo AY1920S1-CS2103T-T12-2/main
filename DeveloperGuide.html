@@ -31,7 +31,7 @@
 <li><a href="#undo-redo-feature">4.1. Undo/redo feature</a></li>
 <li><a href="#autocomplete-commands-feature">4.2. Autocomplete commands feature</a></li>
 <li><a href="#order-manager">4.3. Order Manager</a></li>
-<li><a href="#deliverymen-salary-adjustment-feature">4.4. Deliverymen salary adjustment feature</a></li>
+<li><a href="#deliverymen-status-statistics-feature">4.4. Deliverymen status statistics feature</a></li>
 <li><a href="#automated-tagging-of-customer">4.5. Automated tagging of customer</a></li>
 <li><a href="#editmode-for-restaurants">4.6. EditMode for restaurants</a></li>
 </ul>
@@ -774,116 +774,168 @@ The ‘Ui’ displays the relevant results in a dropdown box below the user inpu
 </div>
 </div>
 <div class="sect2">
-<h3 id="deliverymen-salary-adjustment-feature"><a class="link" href="#deliverymen-salary-adjustment-feature">4.4. Deliverymen salary adjustment feature</a></h3>
+<h3 id="deliverymen-status-statistics-feature"><a class="link" href="#deliverymen-status-statistics-feature">4.4. Deliverymen status statistics feature</a></h3>
 <div class="paragraph">
-<p>This is a feature which allows the user to keep track of the deliverymen who have met the requirements for a salary increment
-based on their delivery rate and duration of service. It extends DeliveryMANS with a delivery record for every deliveryman as well as relevant analysis of the record.</p>
+<p>Tracking the amount of available manpower you have at any point in time is very crucial to deal with sudden changes in food orders.
+This is a feature which allows the user to effectively manage the deliverymen by providing relevant statistics in regards to their status.
+The user will be able to foresee and hence prepare for any sudden shortage or excess in manpower.
+Relevant statistics include current utilization level and activity level of the deliverymen.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A deliveryman can have any of the 3 status: <strong>AVAILABLE</strong>, <strong>UNAVAILABLE</strong>, <strong>DELIVERING</strong>. To effectively manage their status, 3 different lists
+are used to categorise all the deliverymen based on their status. This way of implementation is efficient when it comes to sorting or searching for a deliveryman.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
 <h4 id="implementation-5"><a class="link" href="#implementation-5">4.4.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The salary adjustment feature is primarily monitored by the 'Analyzer', which has access to the delivery record of every deliveryman in the database. From the record, the Analyzer computes two data:</p>
+<p>The statistics feature is primarily managed by the <code>StatisticsManager</code>, which has access to the status of every deliveryman in the database through the 3
+status lists - lists of available deliverymen, unavailable deliverymen and delivering deliverymen respectively.
+The <code>StatisticsManager</code> obtains these 3 status lists from the <code>StatusManager</code> and passes it to the <code>Analyzer</code> to compute the relevant data, which in turn
+returns a filled <code>StatisticsRecordCard</code> containing the computed statistics.</p>
+</div>
+<div class="paragraph">
+<p>From the status lists, the Analyzer computes two data:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Delivery rate</p>
+<p>Utilization Level</p>
 <div class="ulist">
 <ul>
 <li>
-<p>This is the number of orders per day.</p>
+<p>This signals to the user the amount of available manpower that is not utilized. It is the percentage of the number of deliverymen who are working (ie. delivering an order) over the number of active deliverymen (ie. available or delivering an order) .</p>
+</li>
+<li>
+<p>It is computed as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>UtilizationLevel =  DeliveringMen / (AvailableMen + DeliveringMen) x 100</strong></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Time in database</p>
+<p>Activity Level</p>
 <div class="ulist">
 <ul>
 <li>
-<p>This is the time difference between the time when the deliveryman was added to the database and the current time when command is executed.</p>
+<p>This signals to the user the amount of active manpower. It is the percentage of the number of deliverymen who are active deliverymen over the total number of deliverymen.</p>
 </li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>With these structure, it implements the following operations:</p>
-</div>
+<li>
+<p>It is computed as follows:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>DeliverymenDatabase#getHistoryOf(Deliveryman index)</code>&#8201;&#8212;&#8201;Enters the delivery record of a specified deliveryman.</p>
+<p><strong>ActivityLevel =  (AvailableMen + DeliveringMen) / (TotalMen) x 100</strong></p>
 </li>
-<li>
-<p><code>DeliverymenDatabase#suggestPayList()</code>&#8201;&#8212;&#8201;Obtains a list of deliverymen who are eligible for pay rise.</p>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the <code>suggestPayList</code> function works.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. Hooray! It&#8217;s the time of the month for the restaurant to adjust the workers' pay. The restaurant admin, who is in charge of managing the deliverymen, types in the <code>paylist</code> command.
-The command will access the <code>UniqueDeliverymenList</code> in order to obtain the list of deliverymen.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. For each deliveryman on the list, their delivery record will be analyzed.</p>
+<p>With this structure, it implements the following operation:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Time in data base: The current time will be obtained and the difference between the current time and the time of joining the database will be taken.</p>
-</li>
-<li>
-<p>Delivery rate: The number of orders completed over the time in database will be the delivery rate.</p>
+<p><code>DeliverymenDatabase#analyzeDeliverymenStatus()</code>&#8201;&#8212;&#8201;Retrieves a filled record card containing all the relevant statistics regarding deliverymen statuses</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Step 3. If the delivery rate exceeds a certain threshold, the deliveryman will be added to the pay list.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram summarizes what happens when a user types in letters into the user input command box:</p>
+<p>This feature requires a high degree of interaction between the <code>Status</code> component and <code>Statistics</code> component of <code>DeliverymenDatabase</code>.
+This interaction of the relevant classes are illustrated in the class diagram below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/PayRiseSequenceDiagram.png" alt="PayRiseSequenceDiagram">
+<img src="images/StatisticsFeatureClassDiagram.png" alt="StatisticsFeatureClassDiagram">
 </div>
+<div class="title">Figure 10. Partial Structure of Deliverymen Database</div>
+</div>
+<div class="paragraph">
+<p>The <code>DeliverymenDatabase</code> acts as an agent for both components to parse information around. This helps to maintains a clear
+separation of concerns to carry out different functions.</p>
+</div>
+<div class="paragraph">
+<p>Also, the following sequence diagram shows how the <code>stats</code> operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeliverymenStatistics.png" alt="DeliverymenStatistics">
+</div>
+<div class="title">Figure 11. Sequence Diagram of Retrieving Deliverymen Statistics</div>
+</div>
+<div class="paragraph">
+<p>As seen in Figure 10, for every use of the <code>stats</code> command, a <code>RecordCard</code> object is created. The <code>Analyzer</code> will take in the status lists and the <code>RecordCard</code>
+to compute and record the results onto the <code>RecordCard. Subsequently, it will return the edited `RecordCard</code> to the <code>StatisticsManager</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The above explanation and sequence diagram (Figure 10) only illustrates what happens inside the <code>Model</code> component of the architecture
+when the <code>stats</code> command is used. The higher-level components such as <code>LogicManager</code>  are left out, even though they are
+also involved in the execution of this command.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.4.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-tracking-the-record-of-every-deliveryman"><a class="link" href="#aspect-tracking-the-record-of-every-deliveryman">Aspect: Tracking the record of every deliveryman</a></h5>
+<h5 id="aspect-analysing-the-status-lists"><a class="link" href="#aspect-analysing-the-status-lists">Aspect: Analysing the status lists</a></h5>
 <div class="paragraph">
-<p>This feature necessitates the tracking of the orders each deliveryman has completed.</p>
+<p>This feature necessitates the analysis of the status lists. A consideration is the design of the architecture in which the statistics feature
+should be implemented. It may be subtle in the current version of <strong>DeliveryMANS</strong>, but will have significant implications when the app is further developed.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1(current choice): Saves the number of completed orders for each deliveryman and write to hard disk.</p>
+<p>Alternative 1(current choice): Create another class (<code>StatisticsManager</code>) to deal with all the statistics-related methods.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement and takes up less memory.</p>
+<p>Pros: Allows for a more structured and object-oriented way of executing out the <code>stats</code> command. This makes it easier to extend additional
+statistics-related enhancements in future, such as adding predictive capabilities to predict the utilisation level over the next few weeks.</p>
 </li>
 <li>
-<p>Cons: The details of the order cannot be tracked, even though they might be a potential criteria for pay rise.</p>
+<p>Cons: More inefficient as the status lists from <code>StatusManager</code> have to be passed through different classes before reaching <code>StatisticsManager</code>.
+This can affect the runtime of the command when the enhancements get more complicated.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Alternative 2: Saves the specific completed orders (including the content of order) and write to hard disk.</p>
+<p>Alternative 2: Modify the existing <code>StatusManager</code> to handle statistics computation as well.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Allows for a thorough and more accurate analysis for suggesting pay rise</p>
+<p>Pros: More convenient as the status lists can be directly obtained from the same class instead of having to pass it around.</p>
 </li>
 <li>
-<p>Cons: Takes up significant amount of memory</p>
+<p>Cons: Harder to manage in future as the app is improved due to coupling between status management and statistics management.
+Changes to status-related issues may cause regressions to the statistics feature.</p>
 </li>
 </ul>
 </div>
@@ -910,7 +962,7 @@ The command will access the <code>UniqueDeliverymenList</code> in order to obtai
 <div class="content">
 <img src="images/plantuml/AutoTagAddActivityDiagram.png" alt="AutoTagAddActivityDiagram">
 </div>
-<div class="title">Figure 10. Activity diagram of tagging process</div>
+<div class="title">Figure 12. Activity diagram of tagging process</div>
 </div>
 <div class="paragraph">
 <p>Another function called <code>changeMainTag()</code> is used to change the main <code>Tag</code>s of the <code>Customer</code> to show on the <code>CustomerCard</code>. The activity diagram below shows how the application determines the top two <code>Tag</code>s:</p>
@@ -919,7 +971,7 @@ The command will access the <code>UniqueDeliverymenList</code> in order to obtai
 <div class="content">
 <img src="images/plantuml/ChangeTagActivityDiagram.png" alt="ChangeTagActivityDiagram">
 </div>
-<div class="title">Figure 11. Activity diagram of changing <code>Customer</code>'s main <code>Tag</code>s</div>
+<div class="title">Figure 13. Activity diagram of changing <code>Customer</code>'s main <code>Tag</code>s</div>
 </div>
 </div>
 <div class="sect3">
@@ -1615,4 +1667,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:35:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 10:19:36 UTC</div></div></div></body></html>
