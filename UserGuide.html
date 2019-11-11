@@ -681,14 +681,41 @@ exists currently in the database.</p>
 </div>
 <div class="paragraph">
 <p>Say you have accidentally executed a command and now want to reverse it. Just type <code>-undo</code> into the
-command line and press Enter like any other command. The result pane will then show the following:</p>
+command line and press <strong>Enter</strong> like any other command. The result box will then show the following:</p>
 </div>
 <div class="paragraph">
-<p>Successfully undid: (your previous command here)</p>
+<p><em>Successfully undid: (your previous command here)</em></p>
 </div>
 <div class="paragraph">
 <p>The command which you last performed has now been reversed. Subsequent invocations of <code>-undo</code> will
 reverse commands which you have performed even earlier.</p>
+</div>
+<div class="paragraph">
+<p>The following is a step-by-step illustration of this process. Say you have just executed <code>delete 1</code>
+to delete Alex Yeoh from the customer list, and now realise that it was a mistake! In the image
+below, the result box confirms that Alex has been deleted, and his details are no longer in the
+customer list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/UndoExample1.png" alt="UndoExample1">
+</div>
+</div>
+<div class="paragraph">
+<p>To undo this deletion, just type <code>-undo</code> into the program as shown and press <strong>Enter</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/UndoExample2.png" alt="UndoExample2">
+</div>
+</div>
+<div class="paragraph">
+<p>Success! The result box displays the undone command, and Alex is back in the customer list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/UndoExample3.png" alt="UndoExample3">
+</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -705,17 +732,141 @@ commands which you have undone earlier.</p>
 <p>Format: <code>-redo</code></p>
 </div>
 <div class="paragraph">
-<p>After performing <code>-redo</code>, the result pane will show:</p>
+<p>After performing <code>-redo</code>, the result box will show:</p>
 </div>
 <div class="paragraph">
-<p>Successfully redid: (your previous command here)</p>
+<p><em>Successfully redid: (your previous command here)</em></p>
+</div>
+<div class="paragraph">
+<p>The operation of this command is similar to the <code>-undo</code> command which is illustrated above.</p>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-program-code-exit-code"><a class="link" href="#exiting-program-code-exit-code">3.1.11. Exiting program: <code>-exit</code></a></h4>
+<h4 id="listing-of-undo-redo-actions-code-undo_list-code"><a class="link" href="#listing-of-undo-redo-actions-code-undo_list-code">3.1.11. Listing of undo/redo actions: <code>-undo_list</code></a></h4>
+<div class="paragraph">
+<p>This command lists the actions that can be undone and redone so that multiple actions can be redone
+at once with the <code>-undo_till</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>-undo_list</code></p>
+</div>
+<div class="paragraph">
+<p>Upon executing the command, the result box will show something similar to the following:</p>
+</div>
+<div class="paragraph">
+<p><em>Here are the actions that can be undone or redone, use -undo_till INDEX to undo or redo till that
+action.</em></p>
+</div>
+<div class="paragraph">
+<p><em>1: (Undo) (command you previously executed here)</em></p>
+</div>
+<div class="paragraph">
+<p><em>3: (Redo) (command you previously undid here)</em></p>
+</div>
+<div class="paragraph">
+<p>(Undo) indicates that the command was performed, and its effects can be undone. (Redo) indicates
+that the command has previously been undone, and can now be redone. After using this command, take
+note of the index of the command that you want to undo (or redo) until, and use the command
+<code>-undo_till INDEX</code> to perform the undo or redo.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The undo list can be seen as a timeline of commands; it is not possible to undo only certain
+commands and not the other intervening commands.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Say you have undone two commands and decided that you actually want both of the commands redone.
+First type <code>-undo_list</code> in the area indicated below by the red rectangle and press <strong>Enter</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/UndoList1.png" alt="UndoList1">
+</div>
+</div>
+<div class="paragraph">
+<p>The list of commands that can be undone or redone is then listed. In the image below, there
+are two commands that can be redone. To redo <em>till</em> the last command, take note of the index of the
+last command, which is 3.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/UndoList2.png" alt="UndoList2">
+</div>
+</div>
+<div class="paragraph">
+<p>Now execute <code>-undo_till 3</code>. This command will be explained in more detail in the following section.</p>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undoing-or-redoing-commands-till-a-specific-command-code-undo_till-code"><a class="link" href="#undoing-or-redoing-commands-till-a-specific-command-code-undo_till-code">3.1.12. Undoing or redoing commands till a specific command: <code>-undo_till</code></a></h4>
+<div class="paragraph">
+<p>This command undoes or redoes all commands from the current state until after a specific command.
+It takes in one parameter, INDEX, which is the index of the specific command. This index is obtained
+from the command described in the previous section, <code>-undo_list</code>.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>-undo_till INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>-undo_till 3</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<div class="title">Requirement</div>
+<p>The index provided must be a valid index obtained from <code>-undo_list</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>From the previous section, the index of the command to redo till is 3. Type <code>-undo_till 3</code> in the
+app and press <strong>Enter</strong>. From the result box in the image below, it can be deduced that the first
+order was assigned a deliveryman and marked as completed, but these two commands were then undone.
+The image also shows that the deliveryman is now unassigned and the order is now shown as not
+delivered.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/UndoTill1.png" alt="UndoTill1">
+</div>
+</div>
+<div class="paragraph">
+<p>Upon successful execution, the result box shows whether commands were undone or redone, and the
+specific command that has been undone or redone until. Also, the first order now has the deliveryman
+reassigned and delivery marked as completed!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/UndoTill2.png" alt="UndoTill2">
+</div>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.1.13. Exiting the program: <code>-exit</code></a></h4>
 <div class="paragraph">
 <p>This command exits the program.</p>
 </div>
@@ -1621,6 +1772,12 @@ border summarizes it all for you!
 <p>Redo command: <code>-redo</code></p>
 </li>
 <li>
+<p>List undo/redo: <code>-undo_list</code></p>
+</li>
+<li>
+<p>Undo/redo till: <code>-undo_till INDEX</code></p>
+</li>
+<li>
 <p>Exit application: <code>-exit</code></p>
 </li>
 </ul>
@@ -1704,4 +1861,4 @@ border summarizes it all for you!
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:41:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:14:36 UTC</div></div></div></body></html>
