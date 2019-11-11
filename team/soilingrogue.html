@@ -4,14 +4,16 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This document serves to highlight my contributions to the project, DeliveryMANS.</p>
-</div>
-<div class="paragraph">
-<p>intro to team, project, reqs (desktop app CLI), list main features
-This six week project was done by a group 5 year 2 NUS SoC students as part of ….</p>
+<p>This document serves to highlight my contributions to the project, DeliveryMANS.
+DeliveryMANS is a command line interface (CLI), desktop application catered towards food delivery administrators to assist them in all their delivery needs.
+It includes features such as autocomplete, the ability to add, list and delete orders and deliverymen, as well as statistics generation for administrators to manage deliveries effectively.
+This six week project was done by a group of 5 year 2 NUS School of Computing (SoC) Computer Science students as part of our Software Engineering <a href="https://nus-cs2103-ay1920s1.github.io/website/index.html">2103T</a> module requirements to morph <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3">Address Book 3</a> into a <a href="https://workplace.stackexchange.com/questions/17293/what-is-a-greenfield-project-in-it">greenfield project</a> with CLI constraints.</p>
 </div>
 <div class="paragraph">
 <p>Below are the symbols and formatting used in this document.</p>
+</div>
+<div class="paragraph">
+<p><strong>Symbols</strong></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -37,30 +39,23 @@ Tips to assist you.
 </tr>
 </table>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Commands or user input which can be entered into the application.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p><strong>Text formatting</strong></p>
 </div>
-<div class="admonitionblock caution">
-<table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
 <tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-Components, classes or objects used in the architecture of the application.
-</td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commands or user input which can be entered into the application for the User Guide.</p>
+<p class="tableblock">Components, classes or objects used in the architecture of the application for the Developer Guide.</p></td>
 </tr>
+</tbody>
 </table>
-</div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect1">
@@ -69,39 +64,78 @@ Components, classes or objects used in the architecture of the application.
 <div class="paragraph">
 <p>This section serves to summarize my contributions to the project, namely feature enhancements, code as well as other contributions.</p>
 </div>
-<div class="sect2">
-<h3 id="feature"><a class="link" href="#feature">2.1. Feature&#8230;&#8203;.</a></h3>
+<div class="paragraph">
+<p><strong>Autocomplete feature - Major</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does:</p>
+<p>What it does: It autocompletes the commands entered by the user.</p>
 </li>
 <li>
-<p>Justification:</p>
+<p>Justification: This feature allows the application to be more user-friendly as the administrator would not need to refer to the User Guide or memorize input commands to navigate the application.
+This enables effective and efficient management of deliveries.</p>
 </li>
 <li>
-<p>Highlight:</p>
+<p>Highlight: This feature works with user commands with more than 1 input field (see "3.1 Adding an order" below) and is designed for the ease of integration of with future commands.
+The implementation was also challenging as it required results to be displayed even before the user input was entered using the <code>Enter</code> key.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Order Manager feature - Major</strong></p>
 </div>
-<div class="sect2">
-<h3 id="code-contributed"><a class="link" href="#code-contributed">2.2. Code contributed</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Implementation of context switching for user targeted commands [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>]</p>
+<p>What it does: It allows the user to add, edit, delete, assign, complete and list orders.</p>
 </li>
 <li>
-<p>Implementation of Order Manager</p>
+<p>Justification: This feature allows for more effective management of deliveries as delivery administrators may be required to do last-minute edits of orders before delivery, such as when the customer cancels an order or adds more food to be delivered.</p>
 </li>
 <li>
-<p>Implementation of autocomplete feature</p>
+<p>Highlight: The implementation was challenging as it required changes to existing commands as well as in-depth analysis of the <code>Logic</code>, <code>Model</code>, <code>Storage</code> and <code>Ui</code> components of the architecture to allow for the ease of integration with future commands and for the application to run smoothly.</p>
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="other-contributions"><a class="link" href="#other-contributions">2.2.1. Other contributions</a></h4>
+<div class="paragraph">
+<p><strong>Context switching feature - Minor</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: It allows for user targeted commands for different contexts such as deliveryman, customer and restaurant.</p>
+</li>
+<li>
+<p>Justification: This feature allows for a greater variety of commands for the administrator to manage different aspects of a delivery, while reducing the confusion caused due to similar command names such as <code>add</code> for both restaurant and deliveryman.</p>
+</li>
+<li>
+<p>Highlight: The implementation allows for near instantaneous switching of contexts when entered.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Code contributed</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Implementation of context switching (Pull requests <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/1">#1</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/9">#9</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/44">#44</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/50">#50</a>)</p>
+</li>
+<li>
+<p>Implementation of Order Manager (Pull requests <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/49">#49</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/50">#50</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/51">#51</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/59">#59</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/180">#180</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/181">#181</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/184">#184</a>)</p>
+</li>
+<li>
+<p>Implementation of autocomplete feature (Pull requests <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/98">#98</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/111">#111</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/188">#188</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/200">#200</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/205">#205</a>)</p>
+</li>
+<li>
+<p>Over 3000 lines of code on <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=soilingrogue">RepoSense</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Other contributions</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -109,7 +143,10 @@ Components, classes or objects used in the architecture of the application.
 <div class="ulist">
 <ul>
 <li>
-<p>DG UG</p>
+<p>Updated User Guide with texts and images for explaining universal commands (Pull requests <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/81">#81</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/83">#83</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/193">#193</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/232">#232</a>)</p>
+</li>
+<li>
+<p>Updated Developer Guide with UML diagrams and texts for explaining implementation of features (Pull requests <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/77">#77</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/85">#85</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/87">#87</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/217">#217</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/234">#234</a>)</p>
 </li>
 </ul>
 </div>
@@ -119,10 +156,10 @@ Components, classes or objects used in the architecture of the application.
 <div class="ulist">
 <ul>
 <li>
-<p>Reported bugs and suggestions for other teams (examples:  <a href="https://github.com/SoilingRogue/ped/issues/9">1</a>, <a href="https://github.com/SoilingRogue/ped/issues/10">2</a>, <a href="https://github.com/SoilingRogue/ped/issues/6">3</a>)</p>
+<p>Reported bugs and suggestions for other teams (Examples <a href="https://github.com/SoilingRogue/ped/issues/9">#1</a> <a href="https://github.com/SoilingRogue/ped/issues/10">#2</a> <a href="https://github.com/SoilingRogue/ped/issues/6">#3</a>)</p>
 </li>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>Reviewed PRs with non-trivial review comments (Pull requests <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/54">#54</a> <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/pull/74">#74</a>)</p>
 </li>
 </ul>
 </div>
@@ -139,15 +176,14 @@ Components, classes or objects used in the architecture of the application.
 </li>
 </ul>
 </div>
-</div>
-</div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">3. Contributions to the User Guide</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Given below are my contributions to the User Guide.
+<p>Given below are some of my contributions to the User Guide.
 They showcase my ability to write documentation targeting end-users.</p>
 </div>
 <div class="paragraph">
@@ -175,7 +211,7 @@ automatically based on the internal algorithms.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/userguide/AddOrder1.png" alt="AddOrder1" width="790">
+<img src="../images/userguide/AddOrder1.png" alt="AddOrder1" width="480">
 </div>
 </div>
 <div class="olist arabic">
@@ -188,7 +224,7 @@ automatically based on the internal algorithms.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/userguide/AddOrder2.png" alt="AddOrder2" width="790">
+<img src="../images/userguide/AddOrder2.png" alt="AddOrder2" width="480">
 </div>
 </div>
 <div class="olist arabic">
@@ -200,7 +236,7 @@ automatically based on the internal algorithms.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/userguide/AddOrder3.png" alt="AddOrder3" width="790">
+<img src="../images/userguide/AddOrder3.png" alt="AddOrder3" width="480">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -211,7 +247,6 @@ automatically based on the internal algorithms.</p>
 </td>
 <td class="content">
 <div class="ulist">
-<div class="title">Requirements</div>
 <ul>
 <li>
 <p>A valid customer <code>c/CUSTOMER</code>, restaurant <code>r/RESTAURANT</code> and restaurant menu item <code>f/FOOD</code> must be provided and
@@ -234,7 +269,6 @@ exists currently in the database.</p>
 </td>
 <td class="content">
 <div class="ulist">
-<div class="title">Tip</div>
 <ul>
 <li>
 <p>Fill in the restaurant <code>r/RESTAURANT</code> before entering the restaurant menu item <code>f/FOOD</code> for the autocompletion feature to load the list of that restaurant&#8217;s menu in a drop down box for you.</p>
@@ -243,166 +277,16 @@ exists currently in the database.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/userguide/AutoComplete1.png" alt="AutoComplete1" width="790">
+<img src="../images/userguide/AutoComplete1.png" alt="AutoComplete1" width="400">
 </div>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>&#160;<br></p>
-</div>
 </div>
 <div class="sect3">
-<h4 id="assigning-an-order-code-assign_order-code"><a class="link" href="#assigning-an-order-code-assign_order-code">3.2. Assigning an order: <code>-assign_order</code></a></h4>
-<div class="paragraph">
-<p>This command allows you to automatically assign an available deliveryman to an existing order in the database based on the internal algorithms.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>-assign_order n/ORDERNAME</code></p>
-</div>
-<div class="paragraph">
-<p>Example:  <code>-assign_order n/Order 1</code></p>
-</div>
-<div class="olist start">
-<div class="title">Example use case</div>
-<ol class="start">
-<li>
-<p>Type the command statement from the example above into the program and press <strong>Enter</strong> to execute it.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/userguide/AssignOrder1.png" alt="AssignOrder1" width="790">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>If you are successful, the result box displays the message:
-<code><em>"Assigned Order:  Order Name: Order 1 Customer: AlexYeoh99 Restaurant: Burger Palace Deliveryman: Jackie Chan Food: Ginger Burger x2 Crispy Duck Burger x4 Pickle Burger x1  Completed delivery: false".</em></code></p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/userguide/AssignOrder2.png" alt="AssignOrder2" width="790">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>The order list shows the newly assigned order.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/userguide/AssignOrder3.png" alt="AssignOrder3" width="790">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<div class="title">Requirements</div>
-<ul>
-<li>
-<p>The order name <code>n/ORDERNAME</code> must exist in the order list.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>&#160;<br></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="completing-an-order-code-complete_order-code"><a class="link" href="#completing-an-order-code-complete_order-code">3.3. Completing an order: <code>-complete_order</code></a></h4>
-<div class="paragraph">
-<p>This command allows you to complete an order in the database by its order name. The next unassigned order, if any, will automatically be assigned to an available deliveryman in the database.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>-complete_order n/ORDERNAME</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>-complete_order n/Order 1</code></p>
-</div>
-<div class="olist start">
-<div class="title">Example use case</div>
-<ol class="start">
-<li>
-<p>Type the command statement from the example above into the program and press <strong>Enter</strong> to execute it.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/userguide/CompleteOrder1.png" alt="CompleteOrder1" width="790">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>If you are successful, the result box displays the message:
-<code><em>"Order completed:  Order Name: Order 1 Customer: AlexYeoh99 Restaurant: Burger Palace Deliveryman: Jackie Chan Food: Ginger Burger x2 Crispy Duck Burger x4 Pickle Burger x1  Completed delivery: true".</em></code></p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/userguide/CompleteOrder2.png" alt="CompleteOrder2" width="790">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>The order list shows the delivery status of the order as completed.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/userguide/CompleteOrder3.png" alt="CompleteOrder3" width="790">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<div class="title">Requirements</div>
-<ul>
-<li>
-<p>A deliveryman must already be assigned to the order before it can be completed.</p>
-</li>
-<li>
-<p>The order name <code>n/ORDERNAME</code> must exist in the order list.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>&#160;<br></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="editing-an-order-code-edit_order-code"><a class="link" href="#editing-an-order-code-edit_order-code">3.4. Editing an order: <code>-edit_order</code></a></h4>
+<h4 id="editing-an-order-code-edit_order-code"><a class="link" href="#editing-an-order-code-edit_order-code">3.2. Editing an order: <code>-edit_order</code></a></h4>
 <div class="paragraph">
 <p>This command enables you to edit an order. The order to edit will have to be specified by its order name when you are entering the command.</p>
 </div>
@@ -438,7 +322,7 @@ exists currently in the database.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/userguide/EditOrder1.png" alt="EditOrder1" width="790">
+<img src="../images/userguide/EditOrder1.png" alt="EditOrder1" width="480">
 </div>
 </div>
 <div class="olist arabic">
@@ -451,7 +335,7 @@ exists currently in the database.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/userguide/EditOrder2.png" alt="EditOrder2" width="790">
+<img src="../images/userguide/EditOrder2.png" alt="EditOrder2" width="480">
 </div>
 </div>
 <div class="olist arabic">
@@ -463,7 +347,7 @@ exists currently in the database.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/userguide/EditOrder3.png" alt="EditOrder3" width="790">
+<img src="../images/userguide/EditOrder3.png" alt="EditOrder3" width="480">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -474,7 +358,6 @@ exists currently in the database.</p>
 </td>
 <td class="content">
 <div class="ulist">
-<div class="title">Requirements</div>
 <ul>
 <li>
 <p>The order name <code>n/ORDERNAME</code> must exist in the order list.</p>
@@ -499,7 +382,6 @@ exists currently in the database.</p>
 </td>
 <td class="content">
 <div class="ulist">
-<div class="title">Tip</div>
 <ul>
 <li>
 <p>Fill in the restaurant <code>r/RESTAURANT</code> before entering the restaurant menu item <code>f/FOOD</code> for the autocompletion feature to load the list of that restaurant&#8217;s menu in a drop down box for you.</p>
@@ -508,143 +390,21 @@ exists currently in the database.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/userguide/AutoComplete2.png" alt="AutoComplete2" width="790">
+<img src="../images/userguide/AutoComplete2.png" alt="AutoComplete2" width="400">
 </div>
 </div>
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>&#160;<br></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deleting-an-order-code-delete_order-code"><a class="link" href="#deleting-an-order-code-delete_order-code">3.5. Deleting an order: <code>-delete_order</code></a></h4>
-<div class="paragraph">
-<p>This command enables you to delete an unwanted/cancelled order in the database by its order name.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>-delete_order n/ORDERNAME</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>-delete_order n/Order 1</code></p>
-</div>
-<div class="olist start">
-<div class="title">Example use case</div>
-<ol class="start">
-<li>
-<p>Type the command statement from the example above into the program and press <strong>Enter</strong> to execute it.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/userguide/DeleteOrder1.png" alt="DeleteOrder1" width="790">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>If you are successful, the result box displays the message:
-<code><em>"Deleted Order:  Order Name: Order 1 Customer: AlexYeoh99 Restaurant: Burger Palace Deliveryman: Jackie Chan Food: Ginger Burger x2 Crispy Duck Burger x4 Pickle Burger x1  Completed delivery: true".</em></code></p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/userguide/DeleteOrder2.png" alt="DeleteOrder2" width="790">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>The order list shows that the order has been deleted.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/userguide/DeleteOrder3.png" alt="DeleteOrder3" width="790">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<div class="title">Requirements</div>
-<ul>
-<li>
-<p>The order name <code>n/ORDERNAME</code> must exist in the order list.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>&#160;<br></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="listing-all-orders-code-list_orders-code"><a class="link" href="#listing-all-orders-code-list_orders-code">3.6. Listing all orders: <code>-list_orders</code></a></h4>
-<div class="paragraph">
-<p>This command enables you to view all orders currently in the database.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>-list_orders</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>-list_orders</code></p>
-</div>
-<div class="olist start">
-<div class="title">Example use case</div>
-<ol class="start">
-<li>
-<p>Type the command statement from the example above into the program and press <strong>Enter</strong> to execute it.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/userguide/ListOrder1.png" alt="ListOrder1" width="790">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>If you are successful, the result box displays the message:
-<code><em>"Listed all orders".</em></code></p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/userguide/ListOrder2.png" alt="ListOrder2" width="790">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>The order list shows all orders currently in the database.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/userguide/ListOrder3.png" alt="ListOrder3" width="790">
-</div>
-</div>
-<div class="paragraph">
-<p>&#160;<br></p>
 </div>
 <div class="paragraph">
 <p><strong><em>End of extract</em></strong></p>
+</div>
+<div class="paragraph">
+<p>My other contributions to the <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/blob/master/docs/UserGuide.adoc">User Guide</a> include: switching contexts, assigning, completing, deleting and listing of orders.</p>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
 </div>
 </div>
 </div>
@@ -667,36 +427,36 @@ They showcase my ability to write technical documentation and the technical dept
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">4.1.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The autocomplete mechanism is facilitated by the <code>KeyListener</code> and a <code>Trie</code>, a tree-like abstract data type (ADT).
-The <code>KeyListener</code> passes the current input text in the input command box to the <code>TrieManager</code> via <code>LogicManager#getAutoCompleteResults()</code>.
-The <code>TrieManager</code> calls <code>Trie#autoCompleteCommandWord()</code> and a sorted list of matching commands is passed back to the <code>CommandBox</code> and is displayed on the <code>Ui</code> via a dropdown box below the user input command box.</p>
+<p>The autocomplete mechanism is facilitated by the <code><span class="blue">KeyListener</span></code> and a <code><span class="blue">Trie</span></code>, a tree-like abstract data type (ADT).
+The <code><span class="blue">KeyListener</span></code> passes the current input text in the input command box to the <code><span class="blue">TrieManager</span></code> via <code><span class="blue">LogicManager#getAutoCompleteResults()</span></code>.
+The <code><span class="blue">TrieManager</span></code> calls <code><span class="blue">Trie#autoCompleteCommandWord()</span></code> and a sorted list of matching commands is passed back to the <code><span class="blue">CommandBox</span></code> and is displayed on the <code><span class="blue">Ui</span></code> via a dropdown box below the user input command box.</p>
 </div>
 <div class="paragraph">
-<p>The underlying data structure used is a directed <code>Graph</code> with the <code>Trie</code> as a <code>Node</code> and <code>HashMap&lt;Character, Trie&gt;</code> to represent all outgoing edges.
-The <code>Keys</code> in the <code>HashMap</code> are <code>Characters</code> in the command words while the <code>Values</code> are the <code>Tries</code> containing the subsequent <code>Characters</code> in the command words.
-Each <code>Trie</code> contains a <code>List&lt;String&gt;</code> of command words, which is returned when <code>Trie#autoCompleteCommandWord()</code> is called.</p>
+<p>The underlying data structure used is a directed graph with the <code><span class="blue">Trie</span></code> as a node and <code><span class="blue">HashMap&lt;Character, Trie&gt;</span></code> to represent all outgoing edges.
+The keys in the <code><span class="blue">HashMap</span></code> are <code><span class="blue">Characters</span></code> in the command words while the values are the <code><span class="blue">Tries</span></code> containing the subsequent <code><span class="blue">Characters</span></code> in the command words.
+Each <code><span class="blue">Trie</span></code> contains a <code><span class="blue">List&lt;String&gt;</span></code> of command words, which is returned when <code><span class="blue">Trie#autoCompleteCommandWord()</span></code> is called.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the autocomplete mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1: You launch the application. The <code>TrieManager</code> initializes the respective <code>Tries</code> with their context-specific command words using <code>Trie#insertCommand()</code>.
-The <code>Trie</code> adds each <code>Character</code> of the input <code>String</code> and new <code>Tries</code> into the <code>HashMap&lt;Character, Trie&gt;</code>, as well as the command word into the <code>List&lt;String&gt;</code>, recursively as illustrated by the activity diagram below.</p>
+<p>Step 1: You launch the application. The <code><span class="blue">TrieManager</span></code> initializes the respective <code><span class="blue">Tries</span></code> with their context-specific command words using <code><span class="blue">Trie#insertCommand()</span></code>.
+The <code><span class="blue">Trie</span></code> adds each <code><span class="blue">Character</span></code> of the input <code><span class="blue">String</span></code> and new <code><span class="blue">Tries</span></code> into the <code><span class="blue">HashMap&lt;Character, Trie&gt;</span></code>, as well as the command word into the <code><span class="blue">List&lt;String&gt;</span></code>, recursively as illustrated by the activity diagram below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AutoCompleteActivityDiagram.png" alt="AutoCompleteActivityDiagram" width="790">
+<img src="../images/AutoCompleteActivityDiagram.png" alt="AutoCompleteActivityDiagram" width="300">
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2: You want to add an order to the database, however are uncertain how to spell the command and type in <code><em>‘order’</em></code>.
-The <code>KeyListener</code> passes the <code>String</code> in the <code>CommandBox</code> to the <code>Trie</code> via the <code>LogicManager</code> and <code>TrieManager</code>.
-The trie searches for relevant commands and pass them as a list back to the <code>CommandBox</code> via <code>Trie#getAutoCompleteCommandWord()</code>, <code>Trie#search()</code> and <code>Trie#getAllCommandWords()</code>.
-The ‘Ui’ displays the relevant results in a dropdown box below the user input command box.</p>
+<p>Step 2: You want to add an order to the database, however are uncertain how to spell the command and type in <code><em>order</em></code>.
+The <code><span class="blue">KeyListener</span></code> passes the <code><span class="blue">String</span></code> in the <code><span class="blue">CommandBox</span></code> to the <code><span class="blue">Trie</span></code> via the <code><span class="blue">LogicManager</span></code> and <code><span class="blue">TrieManager</span></code>.
+The trie searches for relevant commands and pass them as a list back to the <code><span class="blue">CommandBox</span></code> via <code><span class="blue">Trie#getAutoCompleteCommandWord()</span></code>, <code><span class="blue">Trie#search()</span></code> and <code><span class="blue">Trie#getAllCommandWords()</span></code>.
+The <code><span class="blue">Ui</span></code> displays the relevant results in a dropdown box below the user input command box.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AutoCompleteSequenceDiagram.png" alt="AutoCompleteSequenceDiagram" width="790">
+<img src="../images/AutoCompleteSequenceDiagram.png" alt="AutoCompleteSequenceDiagram" width="480">
 </div>
 <div class="title">Figure 1. Sequence diagram illustrating the handling of user input via autocomplete</div>
 </div>
@@ -705,7 +465,7 @@ The ‘Ui’ displays the relevant results in a dropdown box below the user inpu
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AutoCompleteUi.png" alt="AutoCompleteUi" width="790">
+<img src="../images/AutoCompleteUi.png" alt="AutoCompleteUi" width="480">
 </div>
 </div>
 </div>
@@ -719,7 +479,7 @@ The ‘Ui’ displays the relevant results in a dropdown box below the user inpu
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a <code>KeyListener</code> to record and handle user inputs in the user input command box before they are entered.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a <code><span class="blue">KeyListener</span></code> to record and handle user inputs in the user input command box before they are entered.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -732,7 +492,7 @@ The ‘Ui’ displays the relevant results in a dropdown box below the user inpu
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Handle user input only when the command is entered, utilizing the <code>Parser</code> to  handle user inputs and pass it to the <code>Trie</code> to be evaluated.</p>
+<p><strong>Alternative 2:</strong> Handle user input only when the command is entered, utilizing the <code><span class="blue">Parser</span></code> to  handle user inputs and pass it to the <code><span class="blue">Trie</span></code> to be evaluated.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -755,14 +515,14 @@ The ‘Ui’ displays the relevant results in a dropdown box below the user inpu
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a <code>Trie</code> to store <code>Characters</code> of commands as keys.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a <code><span class="blue">Trie</span></code> to store <code><span class="blue">Characters</span></code> of commands as keys.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Efficient and rapid searching, retrieving and displaying of results due to the tree-like ADT.</p>
 </li>
 <li>
-<p>Cons: Tedious to implement, as <code>Tries</code> are not currently implemented in Java.</p>
+<p>Cons: Tedious to implement, as <code><span class="blue">Tries</span></code> are not currently implemented in Java.</p>
 </li>
 </ul>
 </div>
@@ -785,120 +545,14 @@ The ‘Ui’ displays the relevant results in a dropdown box below the user inpu
 <div class="paragraph">
 <p>Alternative 1 was selected, as it allows for faster searching and listing of relevant commands compared to alternative 2.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="order-manager"><a class="link" href="#order-manager">4.2. Order Manager</a></h3>
-<div class="paragraph">
-<p>Order Manager is an address book of Orders and has some useful functions specifically catered towards the ease of management of orders.</p>
-</div>
-<div class="paragraph">
-<p>Firstly, the automated allocation of deliveryman once new orders are added or completed. When a new order is created on the database, or when an existing order is completed, a deliveryman will be assigned to deliver the new/existing pending orders based on whether he/she is present as well as whether he/she is currently preoccupied with delivering another order. This helps to ease the burden on the user as they would not need to manually allocate deliverymen to the orders. However, the feature to manually allocate is still present if the user wishes to do so.</p>
-</div>
-<div class="paragraph">
-<p>Secondly, the Order Manager allows for sorting of orders, based on date, customer, restaurant, menu or even deliveryman, depending on what information the user wishes to see to allow for better management.</p>
-</div>
-<div class="paragraph">
-<p>Additionally it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>-add_order</code> - adds an order to the database.</p>
-</li>
-<li>
-<p><code>-assign_order</code> - assigns an available deliveryman to an existing order in the database.</p>
-</li>
-<li>
-<p><code>-complete_order</code> - updates the completion status of an existing order in the database.</p>
-</li>
-<li>
-<p><code>-delete_order</code> - removes an existing order in the database.</p>
-</li>
-<li>
-<p><code>-edit_order</code> - edits an existing order in the database.</p>
-</li>
-<li>
-<p><code>-list_orders</code> - lists all existing orders in the database.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>ModelManager</code> class as <code>ModelManager#addOrder(Order order)</code>, <code>ModelManager#getOrder(Name targetOrder)</code>, <code>ModelManager#setOrder(Order target, Order editedOrder)</code>, <code>ModelManager#deleteOrder(Order order)</code> and <code>ModelManager#assignUnassignedOrder()</code>.</p>
-</div>
-<div class="paragraph">
-<p>Order manager implements its own 'Model', 'Command' and 'Parser' for the 'Logic Component', <code>JsonOrderDatabaseStorage</code>, <code>JsonSerializableOrderDatabase</code>, <code>JsonAdaptedOrder</code> and <code>JsonAdaptedFoodOrder</code>, along with methods in the <code>StorageManager</code> for the <code>Storage Component</code> and lastly, <code>OrderCard</code> and <code>OrderListPanel</code> for displaying on the <code>Ui Component</code>.</p>
-</div>
-<div class="paragraph">
-<p><strong>insert object diagrams here + brief explanation of object diagrams</strong></p>
-</div>
-<div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">4.2.1. Implementation</a></h4>
-<div class="paragraph">
-<p><strong>Add command:</strong> <code>-add_order</code></p>
-</div>
-<div class="paragraph">
-<p>The add command adds an order to the <code>ModelManager</code> and <code>UniqueOrderList</code>. The <code>UniversalParser</code> invokes <code>AddOrderCommandParser#parse()</code>, which parses the target <strong>customer</strong>, <strong>restaurant</strong>, <strong>food</strong> and <strong>quantity</strong> from a <strong>String</strong> into <strong>Name</strong> and <strong>Integer</strong> objects.</p>
-</div>
-<div class="paragraph">
-<p>Only valid <strong>customer</strong>, <strong>restaurant</strong>, <strong>food</strong> and <strong>quantity</strong> are allowed. This validation is done through accessing <code>UniqueCustomerList</code> and <code>UniqueRestaurantList</code> through <code>ModelManager#getFilteredCustomerList()</code>, <code>ModelManager#getFilteredRestaurantList()</code> and calling their respective <code>isValidName()</code> methods. <strong>Food</strong> validity will be checked through retrieving the respective using <code>Restaurant#getMenu()</code> and <code>Menu#isValidName()</code>.</p>
-</div>
-<div class="paragraph">
-<p>Duplicated <code>Order</code> will be checked for using <code>ModelManager#hasOrder()</code> and is then added to the <code>UniqueOrderList</code> via <code>ModelManager#addOrder()</code>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Delete command:</strong> <code>-delete_order</code></p>
-</div>
-<div class="paragraph">
-<p>The delete command deletes an <code>Order</code> from the <code>ModelManager</code> and <code>UniqueOrderList</code> by a specified index. The <code>UniversalParser</code> invokes <code>DeleteOrderCommandParser#parse()</code> and user input is used to get the index of the <code>Order</code> to be deleted.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.2. Design Considerations</a></h4>
-<div class="paragraph">
-<p>Below are a few design considerations of the Order manager class.</p>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-for-modelling-storage-and-utilization-of-code-order-code"><a class="link" href="#aspect-data-structure-for-modelling-storage-and-utilization-of-code-order-code">Aspect: Data structure for modelling, storage and utilization of <code>Order</code>.</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Make use of existing data structures as references to create new data structures needed for the implementation of an Order Manager.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Straightforward to implement.</p>
-</li>
-<li>
-<p>Cons: Tedious to implement as several regions of the codebase needs to be edited for <code>Order</code> to run, display and save successfully.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Implement data structures from scratch.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Pride and accomplishment of implementing data structures from scratch.</p>
-</li>
-<li>
-<p>Cons: Tedious and time wasting to code the necessary classes.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Alternative 1 was selected, as it is much faster to implement compared to alternative 2, given the short time spam of 6 weeks to complete the project.</p>
-</div>
 <div class="paragraph">
 <p><strong><em>End of extract</em></strong></p>
 </div>
+<div class="paragraph">
+<p>My other contributions to the <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/blob/master/docs/DeveloperGuide.adoc">Developer Guide</a> include: Order Manager, class and sequence diagrams.</p>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:16:42 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:22:32 UTC</div></div></div></body></html>

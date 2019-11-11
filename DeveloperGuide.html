@@ -668,13 +668,10 @@ The ‘Ui’ displays the relevant results in a dropdown box below the user inpu
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>ModelManager</code> class as <code>ModelManager#addOrder(Order order)</code>, <code>ModelManager#getOrder(Name targetOrder)</code>, <code>ModelManager#setOrder(Order target, Order editedOrder)</code>, <code>ModelManager#deleteOrder(Order order)</code> and <code>ModelManager#assignUnassignedOrder()</code>.</p>
+<p>These operations are exposed in the <code>ModelManager</code> class as <code>ModelManager#addOrder()</code>, <code>ModelManager#getOrder()</code>, <code>ModelManager#setOrder()</code>, <code>ModelManager#deleteOrder()</code> and <code>ModelManager#assignUnassignedOrder()</code>.</p>
 </div>
 <div class="paragraph">
-<p>Order manager implements its own 'Model', 'Command' and 'Parser' for the 'Logic Component', <code>JsonOrderDatabaseStorage</code>, <code>JsonSerializableOrderDatabase</code>, <code>JsonAdaptedOrder</code> and <code>JsonAdaptedFoodOrder</code>, along with methods in the <code>StorageManager</code> for the <code>Storage Component</code> and lastly, <code>OrderCard</code> and <code>OrderListPanel</code> for displaying on the <code>Ui Component</code>.</p>
-</div>
-<div class="paragraph">
-<p><strong>insert object diagrams here + brief explanation of object diagrams</strong></p>
+<p>Order manager implements its own <code>Model</code>, <code>Command</code> and <code>Parser</code> for the <code>Logic Component</code>, <code>JsonOrderDatabaseStorage</code>, <code>JsonSerializableOrderDatabase</code>, <code>JsonAdaptedOrder</code> and <code>JsonAdaptedFoodOrder</code>, along with methods in the <code>StorageManager</code> for the <code>Storage Component</code> and lastly, <code>OrderCard</code> and <code>OrderListPanel</code> for displaying on the <code>Ui Component</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="implementation-4"><a class="link" href="#implementation-4">4.3.1. Implementation</a></h4>
@@ -695,6 +692,40 @@ The ‘Ui’ displays the relevant results in a dropdown box below the user inpu
 </div>
 <div class="paragraph">
 <p>The delete command deletes an <code>Order</code> from the <code>ModelManager</code> and <code>UniqueOrderList</code> by a specified index. The <code>UniversalParser</code> invokes <code>DeleteOrderCommandParser#parse()</code> and user input is used to get the index of the <code>Order</code> to be deleted.</p>
+</div>
+<div class="paragraph">
+<p><strong>Edit command:</strong> <code>-edit_order</code>
+The edit command edits an <code>Order</code> in the <code>UniqueOrderList</code> of the <code>ModelManager</code> by its specified <code>ORDERNAME</code>. The <code>UniversalParser</code> invokes <code>EditOrderCommandParser#parse()</code> which parses the target <strong>customer</strong>, <strong>restaurant</strong>, <strong>food</strong> and <strong>quantity</strong> (if present) from a <strong>String</strong> into <strong>Name</strong> and <strong>Integer</strong> objects.</p>
+</div>
+<div class="paragraph">
+<p>Only valid <strong>customer</strong>, <strong>restaurant</strong>, <strong>food</strong> and <strong>quantity</strong> are allowed. This validation is done through accessing <code>UniqueCustomerList</code> and <code>UniqueRestaurantList</code> through <code>ModelManager#getFilteredCustomerList()</code>, <code>ModelManager#getFilteredRestaurantList()</code> and calling their respective <code>isValidName()</code> methods. <strong>Food</strong> validity will be checked through retrieving the respective using <code>Restaurant#getMenu()</code> and <code>Menu#isValidName()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Valid edition of <code>Orders</code> will be checked through <code>AddOrderCommand#isValidOrder()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Assign command:</strong> <code>-assign_order</code>
+The assign command assigns an unassigned <code>Order</code> to a random available <strong>deliveryman</strong> in the <code>UniqueOrderList</code> of the <code>ModelManager</code> by its specified <code>ORDERNAME</code>. The <code>UniversalParser</code> invokes <code>AssignOrderCommandParser#parse()</code> which parses the target <strong>Order</strong> from a <strong>String</strong> into a <strong>Name</strong> object.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>deliveryman</strong> will then be allocated using <code>ModelManager#getOneAvailableDeliveryman()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Complete command:</strong> <code>-complete_order</code>
+The complete command completes an <code>Order</code> that is already assigned by its specified <code>ORDERNAME</code> in the <code>UniqueOrderList</code> of the <code>ModelManager</code>. The <code>UniversalParser</code> invokes <code>CompleteOrderCommandParser#parse()</code> which parses the target <strong>Order</strong> from a <strong>String</strong> into a <strong>Name</strong> object.</p>
+</div>
+<div class="paragraph">
+<p>Validation will be done through checking the <strong>Name</strong> of the assigned <strong>deliveryman</strong> to ensure that it is not unassigned, as well as checking the completion status of the order using <code>Order#isCompleted()</code>.</p>
+</div>
+<div class="paragraph">
+<p>It also updates the <strong>restaurant</strong> and its <strong>quantity</strong> through <code>ModelManager#getFilteredRestaurantList()</code> and <code>Restaurant#updateQuantity()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>List command:</strong> <code>-list_order</code>
+The list command lists all orders currently in the <code>ModelManager</code>. The <code>UniversalParser</code> creates a new <code>ListOrderCommand</code> object, which changes the <code>Context</code> of the <code>ModelManager</code> to <strong>Context.GLOBAL</strong>.</p>
+</div>
+<div class="paragraph">
+<p>This then updates the <code>Ui</code> to display the order list.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1689,4 +1720,4 @@ Expected: No change in any deliveryman status. Error details shown in the status
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:16:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:22:32 UTC</div></div></div></body></html>
