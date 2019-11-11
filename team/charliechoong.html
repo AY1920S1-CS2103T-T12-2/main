@@ -10,14 +10,21 @@
 <h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>DeliveryMANS</strong> is a food delivery management application used for managing food orders. The user interacts
-with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 25 kLoC.</p>
-</div>
-<div class="paragraph">
-<p><strong>DeliveryMANS</strong> has 4 different contexts: universal/order, deliverymen, restaurant, and customer. I</p>
+<p><strong>DeliveryMANS</strong> is a food delivery management system primarily for administrators in food delivery centres to effectively manage their delivery services. This necessitates
+the need to manage 4 different aspects which are food orders, deliverymen, restaurants as well as customers. To accommodate more efficient management of these aspects, <strong>DeliveryMANS</strong> has 4
+different in-built interfaces(also known formally as contexts): <strong>universal</strong>/<strong>order</strong>, <strong>deliverymen</strong>, <strong>restaurant</strong>, and <strong>customer</strong>.
+The user primarily interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.</p>
 </div>
 <div class="paragraph">
 <p>This is what our project looks like:</p>
+</div>
+<div class="paragraph">
+<p>My role was to design and write the codes for the context for the deliverymen side. This comprises all the features to manage deliverymen status as well as computing crucial
+statistics regarding their status.</p>
+</div>
+<div class="paragraph">
+<p>The following sections illustrate these enhancements in more detail, as well as the relevant documentation I have added to
+the user and developer guides in relation to these enhancements.</p>
 </div>
 </div>
 </div>
@@ -49,8 +56,7 @@ with it using a CLI, and it has a GUI created with JavaFX. It is written in Java
 <p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=charliechoong&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=true&amp;until=2019-11-10&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=charliechoong&amp;tabRepo=AY1920S1-CS2103T-T12-2%2Fmain%5Bmaster%5D">RepoSense</a>]
-[<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=charliechoong&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=true&amp;until=2019-11-10&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=charliechoong&amp;tabRepo=AY1920S1-CS2103T-T12-2%2Fmain%5Bmaster%5D">RepoSense</a>][<a href="https://github.com/AY1920S1-CS2103T-T12-2/main/blob/master/src/test/java/seedu/deliverymans/model/DeliverymanTest.java">Test code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -61,7 +67,7 @@ with it using a CLI, and it has a GUI created with JavaFX. It is written in Java
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.1</code> - <code>v1.4</code> (3 releases) on GitHub</p>
+<p>Managed releases <code>v1.1</code> - <code>v1.4</code> (4 releases) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -126,9 +132,6 @@ with it using a CLI, and it has a GUI created with JavaFX. It is written in Java
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -144,6 +147,330 @@ with it using a CLI, and it has a GUI created with JavaFX. It is written in Java
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p><strong><em>Start of extract</em></strong>
+&#160;<br></p>
+</div>
+<div class="sect2">
+<h3 id="deliverymen-commands"><a class="link" href="#deliverymen-commands">Deliverymen commands</a></h3>
+<div class="paragraph">
+<p>These are the commands you can use after entering the deliverymen context (via the command <code>-deliverymen</code>).
+The screenshot below shows how the deliverymen context looks like.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/DeliverymanContext.png" alt="DeliverymanContext" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>For each deliveryman, his information will be displayed in the following vertical order: name, tag(s), current status and
+phone number. This is shown in another screenshot below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/DeliverymanCard.png" alt="DeliverymanCard" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<div class="title">Note:</div>
+<p>A deliveryman can have any of the 3 statuses: <strong>AVAILABLE</strong>, <strong>UNAVAILABLE</strong>, <strong>DELIVERING</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="adding-a-deliveryman-code-add-code"><a class="link" href="#adding-a-deliveryman-code-add-code">Adding a deliveryman: <code>add</code></a></h4>
+<div class="paragraph">
+<p>This command allows you to add a new deliveryman to the deliverymen database. The name and phone number of the
+deliveryman must be provided.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add n/NAME p/PHONE</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>add n/John Doe p/91234567</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>The phone number must be at least 3 digits and not exceed 10 digits.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Note:</div>
+<ul>
+<li>
+<p>A newly-added deliveryman will be assigned with the default status <strong>UNAVAILABLE</strong>.</p>
+</li>
+<li>
+<p>Tags cannot be added through this command. Refer to the <code>edit</code> command in <a href="#editing-a-deliveryman-code-edit-code">Section 3.4.2</a> to add tags to a deliveryman.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>&#160;</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-deliveryman-code-edit-code"><a class="link" href="#editing-a-deliveryman-code-edit-code">Editing a deliveryman: <code>edit</code></a></h4>
+<div class="paragraph">
+<p>This command allows you to edit an existing deliveryman in the deliverymen database. The index of the deliveryman to be
+edited must be provided. You can edit only the field that you wish to change, but at least one field must be edited
+(eg. name, phone number, tag(s)). You can also add more than one tag, as illustrated in <strong>Example 2</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit INDEX [n/NAME] [p/PHONE] [t/TAG]*</code></p>
+</div>
+<div class="paragraph">
+<p>Example 1: <code>edit 1 n/John Hoe p/97654321</code></p>
+</div>
+<div class="paragraph">
+<p>Example 2: <code>edit 1 t/active t/buff t/bestDeliveryman2019</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>The index INDEX provided must be within the deliverymen list size and be at least 1.</p>
+</li>
+<li>
+<p>Tags must not contain any whitespace.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-deliveryman-code-delete-code"><a class="link" href="#deleting-a-deliveryman-code-delete-code">Deleting a deliveryman: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>This command allows you to delete an existing deliveryman from the deliverymen database. The index of the deliveryman to
+be deleted must be provided.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>delete 1</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>The index provided must be within the deliverymen list size and be at least 1.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-status-lists-of-deliverymen-code-lists-code"><a class="link" href="#listing-status-lists-of-deliverymen-code-lists-code">Listing status lists of deliverymen: <code>lists</code></a></h4>
+<div class="paragraph">
+<p>This command allows you to view all the deliverymen sorted according to their statuses. For easy navigation,
+you can click on any of the three buttons, as shown in the red box of the screenshot below, to display the status list
+that you wish to view.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/DeliverymanLists.png" alt="DeliverymanLists" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Format: <code>lists</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>lists</code></p>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-status-of-a-deliveryman-code-status-code"><a class="link" href="#changing-status-of-a-deliveryman-code-status-code">Changing status of a deliveryman: <code>status</code></a></h4>
+<div class="paragraph">
+<p>This command allows you to switch the status of a deliveryman between <strong>AVAILABLE</strong> and <strong>UNAVAILABLE</strong>. Using this command
+will prompt the status lists as well (that can also be done through <code>lists</code> command explained in <a href="#listing-status-lists-of-deliverymen-code-lists-code">Section 3.4.4</a>).</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>status INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>status 3</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<div class="title">Requirements</div>
+<ul>
+<li>
+<p>The index provided must be within the deliverymen list size and be at least 1.</p>
+</li>
+<li>
+<p>The status of the deliveryman must be either <strong>AVAILABLE</strong> or <strong>UNAVAILABLE</strong>.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note:</div>
+ You are not allowed to change the status of a deliveryman who has the status <strong>DELIVERING</strong>. It can only be changed
+through changes to orders assigned to him.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Example use case</div>
+<ol class="arabic">
+<li>
+<p>Your deliveryman, Donald Trump, was on sick leave and his status is currently <strong>UNAVAILABLE</strong>. However, he just informed you
+that he has recovered and is ready to work again! You want to set his status back to <strong>AVAILABLE</strong>.</p>
+</li>
+<li>
+<p>You search for his name and identify his index as <code>2</code>, as shown in the red border. Then you type in the command <code>status 2</code>.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/BeforeStatusSwitch.png" alt="BeforeStatusSwitch" width="790">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>The result box will display that the status of Donald Trump has been changed. And indeed, it has been switched to <strong>AVAILABLE</strong>!
+Also, you notice that the status lists have been prompted, as shown in the blue border.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/AfterStatusSwitch.png" alt="AfterStatusSwitch" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-the-statistics-of-the-deliverymen-statuses-code-stats-code"><a class="link" href="#viewing-the-statistics-of-the-deliverymen-statuses-code-stats-code">Viewing the statistics of the deliverymen statuses: <code>stats</code></a></h4>
+<div class="paragraph">
+<p>This command allows you to view the statistics of the current statuses of deliverymen. Relevant statistics such as the
+utilisation level will also be computed and displayed for your reference. A brief explanation of each statistic is
+provided as well.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>stats</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>stats</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/DeliverymanStats.png" alt="DeliverymanStats" width="790">
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>In the screenshot above, the information inside the blue border is the statistics. The text shown inside
+the red border is a summary of the analysis.</p>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you just want a brief update on the current state of your deliverymen, the textual analysis displayed inside the red
+border summarizes it all for you!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong><em>End of extract</em></strong></p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -159,63 +486,121 @@ with it using a CLI, and it has a GUI created with JavaFX. It is written in Java
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/redo feature</a></h3>
 <div class="paragraph">
-<p>The undo/redo feature lets users undo and redo changes to the data stored in the app, which were
-effected by commands they have executed.</p>
+<p><strong><em>Start of extract</em></strong></p>
+</div>
+<div class="sect2">
+<h3 id="deliverymen-status-statistics-feature"><a class="link" href="#deliverymen-status-statistics-feature">Deliverymen status statistics feature</a></h3>
+<div class="paragraph">
+<p>Tracking the amount of available manpower you have at any point in time is very crucial to deal with sudden changes in food orders.
+This is a feature which allows the user to effectively manage the deliverymen by providing relevant statistics in regards to their status.
+The user will be able to foresee and hence prepare for any sudden shortage or excess in manpower.
+Relevant statistics include current utilization level and activity level of the deliverymen.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A deliveryman can have any of the 3 status: <strong>AVAILABLE</strong>, <strong>UNAVAILABLE</strong>, <strong>DELIVERING</strong>. To effectively manage their status, 3 different lists
+are used to categorise all the deliverymen based on their status. This way of implementation is efficient when it comes to sorting or searching for a deliveryman.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <div class="paragraph">
-<p>The main class containing the states of the data in the app is <code>UndoHistory</code>. The history is
-represented as a list of states. It includes the following methods:</p>
+<p>The statistics feature is primarily managed by the <code>StatisticsManager</code>, which has access to the status of every deliveryman in the database through the 3
+status lists - lists of available deliverymen, unavailable deliverymen and delivering deliverymen respectively.
+The <code>StatisticsManager</code> obtains these 3 status lists from the <code>StatusManager</code> and passes it to the <code>Analyzer</code> to compute the relevant data, which in turn
+returns a filled <code>StatisticsRecordCard</code> containing the computed statistics.</p>
+</div>
+<div class="paragraph">
+<p>From the status lists, the Analyzer computes two data:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>notifyChange()</code>&#8201;&#8212;&#8201;Saves the current state in the history if it is not equal to the previous
-state, as defined by its <code>equals()</code> method.</p>
+<p>Utilization Level</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This signals to the user the amount of available manpower that is not utilized. It is the percentage of the number of deliverymen who are working (ie. delivering an order) over the number of active deliverymen (ie. available or delivering an order) .</p>
 </li>
 <li>
-<p><code>undo()</code>&#8201;&#8212;&#8201;Moves its internal pointer backwards and returns the previous state.</p>
+<p>It is computed as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>UtilizationLevel =  DeliveringMen / (AvailableMen + DeliveringMen) x 100</strong></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><code>redo()</code>&#8201;&#8212;&#8201;Moves its internal pointer forwards and returns the next state.</p>
+<p>Activity Level</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This signals to the user the amount of active manpower. It is the percentage of the number of deliverymen who are active deliverymen over the total number of deliverymen.</p>
+</li>
+<li>
+<p>It is computed as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ActivityLevel =  (AvailableMen + DeliveringMen) / (TotalMen) x 100</strong></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><code>ModelManager</code> contains an <code>UndoHistory</code>, and exposes its functionality via similarly named
-methods. When <code>undo()</code> or <code>redo()</code> of <code>ModelManager</code> is called, it sets its own data to that
-returned by the respective methods of <code>UndoHistory</code>.</p>
+<p>With this structure, it implements the following operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DeliverymenDatabase#analyzeDeliverymenStatus()</code>&#8201;&#8212;&#8201;Retrieves a filled record card containing all the relevant statistics regarding deliverymen statuses</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>UndoHistory</code> will be initialized with the initial address book state, and the <code>current</code> state pointer pointing to that single address book state.</p>
+<p>This feature requires a high degree of interaction between the <code>Status</code> component and <code>Statistics</code> component of <code>DeliverymenDatabase</code>.
+This interaction of the relevant classes are illustrated in the class diagram below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoState0.png" alt="UndoRedoState0">
+<img src="../images/StatisticsFeatureClassDiagram.png" alt="StatisticsFeatureClassDiagram">
 </div>
+<div class="title">Figure 1. Partial Structure of Deliverymen Database</div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. After each command, <code>LogicManager</code> calls <code>Model#notifyChange()</code>, causing the modified state of the data after the <code>delete 5</code> command executes to be saved in the <code>history</code> list, and the <code>current</code> state pointer is shifted to the newly inserted address book state.</p>
+<p>The <code>DeliverymenDatabase</code> acts as an agent for both components to parse information around. This helps to maintains a clear
+separation of concerns to carry out different functions.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>stats</code> operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoState1.png" alt="UndoRedoState1">
+<img src="../images/DeliverymenStatistics.png" alt="DeliverymenStatistics">
 </div>
+<div class="title">Figure 2. Sequence Diagram of Retrieving Deliverymen Statistics</div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. <code>LogicManager</code> calls <code>Model#notifyChange()</code> again, causing another modified state to be saved into the <code>history</code> list.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState2.png" alt="UndoRedoState2">
-</div>
+<p>As seen in Figure 10, for every use of the <code>stats</code> command, a <code>RecordCard</code> object is created. The <code>Analyzer</code> will take in the status lists and the <code>RecordCard</code>
+to compute and record the results onto the <code>RecordCard. Subsequently, it will return the edited `RecordCard</code> to the <code>StatisticsManager</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -224,102 +609,103 @@ returned by the respective methods of <code>UndoHistory</code>.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command does not modify the data, when <code>UndoHistory</code> checks whether the current data is equal
-to the data in the previous state according to its <code>equals()</code> method, it will realise that it is
-indeed equal. It will then not store the state into the <code>history</code> list.
+The above explanation and sequence diagram (Figure 10) only illustrates what happens inside the <code>Model</code> component of the architecture
+when the <code>stats</code> command is used. The higher-level components such as <code>LogicManager</code>  are left out, even though they are
+also involved in the execution of this command.
 </td>
 </tr>
 </table>
 </div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-analysing-the-status-lists"><a class="link" href="#aspect-analysing-the-status-lists">Aspect: Analysing the status lists</a></h5>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undo()</code>, which will shift the <code>current</code> state pointer once to the left, pointing it to the previous state, and restores the data to that state.</p>
+<p>This feature necessitates the analysis of the status lists. A consideration is the design of the architecture in which the statistics feature
+should be implemented. It may be subtle in the current version of <strong>DeliveryMANS</strong>, but will have significant implications when the app is further developed.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState3.png" alt="UndoRedoState3">
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1(current choice): Create another class (<code>StatisticsManager</code>) to deal with all the statistics-related methods.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for a more structured and object-oriented way of executing out the <code>stats</code> command. This makes it easier to extend additional
+statistics-related enhancements in future, such as adding predictive capabilities to predict the utilisation level over the next few weeks.</p>
+</li>
+<li>
+<p>Cons: More inefficient as the status lists from <code>StatusManager</code> have to be passed through different classes before reaching <code>StatisticsManager</code>.
+This can affect the runtime of the command when the enhancements get more complicated.</p>
+</li>
+</ul>
 </div>
+</li>
+<li>
+<p>Alternative 2: Modify the existing <code>StatusManager</code> to handle statistics computation as well.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More convenient as the status lists can be directly obtained from the same class instead of having to pass it around.</p>
+</li>
+<li>
+<p>Cons: Harder to manage in future as the app is improved due to coupling between status management and statistics management.
+Changes to status-related issues may cause regressions to the statistics feature.</p>
+</li>
+</ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>current</code> state pointer is at index 0, i.e. pointing to the initial state, then there are no previous states to restore. The <code>undo</code> command uses <code>Model#hasUndo()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoSequenceDiagram1.png" alt="UndoSequenceDiagram1">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redo()</code>, which shifts the <code>current</code> state pointer once to the right, pointing to the previously undone state, and restores the data to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>current</code> state pointer is at index <code>history.size() - 1</code>, i.e. pointing to the latest address book state, then there are no undone states to restore. The <code>redo</code> command uses <code>Model#hasRedo()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. If a command does not modify the data, it will not be stored in the undo history as <code>UndoHistory</code> checks for equality with the previous state. Thus, the <code>history</code> list remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState4.png" alt="UndoRedoState4">
-</div>
+<p><strong><em>End of extract</em></strong></p>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#notifyChange()</code>. Since the <code>current</code> state pointer is not pointing at the end of the <code>history</code> list, all address book states after the <code>current</code> state pointer will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
+<p>&#160;<br></p>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
+<p>Also, I also wrote a test case for one of my implemented commands in the Developer Guide.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p><strong><em>Start of extract</em></strong></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:14:36 UTC</div></div></div></body></html>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switching-the-status-of-a-deliveryman"><a class="link" href="#switching-the-status-of-a-deliveryman">Switching the status of a deliveryman</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Switching the deliveryman status from <strong>AVAILABLE</strong> to <strong>UNAVAILABLE</strong>, or vice versa.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Currently in deliverymen context. The customers in the database are default from the Sample Util data. The current status of the deliveryman is either <strong>AVAILABLE</strong> or <strong>UNAVAILABLE</strong>; it cannot be <strong>DELIVERING</strong>.</p>
+</li>
+<li>
+<p>Test case: <code>switch 1</code><br>
+(NOTE: For default data, the first deliveryman is 'Damith' with the status <strong>AVAILABLE</strong>) <br>
+Expected: The status of the first deliveryman, 'Damith', has been switched to <strong>UNAVAILABLE</strong>.</p>
+</li>
+<li>
+<p>Test case: <code>switch 2</code><br>
+(NOTE: For default data, the second deliveryman is 'Donald Trump' with the status <strong>DELIVERING</strong>)<br>
+Expected: The status of the second deliveryman, 'Donald Trump', remains unchanged. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>switch 0</code><br>
+Expected: No change in any deliveryman status. Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong><em>End of extract</em></strong></p>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:16:42 UTC</div></div></div></body></html>

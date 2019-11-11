@@ -51,6 +51,7 @@
 <li><a href="#deleting-a-restaurant">F.3. Deleting a restaurant</a></li>
 <li><a href="#saving-data">F.4. Saving data</a></li>
 <li><a href="#tagging-customers">F.5. Tagging Customers</a></li>
+<li><a href="#switching-the-status-of-a-deliveryman">F.6. Switching the status of a deliveryman</a></li>
 </ul>
 </li>
 </ul>
@@ -840,7 +841,7 @@ This interaction of the relevant classes are illustrated in the class diagram be
 separation of concerns to carry out different functions.</p>
 </div>
 <div class="paragraph">
-<p>Also, the following sequence diagram shows how the <code>stats</code> operation works:</p>
+<p>The following sequence diagram shows how the <code>stats</code> operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1656,5 +1657,36 @@ Expected: AlexYeoh99 will have no more tags on his <code>CustomerCard</code>.</p
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="switching-the-status-of-a-deliveryman"><a class="link" href="#switching-the-status-of-a-deliveryman">F.6. Switching the status of a deliveryman</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Switching the deliveryman status from <strong>AVAILABLE</strong> to <strong>UNAVAILABLE</strong>, or vice versa.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Currently in deliverymen context. The customers in the database are default from the Sample Util data. The current status of the deliveryman is either <strong>AVAILABLE</strong> or <strong>UNAVAILABLE</strong>; it cannot be <strong>DELIVERING</strong>.</p>
+</li>
+<li>
+<p>Test case: <code>switch 1</code><br>
+(NOTE: For default data, the first deliveryman is 'Damith' with the status <strong>AVAILABLE</strong>) <br>
+Expected: The status of the first deliveryman, 'Damith', has been switched to <strong>UNAVAILABLE</strong>.</p>
+</li>
+<li>
+<p>Test case: <code>switch 2</code><br>
+(NOTE: For default data, the second deliveryman is 'Donald Trump' with the status <strong>DELIVERING</strong>)<br>
+Expected: The status of the second deliveryman, 'Donald Trump', remains unchanged. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>switch 0</code><br>
+Expected: No change in any deliveryman status. Error details shown in the status message.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:14:36 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:16:42 UTC</div></div></div></body></html>
