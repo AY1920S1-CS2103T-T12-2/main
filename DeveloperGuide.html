@@ -48,6 +48,9 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
 <li><a href="#entering-editmode">F.2. Entering EditMode</a></li>
+<li><a href="#deleting-a-restaurant">F.3. Deleting a restaurant</a></li>
+<li><a href="#saving-data">F.4. Saving data</a></li>
+<li><a href="#tagging-customers">F.5. Tagging Customers</a></li>
 </ul>
 </li>
 </ul>
@@ -1292,14 +1295,12 @@ to <code>MainWindow</code> instead of creating a new <code>Context</code> to sig
 <p>prefers typing over mouse input</p>
 </li>
 <li>
-<p>is reasonably comfortable using CLI apps
-<em>{More to be added}</em></p>
+<p>is reasonably comfortable using CLI apps</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: Our application allows better management of all fronts for delivery-service-command-centre administrators, and allows for more efficiency and control in handling of daily tasks.
-<em>{More to be added}</em></p>
+<p><strong>Value proposition</strong>: Our application allows better management of all fronts for delivery-service-command-centre administrators, and allows for more efficiency and control in handling of daily tasks.</p>
 </div>
 </div>
 </div>
@@ -1456,9 +1457,6 @@ to <code>MainWindow</code> instead of creating a new <code>Context</code> to sig
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1565,5 +1563,98 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="deleting-a-restaurant"><a class="link" href="#deleting-a-restaurant">F.3. Deleting a restaurant</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a restaurant</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Currently in restaurant context. Multiple restaurants in the list.</p>
+</li>
+<li>
+<p>Test case: <code>delete 1</code><br>
+Expected: First restaurant is deleted from the list. Details of the deleted restaurant are shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>delete 0</code><br>
+Expected: No restaurant is deleted. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:38:59 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">F.4. Saving data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with missing/corrupted data files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There are .json files in the data/ folder currently</p>
+</li>
+<li>
+<p>Test case: Deleting <code>customerdatabase.json</code> in data/<br>
+Expected: Customer database in application will revert to default Sample Util data.</p>
+</li>
+<li>
+<p>Test case: Adding "a" to the top of the <code>deliverymendatabase.json</code><br>
+Expected: Deliverymen database will be wiped and start as an empty database.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tagging-customers"><a class="link" href="#tagging-customers">F.5. Tagging Customers</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding orders to tag the customers automatically</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The customers in the database are default from the Sample Util data.</p>
+</li>
+<li>
+<p>Test case: <code>-add_order c/PrettyCharlotte r/Prata House f/Cheese Prata q/1</code><br>
+Expected: <code>Indian</code> tag will be added to PrettyCharlotte&#8217;s <code>CustomerCard</code>.</p>
+</li>
+<li>
+<p>Test case: <code>-add_order c/David r/Burger Palace f/Chicken Cheese Burger q/1</code>, <code>-add_order c/David r/Prata House f/Cheese Prata q/1</code> and <code>-add_order c/David r/Prata House f/Curry Fountain q/1</code> in this order<br>
+Expected: <code>Burgers</code> tag will appear first and after adding the next 2 orders, <code>Indian</code> tag will replace <code>Japanese</code> tag because there are more <code>Indian</code> tags in David&#8217;s order history.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Deleting orders to remove customer&#8217;s tags automatically</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The customers in the database are default from the Sample Util data.</p>
+</li>
+<li>
+<p>Test case: <code>-delete_order n/Order 1</code><br>
+Expected: AlexYeoh99 will have no more tags on his <code>CustomerCard</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:05:50 UTC</div></div></div></body></html>
