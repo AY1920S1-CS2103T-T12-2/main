@@ -44,12 +44,10 @@
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">G.2. Deleting a person</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#entering-editmode">F.2. Entering EditMode</a></li>
 </ul>
 </li>
 </ul>
@@ -276,27 +274,6 @@ The following class plays an important role at the architecture level:</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
-</div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
@@ -304,7 +281,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="content">
 <img src="images/ModelArchitecture_alternative_.png" alt="ModelArchitecture alternative ">
 </div>
-<div class="title">Figure 7. Structure of the Model Component</div>
+<div class="title">Figure 6. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -349,7 +326,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
-<div class="title">Figure 8. Structure of the Storage Component</div>
+<div class="title">Figure 7. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T12-2/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -574,7 +551,7 @@ The ‘Ui’ displays the relevant results in a dropdown box below the user inpu
 <div class="content">
 <img src="images/AutoCompleteSequenceDiagram.png" alt="AutoCompleteSequenceDiagram" width="790">
 </div>
-<div class="title">Figure 9. Sequence diagram illustrating the handling of user input via autocomplete</div>
+<div class="title">Figure 8. Sequence diagram illustrating the handling of user input via autocomplete</div>
 </div>
 <div class="paragraph">
 <p>Step 3: You can now complete the command you want by entering the relevant command shown in the dropdown box.</p>
@@ -867,7 +844,7 @@ This interaction of the relevant classes are illustrated in the class diagram be
 <div class="content">
 <img src="images/StatisticsFeatureClassDiagram.png" alt="StatisticsFeatureClassDiagram">
 </div>
-<div class="title">Figure 10. Partial Structure of Deliverymen Database</div>
+<div class="title">Figure 9. Partial Structure of Deliverymen Database</div>
 </div>
 <div class="paragraph">
 <p>The <code>DeliverymenDatabase</code> acts as an agent for both components to parse information around. This helps to maintains a clear
@@ -880,7 +857,7 @@ separation of concerns to carry out different functions.</p>
 <div class="content">
 <img src="images/DeliverymenStatistics.png" alt="DeliverymenStatistics">
 </div>
-<div class="title">Figure 11. Sequence Diagram of Retrieving Deliverymen Statistics</div>
+<div class="title">Figure 10. Sequence Diagram of Retrieving Deliverymen Statistics</div>
 </div>
 <div class="paragraph">
 <p>As seen in Figure 10, for every use of the <code>stats</code> command, a <code>RecordCard</code> object is created. The <code>Analyzer</code> will take in the status lists and the <code>RecordCard</code>
@@ -962,7 +939,7 @@ Changes to status-related issues may cause regressions to the statistics feature
 <div class="content">
 <img src="images/plantuml/AutoTagAddActivityDiagram.png" alt="AutoTagAddActivityDiagram">
 </div>
-<div class="title">Figure 12. Activity diagram of tagging process</div>
+<div class="title">Figure 11. Activity diagram of tagging process</div>
 </div>
 <div class="paragraph">
 <p>Another function called <code>changeMainTag()</code> is used to change the main <code>Tag</code>s of the <code>Customer</code> to show on the <code>CustomerCard</code>. The activity diagram below shows how the application determines the top two <code>Tag</code>s:</p>
@@ -971,7 +948,7 @@ Changes to status-related issues may cause regressions to the statistics feature
 <div class="content">
 <img src="images/plantuml/ChangeTagActivityDiagram.png" alt="ChangeTagActivityDiagram">
 </div>
-<div class="title">Figure 13. Activity diagram of changing <code>Customer</code>'s main <code>Tag</code>s</div>
+<div class="title">Figure 12. Activity diagram of changing <code>Customer</code>'s main <code>Tag</code>s</div>
 </div>
 </div>
 <div class="sect3">
@@ -1418,34 +1395,31 @@ to <code>MainWindow</code> instead of creating a new <code>Context</code> to sig
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is the <code>DeliveryMANS</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<h3 id="use-case-delete-restaurant" class="discrete">Use case: Delete restaurant</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User requests to list restaurants</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
+<p>DeliveryMANS shows a list of restaurants</p>
 </li>
 <li>
-<p>User requests to delete a specific person in the list</p>
+<p>User requests to delete a specific restaurant in the list</p>
 </li>
 <li>
-<p>AddressBook deletes the person</p>
+<p>DeliveryMANS deletes the restaurant</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1468,7 +1442,7 @@ to <code>MainWindow</code> instead of creating a new <code>Context</code> to sig
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>3a1. DeliveryMANS shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -1477,9 +1451,6 @@ to <code>MainWindow</code> instead of creating a new <code>Context</code> to sig
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -1492,7 +1463,7 @@ to <code>MainWindow</code> instead of creating a new <code>Context</code> to sig
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
+<p>Should be able to hold up to 1000 customers / restaurants / deliverymen without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
@@ -1522,44 +1493,7 @@ to <code>MainWindow</code> instead of creating a new <code>Context</code> to sig
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -1577,7 +1511,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1589,7 +1523,7 @@ These instructions only provide a starting point for testers to work on; testers
 </li>
 <li>
 <p>Double-click the jar file<br>
-Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+Expected: Shows the GUI with a set of sample orders. The window size may not be optimum.</p>
 </li>
 </ol>
 </div>
@@ -1610,31 +1544,33 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">G.2. Deleting a person</a></h3>
+<h3 id="entering-editmode"><a class="link" href="#entering-editmode">F.2. Entering EditMode</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a person while all persons are listed</p>
+<p>Entering EditMode for a restaurant when all the restaurants are listed</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Prerequisites: List all restaurants using the <code>-restaurant</code> command. Multiple restaurants in the list.</p>
 </li>
 <li>
-<p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+<p>Test case: <code>editmode 1</code><br>
+Expected: EditMode is entered for the first restaurant in the list.
+ An extra <code>StackPane</code> showing the restaurant under EditMode will be displayed,
+ while the <code>SplitPane</code> displaying the list of restaurants originally will now be filled with the
+ restaurant&#8217;s <code>Food</code> menu and <code>Order</code> list.
+ Details of the restaurant shown in the status message.</p>
 </li>
 <li>
-<p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+<p>Test case: <code>editmode 0</code><br>
+Expected: EditMode is not entered for any restaurant.
+ Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>editmode</code>, <code>editmode x</code> (where x is larger than the restaurant list size)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -1642,29 +1578,6 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 10:19:36 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:26:36 UTC</div></div></div></body></html>
