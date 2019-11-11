@@ -33,7 +33,7 @@
 <li><a href="#order-manager">4.3. Order Manager</a></li>
 <li><a href="#deliverymen-salary-adjustment-feature">4.4. Deliverymen salary adjustment feature</a></li>
 <li><a href="#automated-tagging-of-customer">4.5. Automated tagging of customer</a></li>
-<li><a href="#editmode">4.6. EditMode</a></li>
+<li><a href="#editmode-for-restaurants">4.6. EditMode for restaurants</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -999,7 +999,7 @@ The command will access the <code>UniqueDeliverymenList</code> in order to obtai
 </div>
 </div>
 <div class="sect2">
-<h3 id="editmode"><a class="link" href="#editmode">4.6. EditMode</a></h3>
+<h3 id="editmode-for-restaurants"><a class="link" href="#editmode-for-restaurants">4.6. EditMode for restaurants</a></h3>
 <div class="paragraph">
 <p>A <code>Restaurant</code> object contains many attributes. On top of a <code>Name</code>, <code>Location</code>, <code>Rating</code> and a list of <code>Tag</code>,
 it also includes a list of <code>Food</code> as its menu, as well as a list of <code>Order</code>. This makes it difficult to edit
@@ -1045,7 +1045,8 @@ in both the <code>filteredRestaurantList</code> and <code>editingRestaurantList<
 <div class="paragraph">
 <p>The <code>Logic</code> for EditMode is facilitated by <code>Context</code> enum type, which contains the following constants:
 <code>GLOBAL</code>, <code>CUSTOMER</code>, <code>RESTAURANT</code>, <code>DELIVERYMEN</code> and <code>EDITING</code>. It determines the <code>Context</code> the application is in,
-as well as the commands the user can access. It is contained inside <code>LogicManager</code> as an attribute.</p>
+as well as the commands the user can access. It is contained inside <code>LogicManager</code> as an attribute. <code>EditModeCommand</code> is only
+accessible in <code>Context.RESTAURANT</code>, and entering a valid <code>EditModeCommand</code> will change the <code>Context</code> to <code>Context.EDITING</code>.</p>
 </div>
 <div class="paragraph">
 <p>The following class diagram shows the relevant structure of <code>Logic</code> and <code>Parser</code>:</p>
@@ -1081,8 +1082,7 @@ Any context switching command will then change the <code>Context</code> in <code
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>EditModeCommand</code> to enter EditMode for a restaurant can only be accessed if <code>LogicManager</code> is under
-<code>Context.RESTAURANT</code>. When user inputs the <code>editmode INDEX</code> command:</p>
+<p>When user inputs the <code>editmode INDEX</code> command:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1091,7 +1091,7 @@ Any context switching command will then change the <code>Context</code> in <code
 </li>
 <li>
 <p>Since <code>editmode</code> matches none of the universal commands, <code>UniversalParser</code> will create a new <code>RestaurantParser</code>
-(since current context is <code>Context.RESTAURANT</code>).</p>
+(since current <code>Context</code> is <code>Context.RESTAURANT</code> as <code>EditModeCommand</code> is only accessible in said <code>Context</code>).</p>
 </li>
 <li>
 <p>The new <code>RestaurantParser</code> will then parse the <code>userInput</code> and subsequently change the <code>Context</code> in <code>LogicManager</code> to <code>Context.EDITING</code>,
@@ -1180,7 +1180,7 @@ parsers, <code>LogicManager</code> contains all 5 parsers.</p>
 on the current context.</p>
 </li>
 <li>
-<p>Cons: Checking whether <code>userInput</code> is a universal command needs to be repeated in each context-specific parser.</p>
+<p>Cons: Checking whether <code>userInput</code> is a universal command needs to be repeated in each parser.</p>
 </li>
 </ul>
 </div>
@@ -1615,4 +1615,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 17:25:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 03:59:42 UTC</div></div></div></body></html>
