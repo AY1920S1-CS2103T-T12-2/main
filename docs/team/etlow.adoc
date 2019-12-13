@@ -1,0 +1,85 @@
+= Low Ee Ter - Project Portfolio
+:site-section: AboutUs
+:sectnums:
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+:xrefstyle: full
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+endif::[]
+:repoURL: https://github.com/AY1920S1-CS2103T-T12-2/main
+
+== Introduction
+For my CS2103T module in NUS, we developed a software project in teams, and this document is about my contributions to the project. My team consisted of five Year 2 students, namely Choong Jin Yao, Ryan Tay, Stanley Yuan, Zhou Tian Yu, and I. We were tasked with enhancing a basic command line interface desktop address book application initially containing about 10 kLoC (10,000 lines of code). We chose to morph it into a food delivery management system called DeliveryMANS. This enhanced application enables delivery call centres to efficiently manage their delivery manpower, and the data of their customers, restaurants, and orders.
+
+A command line interface is a method of controlling a program by sending lines of text, or commands, to the application. This is in contrast to a graphical user interface, which includes menus and sometimes icons. Since we were constrained to keeping the command line interface, we did not remove it. Our application has a command line interface in the sense that manipulation of the data is done via commands typed and sent to the app, but there are still elements of a graphical user interface with the various boxes and panes shown in the image below. It is also a desktop application, meaning that it is made to be run on desktop computers and laptops, and not on smartphones or mobile devices.
+
+This is what our project looks like in the restaurant context:
+
+.The graphical user interface for DeliveryMANS, consisting of the command box, result box, and various information panes including the food list pane.
+image::FoodUi.png[]
+
+Here is a list of the main features of our application.
+
+* Management of restaurant, food, customer, and deliveryman data
+* Viewing of customer orders
+* Adding of orders and assigning them to deliverymen
+* Keeping track of deliverymen
+* Undo/redo of changes to data
+
+My role was to design and write the code for the undo/redo feature and food data. The following sections illustrate these enhancements in more detail, as well as the relevant documentation I have added to the user and developer guides in relation to these enhancements.
+
+Note the following symbols and formatting used in this document:
+[cols="^.^1,5"]
+|===
+|*NOTE*
+|Important details to take note of.
+
+|`undo`
+|This formatting indicates that this is either a command that can be input into the command line and executed by the application, or a component, class or object in the architecture of the application.
+|===
+
+== Summary of contributions
+This section shows a summary of my coding, documentation, and other helpful contributions to the team project.
+
+*Enhancement added*: I added the ability to undo and redo previous commands.
+
+* What it does: The undo command allows the user to undo a previous command. The user may reverse this undo command with the redo command. The user can also undo and redo multiple commands at once.
+* Justification: In the event that users have made a mistake or changed their minds about executing a command, the undo command enables them to revert to a version immediately before the mistaken command was executed. If they change their minds again and decide to execute the command after all, then the redo command enables them to do so easily.
+* Highlights: This enhancement works with existing as well as future commands, as it only deals with the state of the program. An in-depth analysis of design alternatives was necessary to ensure that the application runs smoothly. The implementation of the undo mechanism itself was somewhat straightforward. However, I had to ensure that it works with all the restaurant, food, customer, deliveryman, and order data. To do so, I read and understood most of the code for the entire application, so that I could make the various components work with the undo feature (making the classes immutable as described in the Developer Guide). Afterwards, I had to find the source of bugs which occurred after making those changes and fix them.
+* Credits: The address book developer guide for suggesting the idea.
+
+*Enhancement added*: I added the code to store and display food data.
+
+* What it does: The feature is used by the restaurant feature to store its menu and display it when required.
+* Justification: A food item has many attributes such as its name and price, and this data needs to be stored and displayed.
+* Highlights: The feature was designed so it worked well with the undo feature and reduces the possibility of bugs (the `Food` class was immutable). In addition, price is stored as a `BigDecimal`, which means each price is stored as an exact value in the application. This eliminates the rounding errors that have caused serious consequences in stock market applications and other businesses.
+
+*Code contributed*: Please click these links to see a sample of my code:
+
+Initial implementation of undo command [https://github.com/AY1920S1-CS2103T-T12-2/main/commit/8584787bee24e37502d3aee93e2638c01d84b7ee[Functional and test code]]
+
+*Other contributions*
+
+* Enhancements to existing features: Adapted some of the original test utility classes to the new application structure.
+* Documentation: Added details of undo and redo features to the user and developer guide.
+* Community: Reviewed pull requests, pointed out possible bugs and suggested alternative methods of implementing certain components of the application.
+
+== Contributions to the User Guide
+We updated the original address book User Guide with instructions for the enhancements that we added. The following is an excerpt from our DeliveryMANS User Guide, showing additions that I have made for the undo listing feature. Due to space constraints, I have left out the undo and redo feature, which can be found in the User Guide.
+
+(begin contribution to User Guide)
+
+include::../UserGuide.adoc[tag=undoRedo]
+
+(end contribution to User Guide)
+
+== Contributions to the Developer Guide
+We also replaced the address book implementation details in the Developer Guide with the implementation details of our own features. The following is a portion of our Developer Guide which shows my adaptation of the original guide to fit my implementation of the undo/redo function which I came up with from scratch. The extract starts at Step 4 due to space constraints.
+
+(begin contribution to Developer Guide)
+
+include::../DeveloperGuide.adoc[tag=undoredo]
+
+(end contribution to Developer Guide)
